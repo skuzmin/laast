@@ -53,7 +53,7 @@ target_include_directories(laast_firmware PUBLIC
 
 # In addition to pico_stdlib required for common PicoSDK functionality, add dependency on tinyusb_device
 # for TinyUSB device support for the additional board support library used by the example
-target_link_libraries(laast_firmware PUBLIC pico_stdlib pico_unique_id tinyusb_device tinyusb_board hardware_pio)
+target_link_libraries(laast_firmware PUBLIC pico_stdlib pico_unique_id tinyusb_device hardware_pio)
 
 target_compile_definitions(laast_firmware PUBLIC CFG_TUSB_OS=OPT_OS_PICO)
 

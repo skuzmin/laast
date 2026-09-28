@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "pico/stdlib.h"
+#include "pico/bootrom.h"
 #include "tusb.h"
 #include "usb_descriptors.h"
 #include "led.h"
@@ -14,6 +16,8 @@ typedef enum
 
 static volatile usb_state_t usb_state = USB_NOT_MOUNTED;
 
+void hid_task(void);
+void cdc_task(void);
 void led_status_task(void);
 
 int main(void)
@@ -25,7 +29,53 @@ int main(void)
   {
     tud_task();
     led_status_task();
+    cdc_task();
+    hid_task();
   }
+}
+
+void hid_task(void)
+{
+  static bool done = false;
+  static int step = 0;
+  static uint32_t mounted_at = 0;
+  static uint32_t wait_until = 0;
+
+  if (done || !tud_mounted()) return;
+
+  uint32_t now = to_ms_since_boot(get_absolute_time());
+  if (mounted_at == 0) mounted_at = now;
+  if (now - mounted_at < 2000) return;   // wait 2 s after mount
+  if (now < wait_until) return;          // wait between steps
+
+  if (!tud_hid_ready()) return;          // previous report not sent yet
+
+  uint8_t keys[6] = { HID_KEY_F1, 0, 0, 0, 0, 0 };
+
+  switch (step)
+  {
+    case 0: // mouse left down
+      tud_hid_mouse_report(REPORT_ID_MOUSE, MOUSE_BUTTON_LEFT, 0, 0, 0, 0);
+      wait_until = now + 50;             // hold click 50 ms
+      break;
+
+    case 1: // mouse left up
+      tud_hid_mouse_report(REPORT_ID_MOUSE, 0, 0, 0, 0, 0);
+      wait_until = now + 500;            // pause 500 ms before F1
+      break;
+
+    case 2: // F1 down
+      tud_hid_keyboard_report(REPORT_ID_KEYBOARD, 0, keys);
+      wait_until = now + 50;            // hold F1 100 ms
+      break;
+
+    case 3: // F1 up
+      tud_hid_keyboard_report(REPORT_ID_KEYBOARD, 0, NULL);
+      done = true;                       // finished
+      break;
+  }
+
+  step++;
 }
 
 void led_status_task(void)
@@ -48,6 +98,17 @@ void led_status_task(void)
   case USB_SUSPENDED:
     led_set(0, 0, 8);
     break;
+  }
+}
+
+void cdc_task(void)
+{
+  if(tud_cdc_available())
+  {
+    char buf[64];
+    uint32_t n = tud_cdc_read(buf, sizeof(buf));
+    tud_cdc_write(buf, n);
+    tud_cdc_write_flush();
   }
 }
 
