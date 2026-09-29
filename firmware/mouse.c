@@ -2,6 +2,7 @@
 #include "tusb.h"
 #include "pico/stdlib.h"
 #include "usb_descriptors.h"
+#include "time_utils.h"
 
 #define CLICK_MS 50
 
@@ -17,11 +18,6 @@ static state_t state = IDLE;
 static uint8_t btn = 0;
 static int8_t wheel = 0;
 static uint32_t release_at = 0;
-
-static uint32_t now_ms(void)
-{
-  return to_ms_since_boot(get_absolute_time());
-}
 
 bool mouse_click(uint8_t button)
 {
