@@ -6,6 +6,10 @@
 #include "tusb.h"
 #include "usb_descriptors.h"
 #include "led.h"
+#include "mouse.h"
+#include "commands.h"
+
+#define CMD_LINE_MAX 64
 
 typedef enum
 {
@@ -16,7 +20,6 @@ typedef enum
 
 static volatile usb_state_t usb_state = USB_NOT_MOUNTED;
 
-void hid_task(void);
 void cdc_task(void);
 void led_status_task(void);
 
@@ -30,13 +33,8 @@ int main(void)
     tud_task();
     led_status_task();
     cdc_task();
-    hid_task();
+    mouse_task();
   }
-}
-
-void hid_task(void)
-{
-
 }
 
 void led_status_task(void)
@@ -64,18 +62,32 @@ void led_status_task(void)
 
 void cdc_task(void)
 {
-  if(tud_cdc_available())
+  static char line[CMD_LINE_MAX];
+  static uint8_t len = 0;
+
+  while (tud_cdc_available())
   {
-    char buf[64];
-    uint32_t n = tud_cdc_read(buf, sizeof(buf));
-    tud_cdc_write(buf, n);
-    tud_cdc_write_flush();
+    char c = (char)tud_cdc_read_char();
+
+    if (c == '\n' || c == '\r')
+    {
+      if (len == 0)
+      {
+        continue;
+      }
+
+      line[len] = '\0';
+
+      handle_command(line);
+
+      len = 0;
+    }
+    else if (len < CMD_LINE_MAX - 1)
+    {
+      line[len++] = c;
+    }
   }
 }
-
-#pragma region Keyboard/Mouse handlers
-
-#pragma endregion Keyboard/Mouse handlers
 
 #pragma region USB state callbacks
 void tud_mount_cb(void)

@@ -45,6 +45,7 @@ target_sources(laast_firmware PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}/led.c
         ${CMAKE_CURRENT_LIST_DIR}/mouse.c
         ${CMAKE_CURRENT_LIST_DIR}/keyboard.c
+        ${CMAKE_CURRENT_LIST_DIR}/commands.c
         )
 
 pico_generate_pio_header(laast_firmware ${CMAKE_CURRENT_LIST_DIR}/ws2812.pio)
