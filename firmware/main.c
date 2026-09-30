@@ -1,12 +1,8 @@
-#include <stdlib.h>
-#include <string.h>
-
 #include "pico/stdlib.h"
-#include "pico/bootrom.h"
 #include "tusb.h"
-#include "usb_descriptors.h"
 #include "led.h"
 #include "mouse.h"
+#include "keyboard.h"
 #include "commands.h"
 
 #define CMD_LINE_MAX 64
@@ -34,6 +30,7 @@ int main(void)
     led_status_task();
     cdc_task();
     mouse_task();
+    keyboard_task();
   }
 }
 
