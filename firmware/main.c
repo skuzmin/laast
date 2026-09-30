@@ -107,6 +107,16 @@ void tud_resume_cb(void)
 {
   usb_state = tud_mounted() ? USB_MOUNTED : USB_NOT_MOUNTED;
 }
+
+void tud_cdc_line_state_cb(uint8_t itf, bool dtr, bool rts)
+{
+  (void)itf;
+  (void)rts;
+  if (!dtr)
+  {
+    commands_reset_session();
+  }
+}
 #pragma endregion USB state callbacks
 
 #pragma region HID callbacks

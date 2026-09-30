@@ -5,6 +5,13 @@
 #include "keyboard.h"
 #include "protocol.h"
 
+static bool session = false;
+
+void commands_reset_session(void)
+{
+  session = false;
+}
+
 static void reply(const char *text)
 {
   tud_cdc_write_str(text);
@@ -151,6 +158,19 @@ void handle_command(char *line)
     return;
   }
 
+  if (strcmp(group, CMD_HELLO) == 0)
+  {
+    session = true;
+    reply(RESP_HELLO);
+    return;
+  }
+
+  if (!session)
+  {
+    reply(ERR_NOT_CONNECTED);
+    return;
+  }
+
   if (strcmp(group, CMD_MOUSE) == 0)
   {
     handle_mouse(action, arg);
@@ -160,6 +180,12 @@ void handle_command(char *line)
   if (strcmp(group, CMD_KEY) == 0)
   {
     handle_key(action);
+    return;
+  }
+
+  if (strcmp(group, CMD_VERSION) == 0)
+  {
+    reply(FW_VERSION);
     return;
   }
 

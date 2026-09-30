@@ -28,7 +28,7 @@ set(PICO_BOARD waveshare_rp2040_zero CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(laast_firmware C CXX ASM)
+project(laast_firmware VERSION 1.0.0 LANGUAGES C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
@@ -59,6 +59,11 @@ target_include_directories(laast_firmware PUBLIC
 target_link_libraries(laast_firmware PUBLIC pico_stdlib pico_unique_id tinyusb_device hardware_pio)
 
 target_compile_definitions(laast_firmware PUBLIC CFG_TUSB_OS=OPT_OS_PICO)
+
+target_compile_definitions(laast_firmware PUBLIC CFG_TUSB_OS=OPT_OS_PICO)
+
+target_compile_definitions(laast_firmware PUBLIC FW_VERSION="${PROJECT_VERSION}")
+pico_set_program_version(laast_firmware "${PROJECT_VERSION}")
 
 # Uncomment this line to enable fix for Errata RP2040-E5 (the fix requires use of GPIO 15)
 #target_compile_definitions(laast_firmware PUBLIC PICO_RP2040_USB_DEVICE_ENUMERATION_FIX=1)

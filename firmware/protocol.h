@@ -1,5 +1,12 @@
 #pragma once
 
+#define PROTOCOL_VERSION  "1"
+#define CMD_VERSION  "VERSION"
+
+#define CMD_HELLO          "HELLO"
+#define RESP_HELLO         "HELLO LAAST " PROTOCOL_VERSION
+#define ERR_NOT_CONNECTED  "ERR not connected"
+
 #define RESP_OK               "OK"
 #define RESP_BUSY             "BUSY"
 #define ERR_UNKNOWN_COMMAND   "ERR unknown command"
