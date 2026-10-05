@@ -1,0 +1,31 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:controls="using:Laast.Controls">
+
+    <Style Selector="controls|TitleBar Border.titlebar">
+        <Setter Property="Background" Value="#33FFFFFF"/>
+    </Style>
+
+    <Style Selector="controls|TitleBar Button.caption">
+        <Setter Property="Width" Value="46"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    <Style Selector="controls|TitleBar Button.caption:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#33FFFFFF"/>
+    </Style>
+    <Style Selector="controls|TitleBar Button.caption:pressed">
+        <Setter Property="RenderTransform" Value="none"/>
+    </Style>
+    <Style Selector="controls|TitleBar Button.close:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#E81123"/>
+    </Style>
+    <Style Selector="controls|TitleBar Button.caption Path">
+        <Setter Property="Stroke" Value="White"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+    </Style>
+</Styles>

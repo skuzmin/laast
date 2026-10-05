@@ -1,0 +1,25 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Laast.Controls.TitleBar"
+             x:Name="Root"
+             Height="32">
+
+    <Border Classes="titlebar" PointerPressed="OnPointerPressed">
+        <DockPanel LastChildFill="False">
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Spacing="8" Margin="10,0">
+                <Image Source="{Binding Icon, ElementName=Root}" Width="20" Height="20"/>
+                <TextBlock Text="{Binding Title, ElementName=Root}"
+                           Foreground="White" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                <Button Classes="caption" Click="Minimize_Click">
+                    <Path Data="M0,0 L10,0"/>
+                </Button>
+                <Button Classes="caption close" Click="Close_Click">
+                    <Path Data="M0,0 L10,10 M10,0 L0,10"/>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+    </Border>
+</UserControl>
