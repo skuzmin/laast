@@ -1,0 +1,5 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <FontFamily x:Key="FontPrimary">avares://Laast/Assets/Fonts#Noto Sans</FontFamily>
+    <FontFamily x:Key="FontSecondary">avares://Laast/Assets/Fonts#Oxanium</FontFamily>
+</ResourceDictionary>
