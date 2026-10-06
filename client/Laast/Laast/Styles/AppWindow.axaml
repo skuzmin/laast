@@ -1,0 +1,29 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Laast.Controls">
+    <Styles.Resources>
+        <ControlTheme x:Key="{x:Type controls:AppWindow}" TargetType="controls:AppWindow">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="TransparencyLevelHint" Value="Transparent"/>
+            <Setter Property="CanResize" Value="False"/>
+            <Setter Property="ExtendClientAreaToDecorationsHint" Value="True"/>
+            <Setter Property="ExtendClientAreaChromeHints" Value="NoChrome"/>
+            <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="-1"/>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border CornerRadius="10" ClipToBounds="True"
+                            Background="#E6202020">
+                        <VisualLayerManager>
+                            <DockPanel>
+                                <controls:TitleBar DockPanel.Dock="Top"
+                                                   Icon="/Assets/Icons/icon.png"
+                                                   Title="{TemplateBinding Title}"/>
+                                <ContentPresenter Content="{TemplateBinding Content}"/>
+                            </DockPanel>
+                        </VisualLayerManager>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </ControlTheme>
+    </Styles.Resources>
+</Styles>
