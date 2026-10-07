@@ -4,21 +4,21 @@
              x:Name="Root">
 
     <Border Classes="titlebar" PointerPressed="OnPointerPressed">
-        <Grid ColumnDefinitions="Auto,Auto,*,Auto,Auto" ColumnSpacing="8">
+        <Grid ColumnDefinitions="Auto,Auto,*,Auto,Auto" ColumnSpacing="{StaticResource Spacing-2}">
 
-            <Image Grid.Column="0" Margin=" 10,0,0,0" Width="20" Height="20"
+            <Image Grid.Column="0" Classes="title-icon"
                    Source="{Binding Icon, ElementName=Root}" />
 
-            <TextBlock Grid.Column="1" VerticalAlignment="Center" FontSize="15"
+            <TextBlock Grid.Column="1" Classes="title-text"
                        Text="{Binding Title, ElementName=Root}"
                        Foreground="{DynamicResource TextPrimary}" />
 
-            <Button Grid.Column="3" Classes="caption" Click="Minimize_Click"
+            <Button Grid.Column="3" Classes="titlebar-btn" Click="Minimize_Click"
                     IsVisible="{Binding IsMinimizeAvailable, ElementName=Root}">
                 <Path Data="M0,0 L10,0" />
             </Button>
 
-            <Button Grid.Column="4" Classes="caption close" Click="Close_Click">
+            <Button Grid.Column="4" Classes="titlebar-btn close" Click="Close_Click">
                 <Path Data="M0,0 L10,10 M10,0 L0,10" />
             </Button>
         </Grid>

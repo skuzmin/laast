@@ -3,7 +3,7 @@
 
     <!-- Default -->
     <Style Selector="Button.btn">
-        <Setter Property="BorderThickness" Value="{StaticResource BorderThin}" />
+        <Setter Property="BorderThickness" Value="{StaticResource Border-1}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="CornerRadius" Value="{StaticResource Radius-1}" />
         <Setter Property="Padding" Value="{StaticResource PaddingButtonDefault}" />
@@ -12,12 +12,6 @@
         <Setter Property="FontSize" Value="20" />
         <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="FocusAdorner" Value="{x:Null}"/>
-        <Setter Property="Transitions">
-            <Transitions>
-                <TransformOperationsTransition Property="RenderTransform"
-                                               Duration="0:0:0.1" Easing="LinearEasing" />
-            </Transitions>
-        </Setter>
         <Setter Property="Template">
             <ControlTemplate>
                 <ContentPresenter Name="Presenter"
@@ -43,9 +37,6 @@
                 <BrushTransition Property="BorderBrush" Duration="0:0:0.1" Easing="LinearEasing" />
             </Transitions>
         </Setter>
-    </Style>
-    <Style Selector="Button.btn:pressed">
-        <Setter Property="RenderTransform" Value="translateY(1px)" />
     </Style>
     <Style Selector="Button.btn.sm">
         <Setter Property="Padding" Value="{StaticResource PaddingButtonSm}"/>

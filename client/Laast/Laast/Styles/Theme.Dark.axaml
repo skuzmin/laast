@@ -11,6 +11,7 @@
     <SolidColorBrush x:Key="TextError" Color="{StaticResource RedColor}" />
 
     <!-- TitleBarUserControl -->
+    <SolidColorBrush x:Key="TitleForeground" Color="{StaticResource WhiteColor}" />
     <SolidColorBrush x:Key="TitleBarBackground" Color="{StaticResource CharcoalColor}" />
     <SolidColorBrush x:Key="TitleBarCaptionButtonBackgroundPointerOver" Color="{StaticResource DarkGrayColor}" />
     <SolidColorBrush x:Key="TitleBarCloseButtonBackgroundPointerOver" Color="{StaticResource DarkRedColor}" />

@@ -2,4 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <x:Double x:Key="MainWindowWidth">800</x:Double>
     <x:Double x:Key="MainWindowHeight">600</x:Double>
+    <x:Double x:Key="TitleBarIconSize">20</x:Double>
+    <x:Double x:Key="TitleBarButtonWidth">48</x:Double>
+    <x:Double x:Key="TitleBarButtonHeight">32</x:Double>
 </ResourceDictionary>

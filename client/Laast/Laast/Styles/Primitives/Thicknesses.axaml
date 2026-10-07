@@ -1,7 +1,12 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
-    <Thickness x:Key="BorderThin">1</Thickness>
+    <!-- Border -->
+    <Thickness x:Key="Border-None">1</Thickness>
+    <Thickness x:Key="Border-1">1</Thickness>
+    <!-- Padding -->
+    <Thickness x:Key="PaddingNone">0</Thickness>
     <Thickness x:Key="PaddingButtonDefault">16, 8</Thickness>
     <Thickness x:Key="PaddingButtonSm">12, 4</Thickness>
+    <!-- Margin -->
+    <Thickness x:Key="MarginTitleBarIcon">12,0,0,0</Thickness>
 </ResourceDictionary>
