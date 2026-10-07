@@ -9,7 +9,7 @@
                     Height="{StaticResource MainWindowHeight}"
                     Topmost="True">
 
-    <StackPanel>
+    <StackPanel x:Name="RootPanel">
         <TextBlock Text="{Binding Greeting}"
                    Foreground="{StaticResource TextPrimary}"
                    HorizontalAlignment="Center" VerticalAlignment="Center" />
