@@ -1,0 +1,107 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Default -->
+    <Style Selector="Button.btn">
+        <Setter Property="BorderThickness" Value="{StaticResource BorderThin}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="CornerRadius" Value="{StaticResource Radius-1}" />
+        <Setter Property="Padding" Value="{StaticResource PaddingButtonDefault}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="FocusAdorner" Value="{x:Null}"/>
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Property="RenderTransform"
+                                               Duration="0:0:0.1" Easing="LinearEasing" />
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter Name="Presenter"
+                                  Background="{TemplateBinding Background}"
+                                  Foreground="{TemplateBinding Foreground}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                  CornerRadius="{TemplateBinding CornerRadius}"
+                                  Padding="{TemplateBinding Padding}"
+                                  Content="{TemplateBinding Content}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  RecognizesAccessKey="True" />
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="Button.btn /template/ ContentPresenter#Presenter">
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background" Duration="0:0:0.1" Easing="LinearEasing" />
+                <BrushTransition Property="Foreground" Duration="0:0:0.1" Easing="LinearEasing" />
+                <BrushTransition Property="BorderBrush" Duration="0:0:0.1" Easing="LinearEasing" />
+            </Transitions>
+        </Setter>
+    </Style>
+    <Style Selector="Button.btn:pressed">
+        <Setter Property="RenderTransform" Value="translateY(1px)" />
+    </Style>
+    <Style Selector="Button.btn.sm">
+        <Setter Property="Padding" Value="{StaticResource PaddingButtonSm}"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
+    <!-- Primary -->
+    <Style Selector="Button.btn.primary">
+        <Setter Property="Background" Value="{DynamicResource ButtonPrimaryBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource ButtonPrimaryForeground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ButtonPrimaryBorderBrush}" />
+    </Style>
+    <Style Selector="Button.btn.primary:pointerover /template/ ContentPresenter#Presenter">
+        <Setter Property="Background" Value="{DynamicResource ButtonPrimaryBackgroundPointerOver}" />
+    </Style>
+    <Style Selector="Button.btn.primary:focus-visible /template/ ContentPresenter#Presenter">
+        <Setter Property="Background" Value="{DynamicResource ButtonPrimaryBackgroundPointerOver}"/>
+    </Style>
+
+    <!-- Secondary -->
+    <Style Selector="Button.btn.secondary">
+        <Setter Property="Background" Value="{DynamicResource ButtonSecondaryBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource ButtonSecondaryForeground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ButtonSecondaryBorderBrush}" />
+    </Style>
+    <Style Selector="Button.btn.secondary:pointerover /template/ ContentPresenter#Presenter">
+        <Setter Property="Background" Value="{DynamicResource ButtonSecondaryBackgroundPointerOver}" />
+        <Setter Property="Foreground" Value="{DynamicResource ButtonSecondaryForegroundPointerOver}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ButtonSecondaryBorderBrushPointerOver}" />
+    </Style>
+    <Style Selector="Button.btn.secondary:focus-visible /template/ ContentPresenter#Presenter">
+        <Setter Property="Background" Value="{DynamicResource ButtonSecondaryBackgroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ButtonSecondaryForegroundPointerOver}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ButtonSecondaryBorderBrushPointerOver}"/>
+    </Style>
+
+    <!-- Danger -->
+    <Style Selector="Button.btn.danger">
+        <Setter Property="Background" Value="{DynamicResource ButtonDangerBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource ButtonDangerForeground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ButtonDangerBorderBrush}" />
+    </Style>
+    <Style Selector="Button.btn.danger:pointerover /template/ ContentPresenter#Presenter">
+        <Setter Property="Background" Value="{DynamicResource ButtonDangerBackgroundPointerOver}" />
+    </Style>
+    <Style Selector="Button.btn.danger:focus-visible /template/ ContentPresenter#Presenter">
+        <Setter Property="Background" Value="{DynamicResource ButtonDangerBackgroundPointerOver}"/>
+    </Style>
+
+    <!-- Disabled -->
+    <Style Selector="Button.btn:disabled">
+        <Setter Property="Opacity" Value="0.5" />
+    </Style>
+    <Style Selector="Button.btn:disabled /template/ ContentPresenter#Presenter">
+        <Setter Property="Background" Value="{DynamicResource ButtonDisabledBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource ButtonDisabledForeground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ButtonDisabledBorderBrush}" />
+    </Style>
+</Styles>

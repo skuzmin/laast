@@ -1,26 +1,26 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="Laast.Controls.TitleBar"
-             x:Name="Root"
-             Height="32">
+             x:Name="Root">
 
     <Border Classes="titlebar" PointerPressed="OnPointerPressed">
-        <DockPanel LastChildFill="False">
-            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Spacing="8" Margin="10,0">
-                <Image Source="{Binding Icon, ElementName=Root}" Width="20" Height="20"/>
-                <TextBlock Text="{Binding Title, ElementName=Root}"
-                           FontSize="15"
-                           Foreground="{DynamicResource TextPrimary}" VerticalAlignment="Center"/>
-            </StackPanel>
+        <Grid ColumnDefinitions="Auto,Auto,*,Auto,Auto" ColumnSpacing="8">
 
-            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                <Button Classes="caption" Click="Minimize_Click">
-                    <Path Data="M0,0 L10,0"/>
-                </Button>
-                <Button Classes="caption close" Click="Close_Click">
-                    <Path Data="M0,0 L10,10 M10,0 L0,10"/>
-                </Button>
-            </StackPanel>
-        </DockPanel>
+            <Image Grid.Column="0" Margin=" 10,0,0,0" Width="20" Height="20"
+                   Source="{Binding Icon, ElementName=Root}" />
+
+            <TextBlock Grid.Column="1" VerticalAlignment="Center" FontSize="15"
+                       Text="{Binding Title, ElementName=Root}"
+                       Foreground="{DynamicResource TextPrimary}" />
+
+            <Button Grid.Column="3" Classes="caption" Click="Minimize_Click"
+                    IsVisible="{Binding IsMinimizeAvailable, ElementName=Root}">
+                <Path Data="M0,0 L10,0" />
+            </Button>
+
+            <Button Grid.Column="4" Classes="caption close" Click="Close_Click">
+                <Path Data="M0,0 L10,10 M10,0 L0,10" />
+            </Button>
+        </Grid>
     </Border>
 </UserControl>

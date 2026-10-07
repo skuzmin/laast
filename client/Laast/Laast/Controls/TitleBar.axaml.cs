@@ -14,6 +14,9 @@ public partial class TitleBar : UserControl
     public static readonly StyledProperty<IImage?> IconProperty =
         AvaloniaProperty.Register<TitleBar, IImage?>(nameof(Icon));
 
+    public static readonly StyledProperty<bool> IsMinimizeAvailableProperty =
+        AvaloniaProperty.Register<TitleBar, bool>(nameof(IsMinimizeAvailable));
+
     public string? Title
     {
         get => GetValue(TitleProperty);
@@ -24,6 +27,12 @@ public partial class TitleBar : UserControl
     {
         get => GetValue(IconProperty);
         set => SetValue(IconProperty, value);
+    }
+
+    public bool IsMinimizeAvailable
+    {
+        get => GetValue(IsMinimizeAvailableProperty);
+        set => SetValue(IsMinimizeAvailableProperty, value);
     }
 
     public TitleBar()

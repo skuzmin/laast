@@ -1,18 +1,41 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
     <ResourceDictionary.MergedDictionaries>
-        <ResourceInclude Source="avares://Laast/Styles/Primitives/Colors.axaml"/>
+        <ResourceInclude Source="avares://Laast/Styles/Primitives/Colors.axaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <!-- General-->
     <SolidColorBrush x:Key="TextPrimary" Color="{StaticResource WhiteColor}" />
     <SolidColorBrush x:Key="TextSecondary" Color="{StaticResource BlackColor}" />
     <SolidColorBrush x:Key="TextError" Color="{StaticResource RedColor}" />
-    
+
     <!-- TitleBarUserControl -->
-    <SolidColorBrush x:Key="TitleBarBackground" Color="{StaticResource CharcoalColor}"/>
-    <SolidColorBrush x:Key="TitleBarCaptionButtonBackgroundPointerOver" Color="{StaticResource DarkGrayColor}"/>
-    <SolidColorBrush x:Key="TitleBarCloseButtonBackgroundPointerOver" Color="{StaticResource DarkRedColor}"/>
-    <SolidColorBrush x:Key="TitleBarConfirmationBackground" Color="{StaticResource BlackColor}"/>
+    <SolidColorBrush x:Key="TitleBarBackground" Color="{StaticResource CharcoalColor}" />
+    <SolidColorBrush x:Key="TitleBarCaptionButtonBackgroundPointerOver" Color="{StaticResource DarkGrayColor}" />
+    <SolidColorBrush x:Key="TitleBarCloseButtonBackgroundPointerOver" Color="{StaticResource DarkRedColor}" />
+    <SolidColorBrush x:Key="TitleBarConfirmationBackground" Color="{StaticResource BlackColor}" />
+
+    <!-- Buttons -->
+    <!-- Disabled (shared) -->
+    <SolidColorBrush x:Key="ButtonDisabledBackground" Color="{StaticResource UmberColor}" />
+    <SolidColorBrush x:Key="ButtonDisabledForeground" Color="{StaticResource DarkGrayColor}" />
+    <SolidColorBrush x:Key="ButtonDisabledBorderBrush" Color="{StaticResource UmberLightColor}" />
+    <!-- Primary -->
+    <SolidColorBrush x:Key="ButtonPrimaryBackground" Color="{StaticResource BronzeColor}" />
+    <SolidColorBrush x:Key="ButtonPrimaryBackgroundPointerOver" Color="{StaticResource BronzeLightColor}" />
+    <SolidColorBrush x:Key="ButtonPrimaryForeground" Color="{StaticResource BlackColor}" />
+    <SolidColorBrush x:Key="ButtonPrimaryBorderBrush" Color="{StaticResource BronzeLightColor}" />
+    <!-- Secondary -->
+    <SolidColorBrush x:Key="ButtonSecondaryBackground" Color="{StaticResource CharcoalColor}" />
+    <SolidColorBrush x:Key="ButtonSecondaryBackgroundPointerOver" Color="{StaticResource SlateTealColor}" />
+    <SolidColorBrush x:Key="ButtonSecondaryForeground" Color="{StaticResource MistColor}" />
+    <SolidColorBrush x:Key="ButtonSecondaryForegroundPointerOver" Color="{StaticResource WhiteColor}" />
+    <SolidColorBrush x:Key="ButtonSecondaryBorderBrush" Color="{StaticResource SlateTealLightColor}" />
+    <SolidColorBrush x:Key="ButtonSecondaryBorderBrushPointerOver" Color="{StaticResource SeafoamColor}" />
+    <!-- Danger -->
+    <SolidColorBrush x:Key="ButtonDangerBackground" Color="{StaticResource DarkRedColor}" />
+    <SolidColorBrush x:Key="ButtonDangerBackgroundPointerOver" Color="{StaticResource RedColor}" />
+    <SolidColorBrush x:Key="ButtonDangerForeground" Color="{StaticResource WhiteColor}" />
+    <SolidColorBrush x:Key="ButtonDangerBorderBrush" Color="{StaticResource RoseColor}" />
 </ResourceDictionary>

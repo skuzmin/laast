@@ -6,4 +6,13 @@
     <Color x:Key="RedColor">#EE0000</Color>
     <Color x:Key="DarkRedColor">#8b0000</Color>
     <Color x:Key="DarkGrayColor">#8A8F98</Color>
+    <Color x:Key="BronzeColor">#b8924a</Color>
+    <Color x:Key="BronzeLightColor">#d9b46a</Color>
+    <Color x:Key="SlateTealColor">#3d4d4a</Color>
+    <Color x:Key="SlateTealLightColor">#58716b</Color>
+    <Color x:Key="SeafoamColor">#8fb5aa</Color>
+    <Color x:Key="RoseColor">#e0606a</Color>
+    <Color x:Key="MistColor">#d7e6df</Color>
+    <Color x:Key="UmberColor">#211d17</Color>
+    <Color x:Key="UmberLightColor">#2c261e</Color>
 </ResourceDictionary>

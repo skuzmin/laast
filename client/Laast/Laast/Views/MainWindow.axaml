@@ -5,10 +5,16 @@
                     x:Class="Laast.Views.MainWindow"
                     x:DataType="vm:MainWindowViewModel"
                     Title="[LAAST] Lineage II Assistant"
-                    Width="800" Height="600"
+                    Width="{StaticResource MainWindowWidth}"
+                    Height="{StaticResource MainWindowHeight}"
                     Topmost="True">
 
-    <TextBlock Text="{Binding Greeting}"
-               HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    <StackPanel>
+        <TextBlock Text="{Binding Greeting}"
+                   Foreground="{StaticResource TextPrimary}"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Button Classes="btn primary" Content="Save" />
+        <Button Classes="btn secondary" Content="Cancel"/>
+        <Button Classes="btn danger sm" Content="Delete"/>
+    </StackPanel>
 </controls:AppWindow>

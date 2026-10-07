@@ -17,6 +17,7 @@
                             <DockPanel>
                                 <controls:TitleBar DockPanel.Dock="Top"
                                                    Icon="/Assets/Icons/icon.png"
+                                                   IsMinimizeAvailable="True"
                                                    Title="{TemplateBinding Title}"/>
                                 <ContentPresenter Content="{TemplateBinding Content}"/>
                             </DockPanel>

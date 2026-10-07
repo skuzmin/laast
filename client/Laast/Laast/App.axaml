@@ -13,7 +13,11 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://Laast/Styles/Primitives/Dimensions.axaml"/>
                 <ResourceInclude Source="avares://Laast/Styles/Primitives/Fonts.axaml"/>
+                <ResourceInclude Source="avares://Laast/Styles/Primitives/Radiuses.axaml"/>
+                <ResourceInclude Source="avares://Laast/Styles/Primitives/Spacings.axaml"/>
+                <ResourceInclude Source="avares://Laast/Styles/Primitives/Thicknesses.axaml"/>
             </ResourceDictionary.MergedDictionaries>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceInclude x:Key="Dark" Source="avares://Laast/Styles/Theme.Dark.axaml"/>
@@ -24,6 +28,7 @@
     <Application.Styles>
         <FluentTheme />
         <StyleInclude Source="avares://Laast/Styles/Components/TitleBar.axaml" />
+        <StyleInclude Source="avares://Laast/Styles/Components/Button.axaml" />
         <StyleInclude Source="avares://Laast/Styles/AppWindow.axaml" />
         <Style Selector=":is(Window)">
             <Setter Property="FontFamily" Value="{StaticResource FontPrimary}"/>

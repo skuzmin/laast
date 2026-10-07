@@ -1,3 +1,5 @@
+using System;
+using Avalonia.Interactivity;
 using Laast.Controls;
 
 namespace Laast.Views;
