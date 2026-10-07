@@ -1,0 +1,16 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Laast.ViewModels"
+             x:Class="Laast.Views.HomeView"
+             x:DataType="vm:HomeViewModel">
+
+    <StackPanel Spacing="{StaticResource Spacing-2}"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="{Binding Greeting}"
+                   Foreground="{StaticResource TextPrimary}"
+                   HorizontalAlignment="Center" />
+        <Button Classes="btn primary" Content="Save" />
+        <Button Classes="btn secondary" Content="Cancel" />
+        <Button Classes="btn danger sm" Content="Delete" />
+    </StackPanel>
+</UserControl>

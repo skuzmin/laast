@@ -1,6 +1,13 @@
-﻿namespace Laast.ViewModels;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace Laast.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    public string Greeting { get; } = "Welcome to Avalonia!";
+    [ObservableProperty]
+    private ViewModelBase? _currentPage;
+    public MainWindowViewModel()
+    {
+        CurrentPage = new HomeViewModel();
+    }
 }
