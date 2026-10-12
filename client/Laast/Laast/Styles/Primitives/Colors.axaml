@@ -3,6 +3,8 @@
     <Color x:Key="BlackColor">#000</Color>
     <Color x:Key="WhiteColor">#fff</Color>
     <Color x:Key="CharcoalColor">#323333</Color>
+    <Color x:Key="CharcoalTeal">#FF26323A</Color>
+    <Color x:Key="SageGreen">#C9D8D3</Color>
     <Color x:Key="RedColor">#EE0000</Color>
     <Color x:Key="DarkRedColor">#8b0000</Color>
     <Color x:Key="DarkGrayColor">#8A8F98</Color>

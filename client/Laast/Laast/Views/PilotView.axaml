@@ -1,0 +1,10 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Laast.ViewModels"
+             x:Class="Laast.Views.PilotView"
+             x:DataType="vm:PilotViewModel">
+
+    <TextBlock Text="{Binding Title}"
+               Foreground="{DynamicResource TextPrimary}"
+               HorizontalAlignment="Center" VerticalAlignment="Center" />
+</UserControl>

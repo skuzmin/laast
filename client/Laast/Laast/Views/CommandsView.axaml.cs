@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace Laast.Views;
 
-public partial class HomeView : UserControl
+public partial class CommandsView : UserControl
 {
-    public HomeView()
+    public CommandsView()
     {
         InitializeComponent();
     }

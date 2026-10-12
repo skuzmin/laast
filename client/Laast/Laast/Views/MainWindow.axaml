@@ -8,8 +8,10 @@
                     Width="{StaticResource MainWindowWidth}"
                     Height="{StaticResource MainWindowHeight}"
                     Topmost="True">
-
-    <ContentControl x:Name="RootContainer" 
-                    Background="Transparent"
-                    Content="{Binding CurrentPage}" />
+    <Grid x:Name="RootContainer" RowDefinitions="Auto, *">
+        <controls:NavBar Grid.Row="0"></controls:NavBar>
+        <ContentControl Grid.Row="1"
+                        Background="Transparent"
+                        Content="{Binding CurrentPage}" />
+    </Grid>
 </controls:AppWindow>
