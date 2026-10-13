@@ -4,8 +4,10 @@ using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
+using Laast.Services;
 using Laast.ViewModels;
 using Laast.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Laast;
 
@@ -18,6 +20,10 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        var serviceCollection = new ServiceCollection();
+        ConfigureServices(serviceCollection);
+        var services = serviceCollection.BuildServiceProvider();
+        var vm = services.GetRequiredService<MainWindowViewModel>();
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
@@ -25,14 +31,26 @@ public partial class App : Application
             DisableAvaloniaDataAnnotationValidation();
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel(),
+                DataContext = vm
             };
         }
 
         base.OnFrameworkInitializationCompleted();
     }
 
-    private void DisableAvaloniaDataAnnotationValidation()
+    private static void ConfigureServices(IServiceCollection services)
+    {
+        // Services
+        services.AddSingleton<INavigationService, NavigationService>();
+        // ViewModels
+        services.AddSingleton<MainWindowViewModel>();
+        services.AddTransient<PilotViewModel>();
+        services.AddTransient<WindowsViewModel>();
+        services.AddTransient<CommandsViewModel>();
+        services.AddTransient<SettingsViewModel>();
+    }
+
+    private static void DisableAvaloniaDataAnnotationValidation()
     {
         // Get an array of plugins to remove
         var dataValidationPluginsToRemove =

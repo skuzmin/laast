@@ -1,24 +1,29 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="clr-namespace:Laast.ViewModels"
+             xmlns:enum="using:Laast.Enums"
              x:DataType="vm:MainWindowViewModel"
              x:Class="Laast.Controls.NavBar">
     <Border Classes="container">
         <Grid ColumnDefinitions="Auto, Auto, Auto, *, Auto" ColumnSpacing="{StaticResource Spacing-3}">
-            <Button Grid.Column="0" Classes="nav-btn" Command="{Binding GoPilotCommand}"
-                    Classes.active="{Binding IsPilotActive}">
+            <Button Grid.Column="0" Classes="nav-btn" Command="{Binding NavigateCommand}"
+                    CommandParameter="{x:Static enum:AppPage.Pilot}"
+                    Classes.active="{Binding Navigation.IsPilotActive}">
                 <Image Source="/Assets/Icons/bot.png" />
             </Button>
-            <Button Grid.Column="1" Classes="nav-btn" Command="{Binding GoWindowsCommand}"
-                    Classes.active="{Binding IsWindowsActive}">
+            <Button Grid.Column="1" Classes="nav-btn" Command="{Binding NavigateCommand}"
+                    CommandParameter="{x:Static enum:AppPage.Windows}"
+                    Classes.active="{Binding Navigation.IsWindowsActive}">
                 <Image Source="/Assets/Icons/windows.png" />
             </Button>
-            <Button Grid.Column="2" Classes="nav-btn" Command="{Binding GoCommandsCommand}"
-                    Classes.active="{Binding IsCommandsActive}">
+            <Button Grid.Column="2" Classes="nav-btn" Command="{Binding NavigateCommand}"
+                    CommandParameter="{x:Static enum:AppPage.Commands}"
+                    Classes.active="{Binding Navigation.IsCommandsActive}">
                 <Image Source="/Assets/Icons/commands.png" />
             </Button>
-            <Button Grid.Column="4" Classes="nav-btn" Command="{Binding GoSettingsCommand}"
-                    Classes.active="{Binding IsSettingsActive}">
+            <Button Grid.Column="4" Classes="nav-btn" Command="{Binding NavigateCommand}"
+                    CommandParameter="{x:Static enum:AppPage.Settings}"
+                    Classes.active="{Binding Navigation.IsSettingsActive}">
                 <Image Source="/Assets/Icons/settings.png" />
             </Button>
         </Grid>

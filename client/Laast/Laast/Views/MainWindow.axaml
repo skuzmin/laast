@@ -12,6 +12,6 @@
         <controls:NavBar Grid.Row="0"></controls:NavBar>
         <ContentControl Grid.Row="1"
                         Background="Transparent"
-                        Content="{Binding CurrentPage}" />
+                        Content="{Binding Navigation.CurrentPage}" />
     </Grid>
 </controls:AppWindow>
