@@ -3,12 +3,14 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using Laast.Enums;
 using Laast.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Laast.Services;
 
 internal partial class NavigationService : ObservableObject, INavigationService
 {
     private readonly IServiceProvider _services;
+    private readonly ILogger _logger;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsPilotActive))]
@@ -22,9 +24,10 @@ internal partial class NavigationService : ObservableObject, INavigationService
     public bool IsCommandsActive => CurrentPage is CommandsViewModel;
     public bool IsSettingsActive => CurrentPage is SettingsViewModel;
 
-    public NavigationService(IServiceProvider services)
+    public NavigationService(IServiceProvider services, ILogger logger)
     {
         _services = services;
+        _logger = logger;
     }
 
     public void NavigateToDefaultPage()
@@ -59,5 +62,6 @@ internal partial class NavigationService : ObservableObject, INavigationService
     public void NavigateTo<T>() where T : ViewModelBase
     {
         CurrentPage = _services.GetRequiredService<T>();
+        _logger.LogInformation("Navigate to page: {page}", typeof(T).Name);
     }
 }

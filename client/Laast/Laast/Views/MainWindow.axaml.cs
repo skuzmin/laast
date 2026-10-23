@@ -4,15 +4,19 @@ using Avalonia.Input;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using Laast.Controls;
+using Laast.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace Laast.Views;
 
 public partial class MainWindow : AppWindow
 {
-    public MainWindow()
+    public MainWindow(MainWindowViewModel vm, ILogger logger)
     {
         InitializeComponent();
         InitCursor();
+        DataContext = vm;
+        logger.LogInformation("======= App Start =======");
     }
 
     private void InitCursor()
