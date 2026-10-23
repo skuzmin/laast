@@ -1,0 +1,21 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Laast.Controls">
+
+    <!-- Sections -->
+    <Style Selector="controls|AppWindow Border.page-container">
+        <Setter Property="Padding" Value="{StaticResource PaddingPageContainer}"></Setter>
+    </Style>
+
+    <Style Selector="Border.page-section">
+        <Setter Property="Padding" Value="{StaticResource PaddingPageSection}"></Setter>
+    </Style>
+
+    <!-- Typography -->
+    <Style Selector="TextBlock.page-title">
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"></Setter>
+        <Setter Property="FontSize" Value="24"></Setter>
+        <Setter Property="FontFamily" Value="{StaticResource FontSecondary}"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+</Styles>

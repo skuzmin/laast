@@ -7,6 +7,8 @@
     <Thickness x:Key="PaddingNone">0</Thickness>
     <Thickness x:Key="PaddingNavBar">12, 8</Thickness>
     <Thickness x:Key="PaddingNavBarButton">8</Thickness>
+    <Thickness x:Key="PaddingPageContainer">12, 0</Thickness>
+    <Thickness x:Key="PaddingPageSection">0, 12</Thickness>
     <Thickness x:Key="PaddingButtonDefault">16, 8</Thickness>
     <Thickness x:Key="PaddingButtonSm">12, 4</Thickness>
     <!-- Margin -->

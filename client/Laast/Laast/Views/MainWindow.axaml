@@ -10,8 +10,8 @@
                     Topmost="True">
     <Grid x:Name="RootContainer" RowDefinitions="Auto, *">
         <controls:NavBar Grid.Row="0"></controls:NavBar>
-        <ContentControl Grid.Row="1"
-                        Background="Transparent"
-                        Content="{Binding Navigation.CurrentPage}" />
+        <Border Classes="page-container" Grid.Row="1">
+            <ContentControl Background="Transparent" Content="{Binding Navigation.CurrentPage}" />
+        </Border>
     </Grid>
 </controls:AppWindow>

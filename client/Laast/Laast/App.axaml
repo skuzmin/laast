@@ -31,6 +31,7 @@
         <StyleInclude Source="avares://Laast/Styles/Components/TitleBar.axaml" />
         <StyleInclude Source="avares://Laast/Styles/Components/Button.axaml" />
         <StyleInclude Source="avares://Laast/Styles/AppWindow.axaml" />
+        <StyleInclude Source="avares://Laast/Styles/Shared.axaml" />
         <Style Selector=":is(Window)">
             <Setter Property="FontFamily" Value="{StaticResource FontPrimary}"/>
         </Style>

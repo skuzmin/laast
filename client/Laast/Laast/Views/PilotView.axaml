@@ -4,7 +4,10 @@
              x:Class="Laast.Views.PilotView"
              x:DataType="vm:PilotViewModel">
 
-    <TextBlock Text="{Binding Title}"
-               Foreground="{DynamicResource TextPrimary}"
-               HorizontalAlignment="Center" VerticalAlignment="Center" />
+    <Grid RowDefinitions="Auto, *">
+        <Border Grid.Row="0" Classes="page-section">
+            <TextBlock Classes="page-title">Pilot</TextBlock>
+        </Border>
+        <Border Grid.Row="1" Classes="page-section"></Border>
+    </Grid>
 </UserControl>
