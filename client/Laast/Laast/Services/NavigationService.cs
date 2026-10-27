@@ -1,5 +1,7 @@
 using System;
+using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Laast.Enums;
 using Laast.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +13,7 @@ internal partial class NavigationService : ObservableObject, INavigationService
 {
     private readonly IServiceProvider _services;
     private readonly ILogger _logger;
+    public ICommand NavigateToPageCommand { get; }
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsPilotActive))]
@@ -19,7 +22,7 @@ internal partial class NavigationService : ObservableObject, INavigationService
     [NotifyPropertyChangedFor(nameof(IsSettingsActive))]
     private ViewModelBase? _currentPage;
 
-    public bool IsPilotActive => CurrentPage is PilotViewModel;
+    public bool IsPilotActive => CurrentPage is PilotViewModel or PilotConfigViewModel;
     public bool IsWindowsActive => CurrentPage is WindowsViewModel;
     public bool IsCommandsActive => CurrentPage is CommandsViewModel;
     public bool IsSettingsActive => CurrentPage is SettingsViewModel;
@@ -28,6 +31,9 @@ internal partial class NavigationService : ObservableObject, INavigationService
     {
         _services = services;
         _logger = logger;
+        NavigateToPageCommand = new RelayCommand<AppPage>(
+            page => TryToNavigate(page),
+            canExecute: CanNavigateToPage);
     }
 
     public void NavigateToDefaultPage()
@@ -41,6 +47,9 @@ internal partial class NavigationService : ObservableObject, INavigationService
         {
             case AppPage.Pilot:
                 NavigateTo<PilotViewModel>();
+                break;
+            case AppPage.PilotConfig:
+                NavigateTo<PilotConfigViewModel>();
                 break;
             case AppPage.Windows:
                 NavigateTo<WindowsViewModel>();
@@ -57,6 +66,18 @@ internal partial class NavigationService : ObservableObject, INavigationService
         }
 
         return true;
+    }
+
+    public bool CanNavigateToPage(AppPage page)
+    {
+        return page switch
+        {
+            AppPage.Pilot => !IsPilotActive,
+            AppPage.Settings => !IsSettingsActive,
+            AppPage.Windows => !IsWindowsActive,
+            AppPage.Commands => !IsCommandsActive,
+            _ => true
+        };
     }
 
     public void NavigateTo<T>() where T : ViewModelBase

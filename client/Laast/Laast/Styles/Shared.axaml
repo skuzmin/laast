@@ -7,6 +7,10 @@
         <Setter Property="Padding" Value="{StaticResource PaddingPageContainer}"></Setter>
     </Style>
 
+    <Style Selector="Border.title-section">
+        <Setter Property="Padding" Value="{StaticResource PaddingTitleSection}"></Setter>
+    </Style>
+
     <Style Selector="Border.page-section">
         <Setter Property="Padding" Value="{StaticResource PaddingPageSection}"></Setter>
     </Style>
@@ -17,5 +21,19 @@
         <Setter Property="FontSize" Value="24"></Setter>
         <Setter Property="FontFamily" Value="{StaticResource FontSecondary}"></Setter>
         <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <!-- Data Grid -->
+    <Style Selector="DataGrid.app-table">
+        <Setter Property="CanUserSortColumns" Value="False"></Setter>
+        <Setter Property="IsReadOnly" Value="True"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.no-items-msg">
+        <Setter Property="FontFamily" Value="{StaticResource FontSecondary}"></Setter>
+        <Setter Property="FontSize" Value="24"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
     </Style>
 </Styles>

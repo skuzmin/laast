@@ -27,6 +27,7 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
         <StyleInclude Source="avares://Laast/Styles/Components/NavBar.axaml" />
         <StyleInclude Source="avares://Laast/Styles/Components/TitleBar.axaml" />
         <StyleInclude Source="avares://Laast/Styles/Components/Button.axaml" />

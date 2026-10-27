@@ -5,7 +5,7 @@
              x:DataType="vm:CommandsViewModel">
 
     <Grid RowDefinitions="Auto, *">
-        <Border Grid.Row="0" Classes="page-section">
+        <Border Grid.Row="0" Classes="title-section">
             <TextBlock Classes="page-title">Commands</TextBlock>
         </Border>
         <Border Grid.Row="1" Classes="page-section"></Border>

@@ -1,0 +1,13 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Laast.ViewModels"
+             x:Class="Laast.Views.PilotConfigView"
+             x:DataType="vm:PilotConfigViewModel">
+
+    <Grid RowDefinitions="Auto, *">
+        <Border Grid.Row="0" Classes="title-section">
+            <TextBlock Classes="page-title">New Pilot Config</TextBlock>
+        </Border>
+        <Border Grid.Row="1" Classes="page-section"></Border>
+    </Grid>
+</UserControl>

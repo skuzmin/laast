@@ -44,6 +44,7 @@ public partial class App : Application
         // ViewModels
         services.AddSingleton<MainWindowViewModel>();
         services.AddTransient<PilotViewModel>();
+        services.AddTransient<PilotConfigViewModel>();
         services.AddTransient<WindowsViewModel>();
         services.AddTransient<CommandsViewModel>();
         services.AddTransient<SettingsViewModel>();

@@ -1,13 +1,47 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:Laast.ViewModels"
+             xmlns:models="clr-namespace:Laast.Models"
              x:Class="Laast.Views.PilotView"
+             xmlns:enums="clr-namespace:Laast.Enums"
              x:DataType="vm:PilotViewModel">
 
     <Grid RowDefinitions="Auto, *">
-        <Border Grid.Row="0" Classes="page-section">
-            <TextBlock Classes="page-title">Pilot</TextBlock>
+        <!-- Title -->
+        <Border Grid.Row="0" Classes="title-section">
+            <Grid ColumnDefinitions="Auto, *, Auto">
+                <TextBlock Grid.Column="0" Classes="page-title">Pilot</TextBlock>
+                <Button Grid.Column="2" Classes="btn primary" 
+                        Command="{Binding NavigationService.NavigateToPageCommand}"
+                        CommandParameter="{x:Static enums:AppPage.PilotConfig}">Create</Button>
+            </Grid>
         </Border>
-        <Border Grid.Row="1" Classes="page-section"></Border>
+        <Border Grid.Row="1" Classes="page-section">
+            <Grid>
+                <!-- No Items Message -->
+                <TextBlock Classes="no-items-msg"
+                           Text="You don't have any configuration yet."
+                           IsVisible="{Binding !Configs.Count}" />
+                
+                <!-- Data Grid -->
+                <DataGrid Classes="app-table" ItemsSource="{Binding Configs}" IsVisible="{Binding Configs.Count}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="3*" Header="Name" Binding="{Binding Name}" />
+                        <DataGridTextColumn Width="*" Header="Is Active" Binding="{Binding IsActive}" />
+                        <DataGridTemplateColumn Width="2*" Header="Actions">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate DataType="models:PilotConfiguration">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <Button Classes="btn primary sm">Activate</Button>
+                                        <Button Classes="btn secondary sm">Edit</Button>
+                                        <Button Classes="btn sm">Delete</Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>
