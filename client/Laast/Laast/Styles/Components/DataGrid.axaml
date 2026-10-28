@@ -1,0 +1,64 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Data Grid -->
+    <Style Selector="DataGrid.app-table">
+        <Setter Property="RowHeight" Value="40"></Setter>
+        <Setter Property="CanUserSortColumns" Value="False"></Setter>
+        <Setter Property="IsReadOnly" Value="True"></Setter>
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"></Setter>
+        <Setter Property="BorderThickness" Value="{StaticResource Border-2}"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource DataGridBorderBrush}"></Setter>
+        <Setter Property="CornerRadius" Value="{StaticResource Radius-2}"></Setter>
+        <Setter Property="ClipToBounds" Value="True"></Setter>
+    </Style>
+    <Style Selector="DataGrid.app-table /template/ Rectangle#PART_ColumnHeadersAndRowsSeparator">
+        <Setter Property="Height" Value="0" />
+    </Style>
+    <!-- Data Grid: Header-->
+    <Style Selector="DataGrid.app-table DataGridColumnHeader">
+        <Setter Property="MinHeight" Value="40"></Setter>
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="Background" Value="{DynamicResource DataGridHeaderBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"></Setter>
+        <Setter Property="FontFamily" Value="{StaticResource FontSecondary}"></Setter>
+        <Setter Property="BorderThickness" Value="{StaticResource BorderNone}"></Setter>
+        <Setter Property="IsHitTestVisible" Value="False" />
+    </Style>
+    <Style Selector="DataGrid.app-table DataGridColumnHeader:nth-child(1) /template/ Border#HeaderBorder">
+        <Setter Property="CornerRadius" Value="{StaticResource Radius-Grid-First}"></Setter>
+    </Style>
+    <Style Selector="DataGrid.app-table DataGridColumnHeader:nth-last-child(1) /template/ Border#HeaderBorder">
+        <Setter Property="CornerRadius" Value="{StaticResource Radius-Grid-Last}"></Setter>
+    </Style>
+    <Style Selector="DataGrid.app-table DataGridColumnHeader /template/ Rectangle#VerticalSeparator">
+        <Setter Property="Width" Value="0"></Setter>
+    </Style>
+    <Style Selector="DataGrid.app-table DataGridColumnHeader:pointerover /template/ Grid#PART_ColumnHeaderRoot">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <!-- Data Grid: Row -->
+    <Style Selector="DataGrid.app-table DataGridRow">
+        <Setter Property="MinHeight" Value="40" />
+        <Setter Property="Height" Value="40" />
+    </Style>
+    <Style Selector="DataGrid.app-table DataGridRow:selected /template/ Rectangle#BackgroundRectangle">
+        <Setter Property="Fill" Value="Transparent"></Setter>
+    </Style>
+    <Style Selector="DataGrid.app-table DataGridRow:pointerover /template/ Rectangle#BackgroundRectangle">
+        <Setter Property="Fill" Value="Transparent" />
+    </Style>
+
+    <!-- Data Grid: Cell -->
+    <Style Selector="DataGrid.app-table DataGridCell">
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style Selector="DataGrid.app-table DataGridCell:selected /template/ Grid#FocusVisual">
+        <Setter Property="Opacity" Value="0"></Setter>
+    </Style>
+    <Style Selector="DataGrid.app-table DataGridCell TextBlock#CellTextBlock">
+        <Setter Property="TextTrimming" Value="WordEllipsis"></Setter>
+    </Style>
+</Styles>

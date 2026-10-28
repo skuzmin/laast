@@ -3,6 +3,7 @@
     <!-- Border -->
     <Thickness x:Key="BorderNone">0</Thickness>
     <Thickness x:Key="Border-1">1</Thickness>
+    <Thickness x:Key="Border-2">2</Thickness>
     <!-- Padding -->
     <Thickness x:Key="PaddingNone">0</Thickness>
     <Thickness x:Key="PaddingNavBar">12, 8</Thickness>

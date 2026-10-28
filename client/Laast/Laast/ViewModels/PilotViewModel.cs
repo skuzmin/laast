@@ -14,9 +14,25 @@ public partial class PilotViewModel : ViewModelBase
         NavigationService = navigationService;
         Configs =
         [
-            new PilotConfiguration { IsActive = false, Name = "Config 1" },
-            new PilotConfiguration { IsActive = false, Name = "Config 2" },
-            new PilotConfiguration { IsActive = true, Name = "Config 3" }
+            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
+            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
+            new PilotConfiguration { IsSelected = true, Name = "Config 3" }
         ];
     }
 }

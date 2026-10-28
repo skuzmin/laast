@@ -16,9 +16,11 @@
     <SolidColorBrush x:Key="TitleBarCaptionButtonBackgroundPointerOver" Color="{StaticResource DarkGrayColor}" />
     <SolidColorBrush x:Key="TitleBarCloseButtonBackgroundPointerOver" Color="{StaticResource DarkRedColor}" />
     <SolidColorBrush x:Key="TitleBarConfirmationBackground" Color="{StaticResource BlackColor}" />
+    
     <!-- Navbar -->
     <SolidColorBrush x:Key="NavbarBackground" Color="{StaticResource CharcoalTeal}" />
     <SolidColorBrush x:Key="NavbarButton" Color="{StaticResource SageGreen}" />
+    
     <!-- Buttons -->
     <!-- Disabled (shared) -->
     <SolidColorBrush x:Key="ButtonDisabledBackground" Color="{StaticResource UmberColor}" />
@@ -41,4 +43,8 @@
     <SolidColorBrush x:Key="ButtonDangerBackgroundPointerOver" Color="{StaticResource RedColor}" />
     <SolidColorBrush x:Key="ButtonDangerForeground" Color="{StaticResource WhiteColor}" />
     <SolidColorBrush x:Key="ButtonDangerBorderBrush" Color="{StaticResource RoseColor}" />
+    
+    <!-- DataGrid -->
+    <SolidColorBrush x:Key="DataGridHeaderBackground" Color="{StaticResource CharcoalColor}" />
+    <SolidColorBrush x:Key="DataGridBorderBrush" Color="{StaticResource SageGreen}" />
 </ResourceDictionary>

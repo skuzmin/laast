@@ -6,5 +6,5 @@ public class PilotConfiguration
 {
     public Guid Id { get; } = Guid.NewGuid();
     public string Name { get; set; } = "";
-    public bool IsActive { get; set; }
+    public bool IsSelected { get; set; }
 }
