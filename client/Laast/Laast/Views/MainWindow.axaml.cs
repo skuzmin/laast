@@ -11,10 +11,14 @@ namespace Laast.Views;
 
 public partial class MainWindow : AppWindow
 {
-    public MainWindow(MainWindowViewModel vm, ILogger logger)
+    public MainWindow()
     {
         InitializeComponent();
         InitCursor();
+    }
+
+    public MainWindow(MainWindowViewModel vm, ILogger logger) : this()
+    {
         DataContext = vm;
         logger.LogInformation("======= App Start =======");
     }

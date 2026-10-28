@@ -7,6 +7,7 @@
         <Setter Property="CanUserSortColumns" Value="False"></Setter>
         <Setter Property="IsReadOnly" Value="True"></Setter>
         <Setter Property="VerticalScrollBarVisibility" Value="Auto"></Setter>
+        <Setter Property="ScrollViewer.AllowAutoHide" Value="False" />
         <Setter Property="BorderThickness" Value="{StaticResource Border-2}"></Setter>
         <Setter Property="BorderBrush" Value="{DynamicResource DataGridBorderBrush}"></Setter>
         <Setter Property="CornerRadius" Value="{StaticResource Radius-2}"></Setter>
@@ -15,9 +16,42 @@
     <Style Selector="DataGrid.app-table /template/ Rectangle#PART_ColumnHeadersAndRowsSeparator">
         <Setter Property="Height" Value="0" />
     </Style>
+    <!-- Scroll Bar -->
+    <Style Selector="DataGrid.app-table ScrollBar">
+        <Setter Property="Width" Value="{StaticResource ScrollBarContainerWidth}"></Setter>
+        <Setter Property="MinWidth" Value="{StaticResource ScrollBarContainerWidth}"></Setter>
+        <Setter Property="Opacity" Value="0.75"></Setter>
+        <Setter Property="Margin" Value="{StaticResource MarginScrollbar}"></Setter>
+    </Style>
+    <Style Selector="DataGrid.app-table ScrollBar /template/ Border#VerticalRoot">
+        <Setter Property="Background" Value="{DynamicResource ScrollBarBackground}"></Setter>
+        <Setter Property="CornerRadius" Value="{StaticResource Radius-2}"></Setter>
+        <Setter Property="ClipToBounds" Value="True"></Setter>
+        <Setter Property="Padding" Value="{StaticResource PaddingScrollBar}"></Setter>
+    </Style>
+    <Style Selector="DataGrid.app-table ScrollBar /template/ Rectangle#TrackRect">
+        <Setter Property="Fill" Value="Transparent"></Setter>
+    </Style>
+    <Style Selector="DataGrid.app-table ScrollBar /template/ RepeatButton">
+        <Setter Property="IsVisible" Value="False"></Setter>
+    </Style>
+    <Style Selector="DataGrid.app-table ScrollBar /template/ Thumb">
+        <Setter Property="Width" Value="{StaticResource ScrollBarThumbWidth}"></Setter>
+        <Setter Property="MinWidth" Value="{StaticResource ScrollBarThumbWidth}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackground}"></Setter>
+    </Style>
+    <Style Selector="DataGrid.app-table ScrollBar /template/ Thumb > Border">
+        <Setter Property="CornerRadius" Value="{StaticResource Radius-2}"></Setter>
+    </Style>
+    <Style Selector="DataGrid.app-table ScrollBar /template/ Thumb:pressed /template/ Border">
+        <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackgroundPressed}"></Setter>
+    </Style>
+    <Style Selector="DataGrid.app-table ScrollBar /template/ Thumb:pointerover /template/ Border">
+        <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackgroundPointerOver}"></Setter>
+    </Style>
     <!-- Data Grid: Header-->
     <Style Selector="DataGrid.app-table DataGridColumnHeader">
-        <Setter Property="MinHeight" Value="40"></Setter>
+        <Setter Property="MinHeight" Value="{StaticResource GridRowHeight}"></Setter>
         <Setter Property="FontSize" Value="20"></Setter>
         <Setter Property="Background" Value="{DynamicResource DataGridHeaderBackground}" />
         <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"></Setter>
@@ -40,8 +74,8 @@
 
     <!-- Data Grid: Row -->
     <Style Selector="DataGrid.app-table DataGridRow">
-        <Setter Property="MinHeight" Value="40" />
-        <Setter Property="Height" Value="40" />
+        <Setter Property="MinHeight" Value="{StaticResource GridRowHeight}" />
+        <Setter Property="Height" Value="{StaticResource GridRowHeight}" />
     </Style>
     <Style Selector="DataGrid.app-table DataGridRow:selected /template/ Rectangle#BackgroundRectangle">
         <Setter Property="Fill" Value="Transparent"></Setter>
@@ -53,9 +87,9 @@
     <!-- Data Grid: Cell -->
     <Style Selector="DataGrid.app-table DataGridCell">
         <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderThickness" Value="{StaticResource BorderNone}" />
     </Style>
-    <Style Selector="DataGrid.app-table DataGridCell:selected /template/ Grid#FocusVisual">
+    <Style Selector="DataGrid.app-table DataGridCell /template/ Grid#FocusVisual">
         <Setter Property="Opacity" Value="0"></Setter>
     </Style>
     <Style Selector="DataGrid.app-table DataGridCell TextBlock#CellTextBlock">

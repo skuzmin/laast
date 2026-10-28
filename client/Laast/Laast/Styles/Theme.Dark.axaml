@@ -47,4 +47,9 @@
     <!-- DataGrid -->
     <SolidColorBrush x:Key="DataGridHeaderBackground" Color="{StaticResource CharcoalColor}" />
     <SolidColorBrush x:Key="DataGridBorderBrush" Color="{StaticResource SageGreen}" />
+    <SolidColorBrush x:Key="ScrollBarBackground" Color="{StaticResource UmberColor}" />
+    <SolidColorBrush x:Key="ScrollBarThumbBackground" Color="{StaticResource BronzeColor}" />
+    <SolidColorBrush x:Key="ScrollBarThumbBackgroundPointerOver" Color="{StaticResource BronzeLightColor}" />
+    <SolidColorBrush x:Key="ScrollBarThumbBackgroundPressed" Color="{StaticResource BronzeLightColor}" />
+    
 </ResourceDictionary>
