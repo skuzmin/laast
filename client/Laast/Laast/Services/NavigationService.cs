@@ -3,6 +3,7 @@ using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Laast.Enums;
+using Laast.Models;
 using Laast.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -41,7 +42,7 @@ internal partial class NavigationService : ObservableObject, INavigationService
         NavigateTo<PilotViewModel>();
     }
 
-    public bool TryToNavigate(AppPage page)
+    public bool TryToNavigate(AppPage page, object? parameter = null)
     {
         switch (page)
         {
@@ -49,7 +50,15 @@ internal partial class NavigationService : ObservableObject, INavigationService
                 NavigateTo<PilotViewModel>();
                 break;
             case AppPage.PilotConfig:
-                NavigateTo<PilotConfigViewModel>();
+                if (parameter is PilotConfiguration config)
+                {
+                    NavigateTo<PilotConfigViewModel>(config);
+                }
+                else
+                {
+                    NavigateTo<PilotConfigViewModel>();
+                }
+
                 break;
             case AppPage.Windows:
                 NavigateTo<WindowsViewModel>();
@@ -68,7 +77,7 @@ internal partial class NavigationService : ObservableObject, INavigationService
         return true;
     }
 
-    public bool CanNavigateToPage(AppPage page)
+    private bool CanNavigateToPage(AppPage page)
     {
         return page switch
         {
@@ -80,9 +89,15 @@ internal partial class NavigationService : ObservableObject, INavigationService
         };
     }
 
-    public void NavigateTo<T>() where T : ViewModelBase
+    private void NavigateTo<T>() where T : ViewModelBase
     {
         CurrentPage = _services.GetRequiredService<T>();
+        _logger.LogInformation("Navigate to page: {page}", typeof(T).Name);
+    }
+
+    private void NavigateTo<T>(object param) where T : ViewModelBase
+    {
+        CurrentPage = ActivatorUtilities.CreateInstance<T>(_services, param);
         _logger.LogInformation("Navigate to page: {page}", typeof(T).Name);
     }
 }

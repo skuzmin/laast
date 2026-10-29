@@ -8,12 +8,4 @@ public partial class PilotView : UserControl
     {
         InitializeComponent();
     }
-
-    private void DataGrid_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
-    {
-        if (sender is DataGrid { SelectedItem: not null } grid)
-        {
-            grid.SelectedItem = null;
-        }
-    }
 }

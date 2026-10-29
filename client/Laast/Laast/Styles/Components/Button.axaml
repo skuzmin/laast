@@ -97,4 +97,18 @@
         <Setter Property="Foreground" Value="{DynamicResource ButtonDisabledForeground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ButtonDisabledBorderBrush}" />
     </Style>
+    
+    <!-- Icon -->
+    <Style Selector="Button.btn">
+        <Style Selector="^ Image">
+            <Setter Property="Height" Value="{StaticResource ButtonIconHeight}"></Setter>
+            <Setter Property="Width" Value="{StaticResource ButtonIconWidth}"></Setter>
+        </Style>
+    </Style>
+    
+    <!-- Back Button -->
+    <Style Selector="Button.back">
+        <Setter Property="Padding" Value="{StaticResource PaddingButtonBack}"></Setter>
+        <Setter Property="CornerRadius" Value="{StaticResource Radius-6}"></Setter>
+    </Style>
 </Styles>

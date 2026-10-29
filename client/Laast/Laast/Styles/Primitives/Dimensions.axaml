@@ -9,4 +9,8 @@
     <x:Double x:Key="ScrollBarContainerWidth">12</x:Double>
     <x:Double x:Key="ScrollBarThumbWidth">8</x:Double>
     <x:Double x:Key="GridRowHeight">40</x:Double>
+    <x:Double x:Key="ButtonIconHeight">20</x:Double>
+    <x:Double x:Key="ButtonIconWidth">20</x:Double>
+    <x:Double x:Key="DataGridCellIconHeight">24</x:Double>
+    <x:Double x:Key="DataGridCellIconWidth">24</x:Double>
 </ResourceDictionary>

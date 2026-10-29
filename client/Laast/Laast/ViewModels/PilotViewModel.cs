@@ -1,4 +1,8 @@
 using System.Collections.ObjectModel;
+using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Laast.Enums;
 using Laast.Models;
 using Laast.Services;
 
@@ -6,33 +10,25 @@ namespace Laast.ViewModels;
 
 public partial class PilotViewModel : ViewModelBase
 {
+    [ObservableProperty] private PilotConfiguration? _selectedPilotConfiguration;
     public ObservableCollection<PilotConfiguration> Configs { get; set; }
     public INavigationService NavigationService { get; }
+    public ICommand SelectConfigCommand { get; }
+    public ICommand EditConfigCommand { get; }
+    // public ICommand DeleteConfigCommand { get; }
 
-    public PilotViewModel(INavigationService navigationService)
+    public PilotViewModel(INavigationService navigationService, IPilotService pilotService)
     {
         NavigationService = navigationService;
-        Configs =
-        [
-            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1" },
-            new PilotConfiguration { IsSelected = false, Name = "Config 2" },
-            new PilotConfiguration { IsSelected = true, Name = "Config 3" }
-        ];
+        EditConfigCommand =
+            new RelayCommand<PilotConfiguration>(config =>
+                navigationService.TryToNavigate(AppPage.PilotConfig, config));
+        SelectConfigCommand = new RelayCommand<PilotConfiguration>(config =>
+        {
+            SelectedPilotConfiguration = config;
+            pilotService.SelectPilotConfiguration(config);
+        });
+        SelectedPilotConfiguration = pilotService.GetSelectedPilotConfiguration();
+        Configs = new ObservableCollection<PilotConfiguration>(pilotService.GetPilotConfigurations());
     }
 }

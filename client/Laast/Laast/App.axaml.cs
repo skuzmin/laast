@@ -41,6 +41,7 @@ public partial class App : Application
         // Services
         services.AddSingleton<INavigationService, NavigationService>();
         services.AddSingleton<ILogger, AppLogger>();
+        services.AddSingleton<IPilotService, PilotService>();
         // ViewModels
         services.AddSingleton<MainWindowViewModel>();
         services.AddTransient<PilotViewModel>();

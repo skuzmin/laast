@@ -21,6 +21,7 @@
         <Setter Property="FontSize" Value="24"></Setter>
         <Setter Property="FontFamily" Value="{StaticResource FontSecondary}"></Setter>
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextTrimming" Value="WordEllipsis"></Setter>
     </Style>
 
     <Style Selector="TextBlock.no-items-msg">

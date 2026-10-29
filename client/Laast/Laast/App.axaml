@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="Laast.App"
              xmlns:local="using:Laast"
+             xmlns:converters="clr-namespace:Laast.Converters"
              Name="[LAAST] Lineage II Assistant"
              RequestedThemeVariant="Dark">
     <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
@@ -12,22 +13,24 @@
 
     <Application.Resources>
         <ResourceDictionary>
+            <converters:EqualsConverter x:Key="EqualsConverter" />
+            
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="avares://Laast/Styles/Primitives/Dimensions.axaml"/>
-                <ResourceInclude Source="avares://Laast/Styles/Primitives/Fonts.axaml"/>
-                <ResourceInclude Source="avares://Laast/Styles/Primitives/Radiuses.axaml"/>
-                <ResourceInclude Source="avares://Laast/Styles/Primitives/Spacings.axaml"/>
-                <ResourceInclude Source="avares://Laast/Styles/Primitives/Thicknesses.axaml"/>
+                <ResourceInclude Source="avares://Laast/Styles/Primitives/Dimensions.axaml" />
+                <ResourceInclude Source="avares://Laast/Styles/Primitives/Fonts.axaml" />
+                <ResourceInclude Source="avares://Laast/Styles/Primitives/Radiuses.axaml" />
+                <ResourceInclude Source="avares://Laast/Styles/Primitives/Spacings.axaml" />
+                <ResourceInclude Source="avares://Laast/Styles/Primitives/Thicknesses.axaml" />
             </ResourceDictionary.MergedDictionaries>
             <ResourceDictionary.ThemeDictionaries>
-                <ResourceInclude x:Key="Dark" Source="avares://Laast/Styles/Theme.Dark.axaml"/>
+                <ResourceInclude x:Key="Dark" Source="avares://Laast/Styles/Theme.Dark.axaml" />
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 
     <Application.Styles>
         <FluentTheme />
-        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
         <StyleInclude Source="avares://Laast/Styles/Components/NavBar.axaml" />
         <StyleInclude Source="avares://Laast/Styles/Components/TitleBar.axaml" />
         <StyleInclude Source="avares://Laast/Styles/Components/Button.axaml" />
@@ -35,7 +38,7 @@
         <StyleInclude Source="avares://Laast/Styles/AppWindow.axaml" />
         <StyleInclude Source="avares://Laast/Styles/Shared.axaml" />
         <Style Selector=":is(Window)">
-            <Setter Property="FontFamily" Value="{StaticResource FontPrimary}"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontPrimary}" />
         </Style>
     </Application.Styles>
 </Application>

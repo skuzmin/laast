@@ -16,6 +16,7 @@
     <Style Selector="DataGrid.app-table /template/ Rectangle#PART_ColumnHeadersAndRowsSeparator">
         <Setter Property="Height" Value="0" />
     </Style>
+
     <!-- Scroll Bar -->
     <Style Selector="DataGrid.app-table ScrollBar">
         <Setter Property="Width" Value="{StaticResource ScrollBarContainerWidth}"></Setter>
@@ -49,6 +50,7 @@
     <Style Selector="DataGrid.app-table ScrollBar /template/ Thumb:pointerover /template/ Border">
         <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackgroundPointerOver}"></Setter>
     </Style>
+
     <!-- Data Grid: Header-->
     <Style Selector="DataGrid.app-table DataGridColumnHeader">
         <Setter Property="MinHeight" Value="{StaticResource GridRowHeight}"></Setter>
@@ -94,5 +96,17 @@
     </Style>
     <Style Selector="DataGrid.app-table DataGridCell TextBlock#CellTextBlock">
         <Setter Property="TextTrimming" Value="WordEllipsis"></Setter>
+    </Style>
+
+    <!-- Data Grid: Cell Icon -->
+    <Style Selector="DataGrid.app-table DataGridCell Image.cell-icon">
+        <Setter Property="Height" Value="{StaticResource DataGridCellIconHeight}"></Setter>
+        <Setter Property="Width" Value="{StaticResource DataGridCellIconWidth}"></Setter>
+    </Style>
+
+    <!-- Data Grid: Cell Actions Group -->
+    <Style Selector="DataGrid.app-table DataGridCell StackPanel.actions-group">
+        <Setter Property="Orientation" Value="Horizontal"></Setter>
+        <Setter Property="Spacing" Value="{StaticResource Spacing-2}"></Setter>
     </Style>
 </Styles>

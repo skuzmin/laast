@@ -11,9 +11,14 @@
         <Border Grid.Row="0" Classes="title-section">
             <Grid ColumnDefinitions="Auto, *, Auto">
                 <TextBlock Grid.Column="0" Classes="page-title">Pilot</TextBlock>
-                <Button Grid.Column="2" Classes="btn primary" 
+                <Button Grid.Column="2" Classes="btn primary"
                         Command="{Binding NavigationService.NavigateToPageCommand}"
-                        CommandParameter="{x:Static enums:AppPage.PilotConfig}">Create</Button>
+                        CommandParameter="{x:Static enums:AppPage.PilotConfig}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Assets/Icons/add.png" />
+                        <TextBlock Text="Create"></TextBlock>
+                    </StackPanel>
+                </Button>
             </Grid>
         </Border>
         <Border Grid.Row="1" Classes="page-section">
@@ -22,21 +27,44 @@
                 <TextBlock Classes="no-items-msg"
                            Text="You don't have any configuration yet."
                            IsVisible="{Binding !Configs.Count}" />
-                
+
                 <!-- Data Grid -->
-                <DataGrid Classes="app-table" 
-                          ItemsSource="{Binding Configs}" 
+                <DataGrid Classes="app-table"
+                          ItemsSource="{Binding Configs}"
                           IsVisible="{Binding Configs.Count}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Width="5*" Header="Name" Binding="{Binding Name}" />
-                        <DataGridTextColumn Width="2*" Header="Is Selected" Binding="{Binding IsSelected}" />
+                        <DataGridTemplateColumn Width="2*" Header="Is Selected">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate DataType="models:PilotConfiguration">
+                                    <Image Classes="cell-icon" Source="/Assets/Icons/done.png">
+                                        <Image.IsVisible>
+                                            <MultiBinding Converter="{StaticResource EqualsConverter}">
+                                                <Binding Path="Id" />
+                                                <Binding Path="$parent[DataGrid].((vm:PilotViewModel)DataContext)?.SelectedPilotConfiguration?.Id" />
+                                            </MultiBinding>
+                                        </Image.IsVisible>
+                                    </Image>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTemplateColumn Width="3*" Header="Actions">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate DataType="models:PilotConfiguration">
-                                    <StackPanel Orientation="Horizontal" Spacing="8">
-                                        <Button Classes="btn primary sm">Activate</Button>
-                                        <Button Classes="btn secondary sm">Edit</Button>
-                                        <Button Classes="btn sm">Delete</Button>
+                                    <StackPanel Classes="actions-group">
+                                        <Button Classes="btn secondary sm"
+                                                Command="{Binding  $parent[DataGrid].((vm:PilotViewModel)DataContext)?.SelectConfigCommand}"
+                                                CommandParameter="{Binding }">
+                                            <Image Source="/Assets/Icons/check.png" />
+                                        </Button>
+                                        <Button Classes="btn secondary sm"
+                                                Command="{Binding  $parent[DataGrid].((vm:PilotViewModel)DataContext)?.EditConfigCommand}"
+                                                CommandParameter="{Binding }">
+                                            <Image Source="/Assets/Icons/edit.png" />
+                                        </Button>
+                                        <Button Classes="btn secondary sm">
+                                            <Image Source="/Assets/Icons/delete.png" />
+                                        </Button>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>

@@ -6,7 +6,13 @@
 
     <Grid RowDefinitions="Auto, *">
         <Border Grid.Row="0" Classes="title-section">
-            <TextBlock Classes="page-title">New Pilot Config</TextBlock>
+            <Grid ColumnDefinitions="Auto, 8, *">
+                <Button Grid.Column="0" Classes="btn secondary back"
+                        Command="{Binding BackCommand}">
+                    <Image Source="/Assets/Icons/back.png" />
+                </Button>
+                <TextBlock Grid.Column="2" Classes="page-title" Text="{Binding Title}"></TextBlock>
+            </Grid>
         </Border>
         <Border Grid.Row="1" Classes="page-section"></Border>
     </Grid>

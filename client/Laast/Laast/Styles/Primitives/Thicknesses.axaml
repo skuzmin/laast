@@ -13,6 +13,7 @@
     <Thickness x:Key="PaddingPageSection">0, 0, 0, 12</Thickness>
     <Thickness x:Key="PaddingButtonDefault">16, 8</Thickness>
     <Thickness x:Key="PaddingButtonSm">12, 4</Thickness>
+    <Thickness x:Key="PaddingButtonBack">4</Thickness>
     <Thickness x:Key="PaddingScrollBar">4</Thickness>
     <!-- Margin -->
     <Thickness x:Key="MarginTitleBarIcon">12,0,0,0</Thickness>
