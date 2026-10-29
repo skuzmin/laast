@@ -15,7 +15,7 @@ public partial class PilotViewModel : ViewModelBase
     public INavigationService NavigationService { get; }
     public ICommand SelectConfigCommand { get; }
     public ICommand EditConfigCommand { get; }
-    // public ICommand DeleteConfigCommand { get; }
+    public ICommand DeleteConfigCommand { get; }
 
     public PilotViewModel(INavigationService navigationService, IPilotService pilotService)
     {
@@ -25,10 +25,22 @@ public partial class PilotViewModel : ViewModelBase
                 navigationService.TryToNavigate(AppPage.PilotConfig, config));
         SelectConfigCommand = new RelayCommand<PilotConfiguration>(config =>
         {
-            SelectedPilotConfiguration = config;
             pilotService.SelectPilotConfiguration(config);
+            UpdateSelectedPilotConfiguration(pilotService);
         });
-        SelectedPilotConfiguration = pilotService.GetSelectedPilotConfiguration();
+        DeleteConfigCommand =
+            new RelayCommand<PilotConfiguration>(config =>
+            {
+                pilotService.DeletePilotConfiguration(config);
+                UpdateSelectedPilotConfiguration(pilotService);
+                Configs!.Remove(config!);
+            });
         Configs = new ObservableCollection<PilotConfiguration>(pilotService.GetPilotConfigurations());
+        UpdateSelectedPilotConfiguration(pilotService);
+    }
+
+    private void UpdateSelectedPilotConfiguration(IPilotService pilotService)
+    {
+        SelectedPilotConfiguration = pilotService.GetSelectedPilotConfiguration();
     }
 }

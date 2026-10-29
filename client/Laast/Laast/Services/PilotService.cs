@@ -41,8 +41,18 @@ public class PilotService : IPilotService
         return _selectedPilotConfiguration;
     }
 
-    public void DeletePilotConfiguration(PilotConfiguration configuration)
+    public void DeletePilotConfiguration(PilotConfiguration? configuration)
     {
+        if (configuration == null)
+        {
+            return;
+        }
+
+        if (_selectedPilotConfiguration?.Id == configuration.Id)
+        {
+            _selectedPilotConfiguration = null;
+        }
+
         _configurations.Remove(configuration);
     }
 }

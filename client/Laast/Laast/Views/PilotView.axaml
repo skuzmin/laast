@@ -62,7 +62,9 @@
                                                 CommandParameter="{Binding }">
                                             <Image Source="/Assets/Icons/edit.png" />
                                         </Button>
-                                        <Button Classes="btn secondary sm">
+                                        <Button Classes="btn secondary sm"
+                                                Command="{Binding  $parent[DataGrid].((vm:PilotViewModel)DataContext)?.DeleteConfigCommand}"
+                                                CommandParameter="{Binding }">
                                             <Image Source="/Assets/Icons/delete.png" />
                                         </Button>
                                     </StackPanel>
