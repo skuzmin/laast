@@ -16,7 +16,7 @@
                         CommandParameter="{x:Static enums:AppPage.PilotConfig}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Assets/Icons/add.png" />
-                        <TextBlock Text="Create"></TextBlock>
+                        <TextBlock Text="Add"></TextBlock>
                     </StackPanel>
                 </Button>
             </Grid>
