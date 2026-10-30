@@ -25,6 +25,7 @@ public partial class App : Application
         var serviceCollection = new ServiceCollection();
         ConfigureServices(serviceCollection);
         var services = serviceCollection.BuildServiceProvider();
+        services.GetRequiredService<IAppConfigService>().InitConfig();
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
@@ -42,6 +43,7 @@ public partial class App : Application
         services.AddSingleton<INavigationService, NavigationService>();
         services.AddSingleton<ILogger, AppLogger>();
         services.AddSingleton<IPilotService, PilotService>();
+        services.AddSingleton<IAppConfigService, AppConfigService>();
         // ViewModels
         services.AddSingleton<MainWindowViewModel>();
         services.AddTransient<PilotViewModel>();

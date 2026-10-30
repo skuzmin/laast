@@ -6,53 +6,37 @@ namespace Laast.Services;
 
 public class PilotService : IPilotService
 {
-    private PilotConfiguration? _selectedPilotConfiguration;
+    private readonly IAppConfigService _appConfigService;
+    public IReadOnlyList<PilotConfiguration> Configurations => _appConfigService.Configuration.PilotConfigurations;
+    public PilotConfiguration? SelectedConfiguration { get; private set; }
 
-    private readonly List<PilotConfiguration> _configurations =
-    [
-        new()
-        {
-            Name =
-                "Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1Config 1"
-        },
-        new() { Name = "Config 2" },
-        new() { Name = "Config 3" }
-    ];
-
-    public List<PilotConfiguration> GetPilotConfigurations() => _configurations;
-
-    public void CreatePilotConfiguration(PilotConfiguration configuration)
+    public PilotService(IAppConfigService appConfigService)
     {
-        _configurations.Add(configuration);
+        _appConfigService = appConfigService;
     }
 
-    public void UpdatePilotConfiguration(PilotConfiguration configuration)
+    public void CreateConfiguration(PilotConfiguration configuration)
+    {
+        _appConfigService.Configuration.PilotConfigurations.Add(configuration);
+    }
+
+    public void UpdateConfiguration(PilotConfiguration configuration)
     {
         throw new NotImplementedException();
     }
 
-    public void SelectPilotConfiguration(PilotConfiguration? configuration)
+    public void SelectConfiguration(PilotConfiguration configuration)
     {
-        _selectedPilotConfiguration = configuration;
+        SelectedConfiguration = configuration;
     }
 
-    public PilotConfiguration? GetSelectedPilotConfiguration()
+    public void DeleteConfiguration(PilotConfiguration configuration)
     {
-        return _selectedPilotConfiguration;
-    }
-
-    public void DeletePilotConfiguration(PilotConfiguration? configuration)
-    {
-        if (configuration == null)
+        if (SelectedConfiguration?.Id == configuration.Id)
         {
-            return;
+            SelectedConfiguration = null;
         }
 
-        if (_selectedPilotConfiguration?.Id == configuration.Id)
-        {
-            _selectedPilotConfiguration = null;
-        }
-
-        _configurations.Remove(configuration);
+        _appConfigService.Configuration.PilotConfigurations.Remove(configuration);
     }
 }

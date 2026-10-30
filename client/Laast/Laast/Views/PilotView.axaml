@@ -48,7 +48,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="3*" Header="Actions">
+                        <DataGridTemplateColumn Width="2*" Header="Actions">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate DataType="models:PilotConfiguration">
                                     <StackPanel Classes="actions-group">

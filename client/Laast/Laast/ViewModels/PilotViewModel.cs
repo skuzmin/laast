@@ -1,5 +1,4 @@
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Laast.Enums;
@@ -10,37 +9,41 @@ namespace Laast.ViewModels;
 
 public partial class PilotViewModel : ViewModelBase
 {
-    [ObservableProperty] private PilotConfiguration? _selectedPilotConfiguration;
-    public ObservableCollection<PilotConfiguration> Configs { get; set; }
+    private readonly IPilotService _pilotService;
     public INavigationService NavigationService { get; }
-    public ICommand SelectConfigCommand { get; }
-    public ICommand EditConfigCommand { get; }
-    public ICommand DeleteConfigCommand { get; }
+    public ObservableCollection<PilotConfiguration> Configs { get; set; }
+
+    [ObservableProperty] private PilotConfiguration? _selectedPilotConfiguration;
+
+    [RelayCommand]
+    private void SelectConfig(PilotConfiguration config)
+    {
+        _pilotService.SelectConfiguration(config);
+        UpdateSelectedPilotConfiguration(_pilotService);
+    }
+
+    [RelayCommand]
+    private void EditConfig(PilotConfiguration config) =>
+        NavigationService.TryToNavigate(AppPage.PilotConfig, config);
+
+    [RelayCommand]
+    private void DeleteConfig(PilotConfiguration config)
+    {
+        _pilotService.DeleteConfiguration(config);
+        UpdateSelectedPilotConfiguration(_pilotService);
+        Configs.Remove(config);
+    }
 
     public PilotViewModel(INavigationService navigationService, IPilotService pilotService)
     {
         NavigationService = navigationService;
-        EditConfigCommand =
-            new RelayCommand<PilotConfiguration>(config =>
-                navigationService.TryToNavigate(AppPage.PilotConfig, config));
-        SelectConfigCommand = new RelayCommand<PilotConfiguration>(config =>
-        {
-            pilotService.SelectPilotConfiguration(config);
-            UpdateSelectedPilotConfiguration(pilotService);
-        });
-        DeleteConfigCommand =
-            new RelayCommand<PilotConfiguration>(config =>
-            {
-                pilotService.DeletePilotConfiguration(config);
-                UpdateSelectedPilotConfiguration(pilotService);
-                Configs!.Remove(config!);
-            });
-        Configs = new ObservableCollection<PilotConfiguration>(pilotService.GetPilotConfigurations());
+        _pilotService = pilotService;
+        Configs = [.. pilotService.Configurations];
         UpdateSelectedPilotConfiguration(pilotService);
     }
 
     private void UpdateSelectedPilotConfiguration(IPilotService pilotService)
     {
-        SelectedPilotConfiguration = pilotService.GetSelectedPilotConfiguration();
+        SelectedPilotConfiguration = pilotService.SelectedConfiguration;
     }
 }
