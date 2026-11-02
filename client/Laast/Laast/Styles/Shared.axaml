@@ -23,7 +23,18 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="TextTrimming" Value="WordEllipsis"></Setter>
     </Style>
+    
+    <!-- No Items Group -->
+    <Style Selector="StackPanel.no-items-group">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Spacing" Value="{StaticResource Spacing-3}" />
+        <Style Selector="^ Button">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+    </Style>
 
+    <!-- No Items Message -->
     <Style Selector="TextBlock.no-items-msg">
         <Setter Property="FontFamily" Value="{StaticResource FontSecondary}"></Setter>
         <Setter Property="FontSize" Value="24"></Setter>

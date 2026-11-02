@@ -100,15 +100,19 @@
     
     <!-- Icon -->
     <Style Selector="Button.btn">
+        <Style Selector="^ StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Spacing" Value="{StaticResource Spacing-2}" />
+        </Style>
         <Style Selector="^ Image">
-            <Setter Property="Height" Value="{StaticResource ButtonIconHeight}"></Setter>
-            <Setter Property="Width" Value="{StaticResource ButtonIconWidth}"></Setter>
+            <Setter Property="Height" Value="{StaticResource ButtonIconHeight}" />
+            <Setter Property="Width" Value="{StaticResource ButtonIconWidth}" />
         </Style>
     </Style>
     
     <!-- Back Button -->
     <Style Selector="Button.back">
-        <Setter Property="Padding" Value="{StaticResource PaddingButtonBack}"></Setter>
-        <Setter Property="CornerRadius" Value="{StaticResource Radius-6}"></Setter>
+        <Setter Property="Padding" Value="{StaticResource PaddingButtonBack}" />
+        <Setter Property="CornerRadius" Value="{StaticResource Radius-6}" />
     </Style>
 </Styles>

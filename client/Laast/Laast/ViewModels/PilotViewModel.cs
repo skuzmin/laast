@@ -15,6 +15,14 @@ public partial class PilotViewModel : ViewModelBase
 
     [ObservableProperty] private PilotConfiguration? _selectedPilotConfiguration;
 
+    public PilotViewModel(INavigationService navigationService, IPilotService pilotService)
+    {
+        NavigationService = navigationService;
+        _pilotService = pilotService;
+        Configs = [.. pilotService.Configurations];
+        UpdateSelectedPilotConfiguration(pilotService);
+    }
+
     [RelayCommand]
     private void SelectConfig(PilotConfiguration config)
     {
@@ -32,14 +40,6 @@ public partial class PilotViewModel : ViewModelBase
         _pilotService.DeleteConfiguration(config);
         UpdateSelectedPilotConfiguration(_pilotService);
         Configs.Remove(config);
-    }
-
-    public PilotViewModel(INavigationService navigationService, IPilotService pilotService)
-    {
-        NavigationService = navigationService;
-        _pilotService = pilotService;
-        Configs = [.. pilotService.Configurations];
-        UpdateSelectedPilotConfiguration(pilotService);
     }
 
     private void UpdateSelectedPilotConfiguration(IPilotService pilotService)

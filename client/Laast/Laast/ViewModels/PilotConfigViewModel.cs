@@ -1,4 +1,6 @@
-using System.Windows.Input;
+using System.Collections.ObjectModel;
+using System.Linq;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Laast.Enums;
 using Laast.Models;
@@ -6,14 +8,14 @@ using Laast.Services;
 
 namespace Laast.ViewModels;
 
-public class PilotConfigViewModel : ViewModelBase
+public partial class PilotConfigViewModel : ViewModelBase
 {
-    public INavigationService NavigationService { get; }
-    public ICommand BackCommand { get; }
-    public string Title => IsEditMode ? $"Edit pilot config: [ {Config.Name} ]" : "New pilot config";
-    public PilotConfiguration Config { get; }
-
+    private readonly INavigationService _navigationService;
     private bool IsEditMode { get; }
+    private PilotConfiguration _config;
+    public ObservableCollection<PilotAction> Actions { get; }
+
+    [ObservableProperty] private string _name;
 
     public PilotConfigViewModel(INavigationService navigationService)
         : this(navigationService, new PilotConfiguration(), isEditMode: false)
@@ -28,9 +30,19 @@ public class PilotConfigViewModel : ViewModelBase
     private PilotConfigViewModel(INavigationService navigationService, PilotConfiguration pilotConfiguration,
         bool isEditMode)
     {
-        Config = pilotConfiguration;
+        Actions = [.. pilotConfiguration.Actions.Select(item => item.Clone())];
         IsEditMode = isEditMode;
-        NavigationService = navigationService;
-        BackCommand = new RelayCommand(() => navigationService.TryToNavigate(AppPage.Pilot));
+        _name = pilotConfiguration.Name;
+        _config = pilotConfiguration;
+        _navigationService = navigationService;
     }
+
+    [RelayCommand]
+    private void Back() => _navigationService.TryToNavigate(AppPage.Pilot);
+
+    [RelayCommand]
+    private void AddNewAction() => Actions.Add(new PilotAction());
+    
+    [RelayCommand]
+    private void Save() => _navigationService.TryToNavigate(AppPage.Pilot);
 }

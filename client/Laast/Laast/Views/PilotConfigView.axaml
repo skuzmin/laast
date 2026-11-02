@@ -6,14 +6,32 @@
 
     <Grid RowDefinitions="Auto, *">
         <Border Grid.Row="0" Classes="title-section">
-            <Grid ColumnDefinitions="Auto, 8, *">
+            <Grid ColumnDefinitions="Auto, 8, Auto, *, Auto">
                 <Button Grid.Column="0" Classes="btn secondary back"
                         Command="{Binding BackCommand}">
                     <Image Source="/Assets/Icons/back.png" />
                 </Button>
-                <TextBlock Grid.Column="2" Classes="page-title" Text="{Binding Title}"></TextBlock>
+                <TextBox Grid.Column="2" Classes="page-title" Watermark="Configuration name" Text="{Binding Name}"></TextBox>
+                <Button Grid.Column="4" Classes="btn primary" Command="{Binding SaveCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Assets/Icons/save.png" />
+                        <TextBlock Text="Save"></TextBlock>
+                    </StackPanel>
+                </Button>
             </Grid>
         </Border>
-        <Border Grid.Row="1" Classes="page-section"></Border>
+        <Border Grid.Row="1" Classes="page-section">
+            <!-- No Items Message -->
+            <StackPanel Classes="no-items-group" IsVisible="{Binding !Actions.Count}">
+                <TextBlock Classes="no-items-msg"
+                           Text="You don't have any actions yet." />
+                <Button Classes="btn primary" Command="{Binding AddNewActionCommand}">
+                    <StackPanel>
+                        <Image Source="/Assets/Icons/add.png" />
+                        <TextBlock Text="Add new action item"></TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

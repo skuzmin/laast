@@ -14,7 +14,7 @@
                 <Button Grid.Column="2" Classes="btn primary"
                         Command="{Binding NavigationService.NavigateToPageCommand}"
                         CommandParameter="{x:Static enums:AppPage.PilotConfig}">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel>
                         <Image Source="/Assets/Icons/add.png" />
                         <TextBlock Text="Add"></TextBlock>
                     </StackPanel>
