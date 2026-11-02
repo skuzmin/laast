@@ -52,4 +52,9 @@
     <SolidColorBrush x:Key="ScrollBarThumbBackgroundPointerOver" Color="{StaticResource BronzeLightColor}" />
     <SolidColorBrush x:Key="ScrollBarThumbBackgroundPressed" Color="{StaticResource BronzeLightColor}" />
     
+    <!-- TextBox -->
+    <SolidColorBrush x:Key="TextBlockBackground" Color="{StaticResource WhiteColor}" />
+    <SolidColorBrush x:Key="TextBlockBorderBrush" Color="{StaticResource BronzeColor}" />
+    <SolidColorBrush x:Key="TextBlockWatermark" Color="{StaticResource UmberLightColor}" />
+    <SolidColorBrush x:Key="TextSelectionBackground" Color="{StaticResource SeafoamColor}" />
 </ResourceDictionary>

@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Laast.Enums;
@@ -45,4 +46,7 @@ public partial class PilotConfigViewModel : ViewModelBase
     
     [RelayCommand]
     private void Save() => _navigationService.TryToNavigate(AppPage.Pilot);
+
+    [RelayCommand]
+    private void ExpandCollapseAll() => Name = RandomNumberGenerator.GetString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", 16);
 }

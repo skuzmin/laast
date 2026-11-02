@@ -1,0 +1,25 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style Selector="TextBox.app-input">
+        <Setter Property="Background" Value="{DynamicResource TextBlockBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Padding" Value="{StaticResource PaddingTextBox}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource TextSecondary}"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource TextSelectionBackground}" />
+    </Style>
+    <Style Selector="TextBox.app-input:pointerover, TextBox.app-input:focus">
+        <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
+    </Style>
+    <Style Selector="TextBox.app-input:pointerover /template/ Border#PART_BorderElement,
+                TextBox.app-input:focus /template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="{DynamicResource TextBlockBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource TextBlockBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{StaticResource Border-2}" />
+    </Style>
+    <Style Selector="TextBox.app-input /template/ TextBlock#PART_Watermark">
+        <Setter Property="Foreground" Value="{DynamicResource TextBlockWatermark}" />
+    </Style>
+</Styles>
