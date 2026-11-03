@@ -55,6 +55,6 @@
     <!-- TextBox -->
     <SolidColorBrush x:Key="TextBlockBackground" Color="{StaticResource WhiteColor}" />
     <SolidColorBrush x:Key="TextBlockBorderBrush" Color="{StaticResource BronzeColor}" />
-    <SolidColorBrush x:Key="TextBlockWatermark" Color="{StaticResource UmberLightColor}" />
+    <SolidColorBrush x:Key="TextBlockPlaceholder" Color="{StaticResource UmberLightColor}" />
     <SolidColorBrush x:Key="TextSelectionBackground" Color="{StaticResource SeafoamColor}" />
 </ResourceDictionary>

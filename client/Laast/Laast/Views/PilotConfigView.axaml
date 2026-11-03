@@ -1,6 +1,7 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:Laast.ViewModels"
+             xmlns:models="clr-namespace:Laast.Models"
              x:Class="Laast.Views.PilotConfigView"
              x:DataType="vm:PilotConfigViewModel">
 
@@ -27,17 +28,67 @@
             </Grid>
         </Border>
         <Border Grid.Row="1" Classes="page-section">
-            <!-- No Items Message -->
-            <StackPanel Classes="no-items-group" IsVisible="{Binding !Actions.Count}">
-                <TextBlock Classes="no-items-msg"
-                           Text="You don't have any actions yet." />
-                <Button Classes="btn primary" Command="{Binding AddNewActionCommand}">
-                    <StackPanel>
-                        <Image Source="/Assets/Icons/add.png" />
-                        <TextBlock Text="Add new action item"></TextBlock>
+            <Grid>
+                <!-- No Items Message -->
+                <StackPanel Classes="no-items-group" IsVisible="{Binding !Actions.Count}">
+                    <TextBlock Classes="no-items-msg"
+                               Text="You don't have any actions yet." />
+                    <Button Classes="btn primary" Command="{Binding AddNewActionCommand}">
+                        <StackPanel>
+                            <Image Source="/Assets/Icons/add.png" />
+                            <TextBlock Text="Add new action item"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <!-- Config Actions -->
+                <ScrollViewer VerticalScrollBarVisibility="Auto" IsVisible="{Binding Actions.Count}">
+                    <StackPanel Spacing="12">
+                        <ItemsControl ItemsSource="{Binding Actions}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="models:PilotAction">
+                                    <Expander Header="{Binding Description}" HorizontalAlignment="Stretch">
+                                        <Expander.ContentTransition>
+                                            <CrossFade Duration="0:0:0.2" />
+                                        </Expander.ContentTransition>
+                                        <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, *, 12, *, *">
+                                            <!-- ROW: 0 -->
+                                            <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Header="Input">
+                                                <StackPanel Spacing="8">
+                                                    <TextBox Classes="app-input" PlaceholderText="Action" />
+                                                    <TextBox Classes="app-input" PlaceholderText="Key" />
+                                                </StackPanel>
+                                            </GroupBox>
+                                            <GroupBox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"
+                                                      Header="Interval">
+                                                <StackPanel Spacing="8">
+                                                    <TextBox Classes="app-input" PlaceholderText="From (ms)" />
+                                                    <TextBox Classes="app-input" PlaceholderText="To (ms)" />
+                                                </StackPanel>
+                                            </GroupBox>
+                                            <!-- ROW:1 -->
+                                            <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Header="Position">
+                                                <StackPanel Spacing="8" Orientation="Horizontal">
+                                                    <TextBox Classes="app-input" PlaceholderText="X (px)" />
+                                                    <TextBox Classes="app-input" PlaceholderText="Y (px)" />
+                                                    <Button Classes="btn primary">+ Target +</Button>
+                                                    <TextBox Classes="app-input" PlaceholderText="Dispersion (px)" />
+                                                </StackPanel>
+                                            </GroupBox>
+                                        </Grid>
+                                    </Expander>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <Button Classes="btn primary" HorizontalAlignment="Center"
+                                Command="{Binding AddNewActionCommand}">
+                            <StackPanel>
+                                <Image Source="/Assets/Icons/add.png" />
+                                <TextBlock Text="Add new action item"></TextBlock>
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
-                </Button>
-            </StackPanel>
+                </ScrollViewer>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>

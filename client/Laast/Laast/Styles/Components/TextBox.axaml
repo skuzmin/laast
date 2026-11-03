@@ -19,7 +19,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource TextBlockBorderBrush}" />
         <Setter Property="BorderThickness" Value="{StaticResource Border-2}" />
     </Style>
-    <Style Selector="TextBox.app-input /template/ TextBlock#PART_Watermark">
-        <Setter Property="Foreground" Value="{DynamicResource TextBlockWatermark}" />
+    <Style Selector="TextBox.app-input /template/ TextBlock#PART_Placeholder">
+        <Setter Property="Foreground" Value="{DynamicResource TextBlockPlaceholder}" />
     </Style>
 </Styles>
