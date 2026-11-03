@@ -15,6 +15,9 @@ public partial class MainWindow : AppWindow
     {
         InitializeComponent();
         InitCursor();
+#if DEBUG
+        this.AttachDevTools();
+#endif
     }
 
     public MainWindow(MainWindowViewModel vm, ILogger logger) : this()
