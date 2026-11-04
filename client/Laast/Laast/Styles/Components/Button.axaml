@@ -32,9 +32,9 @@
     <Style Selector="Button.btn /template/ ContentPresenter#Presenter">
         <Setter Property="Transitions">
             <Transitions>
-                <BrushTransition Property="Background" Duration="0:0:0.1" Easing="LinearEasing" />
-                <BrushTransition Property="Foreground" Duration="0:0:0.1" Easing="LinearEasing" />
-                <BrushTransition Property="BorderBrush" Duration="0:0:0.1" Easing="LinearEasing" />
+                <BrushTransition Property="Background" Duration="0:0:0.2" Easing="LinearEasing" />
+                <BrushTransition Property="Foreground" Duration="0:0:0.2" Easing="LinearEasing" />
+                <BrushTransition Property="BorderBrush" Duration="0:0:0.2" Easing="LinearEasing" />
             </Transitions>
         </Setter>
     </Style>

@@ -7,6 +7,7 @@
     <CornerRadius x:Key="Radius-4">16</CornerRadius>
     <CornerRadius x:Key="Radius-5">20</CornerRadius>
     <CornerRadius x:Key="Radius-6">24</CornerRadius>
-    <CornerRadius x:Key="Radius-Grid-First">6,0,0,0</CornerRadius>
-    <CornerRadius x:Key="Radius-Grid-Last">0,6,0,0</CornerRadius>
+    <CornerRadius x:Key="Radius-GridFirst">6,0,0,0</CornerRadius>
+    <CornerRadius x:Key="Radius-GridLast">0,6,0,0</CornerRadius>
+    <CornerRadius x:Key="Radius-ExpanderHeaderOpened">4,4,0,0</CornerRadius>
 </ResourceDictionary>

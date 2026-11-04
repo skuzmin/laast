@@ -17,4 +17,5 @@
     <Color x:Key="MistColor">#d7e6df</Color>
     <Color x:Key="UmberColor">#211d17</Color>
     <Color x:Key="UmberLightColor">#2c261e</Color>
+    <Color x:Key="BlackTransparentColor">#E6202020</Color>
 </ResourceDictionary>

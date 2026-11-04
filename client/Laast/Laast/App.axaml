@@ -36,6 +36,7 @@
         <StyleInclude Source="avares://Laast/Styles/Components/Button.axaml" />
         <StyleInclude Source="avares://Laast/Styles/Components/TextBox.axaml" />
         <StyleInclude Source="avares://Laast/Styles/Components/DataGrid.axaml" />
+        <StyleInclude Source="avares://Laast/Styles/Components/Expander.axaml" />
         <StyleInclude Source="avares://Laast/Styles/Components/ScrollBar.axaml" />
         <StyleInclude Source="avares://Laast/Styles/AppWindow.axaml" />
         <StyleInclude Source="avares://Laast/Styles/Shared.axaml" />

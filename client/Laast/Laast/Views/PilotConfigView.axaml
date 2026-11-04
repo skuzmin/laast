@@ -42,14 +42,28 @@
                 </StackPanel>
                 <!-- Config Actions -->
                 <ScrollViewer VerticalScrollBarVisibility="Auto" IsVisible="{Binding Actions.Count}">
-                    <StackPanel Spacing="12">
+                    <StackPanel Spacing="{StaticResource Spacing-3}">
                         <ItemsControl ItemsSource="{Binding Actions}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Spacing="{StaticResource Spacing-2}"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate x:DataType="models:PilotAction">
-                                    <Expander Header="{Binding Description}" HorizontalAlignment="Stretch">
-                                        <Expander.ContentTransition>
-                                            <CrossFade Duration="0:0:0.2" />
-                                        </Expander.ContentTransition>
+                                    <Expander Classes="app-accordion" HorizontalAlignment="Stretch">
+                                        <Expander.Header>
+                                            <Grid ColumnDefinitions="Auto *,Auto">
+                                                <Panel Grid.Column="0" Classes="chevron">
+                                                    <Rectangle Classes="bar left"></Rectangle>
+                                                    <Rectangle Classes="bar right"></Rectangle>
+                                                </Panel>
+                                                <TextBlock Grid.Column="1" Classes="accordion-title" Text="{Binding Description}" VerticalAlignment="Center"/>
+                                                <Button Grid.Column="2" Classes="btn secondary sm" PointerPressed="OnHeaderButtonPointerPressed">
+                                                    <Image Source="/Assets/Icons/delete.png" />
+                                                </Button>
+                                            </Grid>
+                                        </Expander.Header>
                                         <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, *, 12, *, *">
                                             <!-- ROW: 0 -->
                                             <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Header="Input">

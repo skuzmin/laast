@@ -11,8 +11,8 @@
             <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="-1"/>
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Border CornerRadius="10" ClipToBounds="True"
-                            Background="#E6202020">
+                    <Border CornerRadius="{StaticResource Radius-3}" ClipToBounds="True"
+                            Background="{DynamicResource MainWindowBackground}">
                         <VisualLayerManager>
                             <DockPanel>
                                 <controls:TitleBar DockPanel.Dock="Top"

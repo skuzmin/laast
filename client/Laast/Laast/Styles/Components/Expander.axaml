@@ -1,0 +1,101 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style Selector="Expander.app-accordion">
+        <!-- Animation -->
+        <Setter Property="ContentTransition">
+            <CrossFade Duration="0:0:0.2" />
+        </Setter>
+        <!-- Expander Header : TextBlock -->
+        <Style Selector="^ TextBlock.accordion-title">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontFamily" Value="{StaticResource FontSecondary}" />
+            <Setter Property="Padding" Value="8, 0" />
+        </Style>
+        <!-- Expander Header : Chevron -->
+        <Style Selector="^ Panel.chevron">
+            <Setter Property="Height" Value="{StaticResource ButtonIconHeight}" />
+            <Setter Property="Width" Value="{StaticResource ButtonIconWidth}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Style Selector="^ Rectangle.bar">
+                <Setter Property="Height" Value="{StaticResource ChevronIconHeight}" />
+                <Setter Property="Width" Value="{StaticResource ChevronIconWidth}" />
+                <Setter Property="RadiusX" Value="1" />
+                <Setter Property="RadiusY" Value="1" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Fill" Value="{DynamicResource ExpanderHeaderChevronIconFill}" />
+                <Setter Property="Transitions">
+                    <Transitions>
+                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1"
+                                                       Easing="LinearEasing" />
+                    </Transitions>
+                </Setter>
+            </Style>
+            <Style Selector="^ Rectangle.bar.left">
+                <Setter Property="HorizontalAlignment" Value="Left" />
+                <Setter Property="RenderTransform" Value="rotate(45deg)" />
+            </Style>
+            <Style Selector="^ Rectangle.bar.right">
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="RenderTransform" Value="rotate(-45deg)" />
+            </Style>
+        </Style>
+        <!-- Expander Header : General-->
+        <Style Selector="^ /template/ ToggleButton#ExpanderHeader">
+            <Setter Property="BorderBrush" Value="{DynamicResource ExpanderClosedBorderBrush}" />
+            <Setter Property="CornerRadius" Value="{StaticResource Radius-1}" />
+            <Style Selector="^ /template/ Border#ToggleButtonBackground">
+                <Setter Property="Background" Value="{DynamicResource ExpanderHeaderBackground}" />
+                <Setter Property="Transitions">
+                    <Transitions>
+                        <BrushTransition Property="Background" Duration="0:0:0.2" Easing="LinearEasing" />
+                    </Transitions>
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ Grid#ToggleButtonGrid">
+                <Setter Property="Margin" Value="12, 0" />
+                <Setter Property="FlowDirection" Value="RightToLeft" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Margin" Value="0"></Setter>
+                <Setter Property="FlowDirection" Value="LeftToRight" />
+            </Style>
+            <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
+                <!-- <Setter Property="Margin" Value="0"></Setter> -->
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+        </Style>
+        <!-- Expander Header : PointOver -->
+        <Style Selector="^ /template/ ToggleButton#ExpanderHeader:pointerover /template/ Border#ToggleButtonBackground">
+            <Setter Property="BorderBrush" Value="{DynamicResource ExpanderClosedBorderBrush}" />
+            <Setter Property="Background" Value="{DynamicResource ExpanderHeaderBackgroundPointerOver}" />
+        </Style>
+        <Style
+            Selector="^ /template/ ToggleButton#ExpanderHeader:pointerover /template/ Border#ExpandCollapseChevronBorder">
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+        <!-- Expander Header : Expanded -->
+        <Style Selector="^:expanded Panel.chevron">
+            <Style Selector="^ Rectangle.left">
+                <Setter Property="RenderTransform" Value="rotate(-45deg)" />
+            </Style>
+            <Style Selector="^ Rectangle.right">
+                <Setter Property="RenderTransform" Value="rotate(45deg)" />
+            </Style>
+        </Style>
+        <Style Selector="^:expanded /template/ ToggleButton#ExpanderHeader">
+            <Setter Property="BorderBrush" Value="{DynamicResource ExpanderOpenedBorderBrush}" />
+            <Setter Property="CornerRadius" Value="{StaticResource Radius-ExpanderHeaderOpened}" />
+        </Style>
+        <Style
+            Selector="^:expanded /template/ ToggleButton#ExpanderHeader:pointerover /template/ Border#ToggleButtonBackground">
+            <Setter Property="BorderBrush" Value="{DynamicResource ExpanderOpenedBorderBrush}" />
+        </Style>
+
+        <!-- Expander Content -->
+        <Style Selector="^ /template/ Border#ExpanderContent">
+            <Setter Property="BorderBrush" Value="{DynamicResource ExpanderOpenedBorderBrush}" />
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+    </Style>
+</Styles>

@@ -9,6 +9,7 @@
     <SolidColorBrush x:Key="TextPrimary" Color="{StaticResource WhiteColor}" />
     <SolidColorBrush x:Key="TextSecondary" Color="{StaticResource BlackColor}" />
     <SolidColorBrush x:Key="TextError" Color="{StaticResource RedColor}" />
+    <SolidColorBrush x:Key="MainWindowBackground" Color="{StaticResource BlackTransparentColor}" />
 
     <!-- TitleBarUserControl -->
     <SolidColorBrush x:Key="TitleForeground" Color="{StaticResource WhiteColor}" />
@@ -53,8 +54,15 @@
     <SolidColorBrush x:Key="ScrollBarThumbBackgroundPressed" Color="{StaticResource BronzeLightColor}" />
     
     <!-- TextBox -->
-    <SolidColorBrush x:Key="TextBlockBackground" Color="{StaticResource WhiteColor}" />
+    <SolidColorBrush x:Key="TextBlockBackground" Color="{StaticResource SageGreen}" />
     <SolidColorBrush x:Key="TextBlockBorderBrush" Color="{StaticResource BronzeColor}" />
-    <SolidColorBrush x:Key="TextBlockPlaceholder" Color="{StaticResource UmberLightColor}" />
+    <SolidColorBrush x:Key="TextBlockPlaceholder" Color="{StaticResource UmberColor}" />
     <SolidColorBrush x:Key="TextSelectionBackground" Color="{StaticResource SeafoamColor}" />
+    
+    <!-- Expander(Accordion) -->
+    <SolidColorBrush x:Key="ExpanderClosedBorderBrush" Color="{StaticResource SlateTealColor}" />
+    <SolidColorBrush x:Key="ExpanderOpenedBorderBrush" Color="{StaticResource SlateTealLightColor}" />
+    <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="{StaticResource CharcoalTeal}" />
+    <SolidColorBrush x:Key="ExpanderHeaderBackgroundPointerOver" Color="{StaticResource SlateTealColor}" />
+    <SolidColorBrush x:Key="ExpanderHeaderChevronIconFill" Color="{StaticResource WhiteColor}" />
 </ResourceDictionary>
