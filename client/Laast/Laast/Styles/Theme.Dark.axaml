@@ -24,9 +24,9 @@
     
     <!-- Buttons -->
     <!-- Disabled (shared) -->
-    <SolidColorBrush x:Key="ButtonDisabledBackground" Color="{StaticResource UmberColor}" />
-    <SolidColorBrush x:Key="ButtonDisabledForeground" Color="{StaticResource DarkGrayColor}" />
-    <SolidColorBrush x:Key="ButtonDisabledBorderBrush" Color="{StaticResource UmberLightColor}" />
+    <SolidColorBrush x:Key="ButtonDisabledBackground" Color="{StaticResource CharcoalColor}" />
+    <SolidColorBrush x:Key="ButtonDisabledForeground" Color="{StaticResource BlackColor}" />
+    <SolidColorBrush x:Key="ButtonDisabledBorderBrush" Color="{StaticResource CharcoalColor}" />
     <!-- Primary -->
     <SolidColorBrush x:Key="ButtonPrimaryBackground" Color="{StaticResource BronzeColor}" />
     <SolidColorBrush x:Key="ButtonPrimaryBackgroundPointerOver" Color="{StaticResource BronzeLightColor}" />

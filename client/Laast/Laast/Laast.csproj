@@ -9,6 +9,7 @@
         <Product>Laast</Product>
         <Description>Lineage II Assistant</Description>
         <Company>seagullnest</Company>
+        <ApplicationIcon>Assets\app.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>

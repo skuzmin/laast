@@ -89,9 +89,6 @@
     </Style>
 
     <!-- Disabled -->
-    <Style Selector="Button.btn:disabled">
-        <Setter Property="Opacity" Value="0.5" />
-    </Style>
     <Style Selector="Button.btn:disabled /template/ ContentPresenter#Presenter">
         <Setter Property="Background" Value="{DynamicResource ButtonDisabledBackground}" />
         <Setter Property="Foreground" Value="{DynamicResource ButtonDisabledForeground}" />

@@ -16,7 +16,7 @@
                         <VisualLayerManager>
                             <DockPanel>
                                 <controls:TitleBar DockPanel.Dock="Top"
-                                                   Icon="/Assets/Icons/icon.png"
+                                                   Icon="/Assets/app.ico"
                                                    IsMinimizeAvailable="True"
                                                    Title="{TemplateBinding Title}"/>
                                 <ContentPresenter Content="{TemplateBinding Content}"/>

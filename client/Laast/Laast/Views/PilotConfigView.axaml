@@ -13,7 +13,7 @@
                     <Image Source="/Assets/Icons/back.png" />
                 </Button>
                 <TextBox Grid.Column="2" Classes="app-input" PlaceholderText="Configuration name" Text="{Binding Name}"></TextBox>
-                <Button Grid.Column="4" Classes="btn primary" Command="{Binding ExpandCollapseAllCommand}">
+                <Button Grid.Column="4" Classes="btn primary" IsEnabled="{Binding Actions.Count}" Click="ToggleAll_OnClick">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Assets/Icons/expand-collapse.png" />
                         <TextBlock Text="Expand/Collapse All"></TextBlock>
@@ -42,11 +42,11 @@
                 </StackPanel>
                 <!-- Config Actions -->
                 <ScrollViewer VerticalScrollBarVisibility="Auto" IsVisible="{Binding Actions.Count}">
-                    <StackPanel Spacing="{StaticResource Spacing-3}">
+                    <StackPanel x:Name="ExpandersContainer" Spacing="{StaticResource Spacing-3}">
                         <ItemsControl ItemsSource="{Binding Actions}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <StackPanel Spacing="{StaticResource Spacing-2}"/>
+                                    <StackPanel Spacing="{StaticResource Spacing-2}" />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
@@ -58,8 +58,10 @@
                                                     <Rectangle Classes="bar left"></Rectangle>
                                                     <Rectangle Classes="bar right"></Rectangle>
                                                 </Panel>
-                                                <TextBlock Grid.Column="1" Classes="accordion-title" Text="{Binding Description}" VerticalAlignment="Center"/>
-                                                <Button Grid.Column="2" Classes="btn secondary sm" PointerPressed="OnHeaderButtonPointerPressed">
+                                                <TextBlock Grid.Column="1" Classes="accordion-title"
+                                                           Text="{Binding Description}" VerticalAlignment="Center" />
+                                                <Button Grid.Column="2" Classes="btn secondary sm"
+                                                        PointerPressed="OnHeaderButtonPointerPressed">
                                                     <Image Source="/Assets/Icons/delete.png" />
                                                 </Button>
                                             </Grid>
@@ -80,13 +82,19 @@
                                                 </StackPanel>
                                             </GroupBox>
                                             <!-- ROW:1 -->
-                                            <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Header="Position">
-                                                <StackPanel Spacing="8" Orientation="Horizontal">
-                                                    <TextBox Classes="app-input" PlaceholderText="X (px)" />
-                                                    <TextBox Classes="app-input" PlaceholderText="Y (px)" />
-                                                    <Button Classes="btn primary">+ Target +</Button>
-                                                    <TextBox Classes="app-input" PlaceholderText="Dispersion (px)" />
-                                                </StackPanel>
+                                            <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
+                                                      Header="Position">
+                                                <Grid ColumnDefinitions="*, *, Auto, *" ColumnSpacing="8">
+                                                    <TextBox Grid.Column="0" Classes="app-input"
+                                                             PlaceholderText="X (px)" />
+                                                    <TextBox Grid.Column="1" Classes="app-input"
+                                                             PlaceholderText="Y (px)" />
+                                                    <Button Grid.Column="2" Classes="btn primary">
+                                                        <Image Source="/Assets/Icons/target.png" />
+                                                    </Button>
+                                                    <TextBox Grid.Column="3" Classes="app-input"
+                                                             PlaceholderText="Dispersion (px)" />
+                                                </Grid>
                                             </GroupBox>
                                         </Grid>
                                     </Expander>

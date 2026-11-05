@@ -5,6 +5,7 @@
                     x:Class="Laast.Views.MainWindow"
                     x:DataType="vm:MainWindowViewModel"
                     Title="[LAAST] Lineage II Assistant"
+                    Icon="/Assets/app.ico"
                     Width="{StaticResource MainWindowWidth}"
                     Height="{StaticResource MainWindowHeight}"
                     Topmost="True">
