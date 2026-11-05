@@ -13,7 +13,8 @@
                     <Image Source="/Assets/Icons/back.png" />
                 </Button>
                 <TextBox Grid.Column="2" PlaceholderText="Configuration name" Text="{Binding Name}"></TextBox>
-                <Button Grid.Column="4" Classes="btn primary" IsEnabled="{Binding Actions.Count}" Click="ToggleAll_OnClick">
+                <Button Grid.Column="4" Classes="btn primary" IsEnabled="{Binding Actions.Count}"
+                        Click="ToggleAll_OnClick">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Assets/Icons/expand-collapse.png" />
                         <TextBlock Text="Expand/Collapse All"></TextBlock>
@@ -61,6 +62,8 @@
                                                 <TextBlock Grid.Column="1" Classes="accordion-title"
                                                            Text="{Binding Description}" VerticalAlignment="Center" />
                                                 <Button Grid.Column="2" Classes="btn secondary sm"
+                                                        Command="{Binding $parent[ItemsControl].((vm:PilotConfigViewModel)DataContext)?.RemoveActionCommand}"
+                                                        CommandParameter="{Binding}"
                                                         PointerPressed="OnHeaderButtonPointerPressed">
                                                     <Image Source="/Assets/Icons/delete.png" />
                                                 </Button>

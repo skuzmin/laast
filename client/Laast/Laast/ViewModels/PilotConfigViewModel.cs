@@ -42,7 +42,10 @@ public partial class PilotConfigViewModel : ViewModelBase
 
     [RelayCommand]
     private void AddNewAction() => Actions.Add(new PilotAction());
-    
+
+    [RelayCommand]
+    private void RemoveAction(PilotAction action) => Actions.Remove(action);
+
     [RelayCommand]
     private void Save() => _navigationService.TryToNavigate(AppPage.Pilot);
 }
