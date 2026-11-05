@@ -1,37 +1,33 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
-    <Style Selector="ScrollBar">
+    <Style Selector=".laast-app ScrollBar">
         <Setter Property="AllowAutoHide" Value="False"></Setter>
         <Setter Property="Width" Value="{StaticResource ScrollBarContainerWidth}"></Setter>
         <Setter Property="MinWidth" Value="{StaticResource ScrollBarContainerWidth}"></Setter>
-        <Setter Property="Opacity" Value="0.75"></Setter>
-        <Setter Property="Margin" Value="{StaticResource MarginScrollbar}"></Setter>
-    </Style>
-    <Style Selector="ScrollBar /template/ Border#VerticalRoot">
-        <Setter Property="Background" Value="{DynamicResource ScrollBarBackground}"></Setter>
-        <Setter Property="CornerRadius" Value="{StaticResource Radius-2}"></Setter>
-        <Setter Property="ClipToBounds" Value="True"></Setter>
-        <Setter Property="Padding" Value="{StaticResource PaddingScrollBar}"></Setter>
-    </Style>
-    <Style Selector="ScrollBar /template/ Rectangle#TrackRect">
-        <Setter Property="Fill" Value="Transparent"></Setter>
-    </Style>
-    <Style Selector="ScrollBar /template/ RepeatButton">
-        <Setter Property="IsVisible" Value="False"></Setter>
-    </Style>
-    <Style Selector="ScrollBar /template/ Thumb">
-        <Setter Property="Width" Value="{StaticResource ScrollBarThumbWidth}"></Setter>
-        <Setter Property="MinWidth" Value="{StaticResource ScrollBarThumbWidth}"></Setter>
-        <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackground}"></Setter>
-    </Style>
-    <Style Selector="ScrollBar /template/ Thumb > Border">
-        <Setter Property="CornerRadius" Value="{StaticResource Radius-2}"></Setter>
-    </Style>
-    <Style Selector="ScrollBar /template/ Thumb:pressed /template/ Border">
-        <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackgroundPressed}"></Setter>
-    </Style>
-    <Style Selector="ScrollBar /template/ Thumb:pointerover /template/ Border">
-        <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackgroundPointerOver}"></Setter>
+        <Setter Property="Opacity" Value="0.7"></Setter>
+        <Style Selector="^ /template/ RepeatButton">
+            <Setter Property="IsVisible" Value="False"></Setter>
+        </Style>
+        <Style Selector="^ /template/ Border#VerticalRoot">
+            <Setter Property="Background" Value="{DynamicResource ScrollBarBackground}"></Setter>
+            <Setter Property="CornerRadius" Value="{StaticResource Radius-2}"></Setter>
+            <Setter Property="ClipToBounds" Value="True"></Setter>
+            <Setter Property="Padding" Value="{StaticResource PaddingScrollBar}"></Setter>
+        </Style>
+        <Style Selector="^ /template/ Rectangle#TrackRect">
+            <Setter Property="Fill" Value="Transparent"></Setter>
+        </Style>
+        <Style Selector="^ /template/ Thumb">
+            <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackground}"></Setter>
+            <Setter Property="Width" Value="{StaticResource ScrollBarThumbWidth}"></Setter>
+            <Setter Property="MinWidth" Value="{StaticResource ScrollBarThumbWidth}"></Setter>
+            <Setter Property="CornerRadius" Value="{StaticResource Radius-2}"></Setter>
+            <Style Selector="^:pointerover /template/ Border">
+                <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackgroundPointerOver}"></Setter>
+            </Style>
+            <Style Selector="^:pressed /template/ Border">
+                <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackgroundPressed}"></Setter>
+            </Style>
+        </Style>
     </Style>
 </Styles>

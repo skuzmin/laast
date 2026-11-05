@@ -12,7 +12,7 @@
                         Command="{Binding BackCommand}">
                     <Image Source="/Assets/Icons/back.png" />
                 </Button>
-                <TextBox Grid.Column="2" Classes="app-input" PlaceholderText="Configuration name" Text="{Binding Name}"></TextBox>
+                <TextBox Grid.Column="2" PlaceholderText="Configuration name" Text="{Binding Name}"></TextBox>
                 <Button Grid.Column="4" Classes="btn primary" IsEnabled="{Binding Actions.Count}" Click="ToggleAll_OnClick">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Assets/Icons/expand-collapse.png" />
@@ -51,7 +51,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate x:DataType="models:PilotAction">
-                                    <Expander Classes="app-accordion" HorizontalAlignment="Stretch">
+                                    <Expander HorizontalAlignment="Stretch">
                                         <Expander.Header>
                                             <Grid ColumnDefinitions="Auto *,Auto">
                                                 <Panel Grid.Column="0" Classes="chevron">
@@ -70,29 +70,29 @@
                                             <!-- ROW: 0 -->
                                             <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Header="Input">
                                                 <StackPanel Spacing="8">
-                                                    <TextBox Classes="app-input" PlaceholderText="Action" />
-                                                    <TextBox Classes="app-input" PlaceholderText="Key" />
+                                                    <TextBox PlaceholderText="Action" />
+                                                    <TextBox PlaceholderText="Key" />
                                                 </StackPanel>
                                             </GroupBox>
                                             <GroupBox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"
                                                       Header="Interval">
                                                 <StackPanel Spacing="8">
-                                                    <TextBox Classes="app-input" PlaceholderText="From (ms)" />
-                                                    <TextBox Classes="app-input" PlaceholderText="To (ms)" />
+                                                    <TextBox PlaceholderText="From (ms)" />
+                                                    <TextBox PlaceholderText="To (ms)" />
                                                 </StackPanel>
                                             </GroupBox>
                                             <!-- ROW:1 -->
                                             <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
                                                       Header="Position">
                                                 <Grid ColumnDefinitions="*, *, Auto, *" ColumnSpacing="8">
-                                                    <TextBox Grid.Column="0" Classes="app-input"
+                                                    <TextBox Grid.Column="0"
                                                              PlaceholderText="X (px)" />
-                                                    <TextBox Grid.Column="1" Classes="app-input"
+                                                    <TextBox Grid.Column="1"
                                                              PlaceholderText="Y (px)" />
                                                     <Button Grid.Column="2" Classes="btn primary">
                                                         <Image Source="/Assets/Icons/target.png" />
                                                     </Button>
-                                                    <TextBox Grid.Column="3" Classes="app-input"
+                                                    <TextBox Grid.Column="3"
                                                              PlaceholderText="Dispersion (px)" />
                                                 </Grid>
                                             </GroupBox>

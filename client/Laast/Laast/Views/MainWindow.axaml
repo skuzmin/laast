@@ -8,6 +8,7 @@
                     Icon="/Assets/app.ico"
                     Width="{StaticResource MainWindowWidth}"
                     Height="{StaticResource MainWindowHeight}"
+                    Classes="laast-app"
                     Topmost="True">
     <Grid x:Name="RootContainer" RowDefinitions="Auto, *">
         <controls:NavBar Grid.Row="0"></controls:NavBar>

@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- Data Grid -->
-    <Style Selector="DataGrid.app-table">
+    <Style Selector=".laast-app DataGrid">
         <Setter Property="RowHeight" Value="40"></Setter>
         <Setter Property="CanUserSortColumns" Value="False"></Setter>
         <Setter Property="IsReadOnly" Value="True"></Setter>
@@ -12,101 +12,64 @@
         <Setter Property="BorderBrush" Value="{DynamicResource DataGridBorderBrush}"></Setter>
         <Setter Property="CornerRadius" Value="{StaticResource Radius-2}"></Setter>
         <Setter Property="ClipToBounds" Value="True"></Setter>
-    </Style>
-    <Style Selector="DataGrid.app-table /template/ Rectangle#PART_ColumnHeadersAndRowsSeparator">
-        <Setter Property="Height" Value="0" />
-    </Style>
+        <Style Selector="^ /template/ Rectangle#PART_ColumnHeadersAndRowsSeparator">
+            <Setter Property="Height" Value="0" />
+        </Style>
+        <!-- Data Grid: Header-->
+        <Style Selector="^ DataGridColumnHeader">
+            <Setter Property="MinHeight" Value="{StaticResource GridRowHeight}"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Background" Value="{DynamicResource DataGridHeaderBackground}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource FontSecondary}"></Setter>
+            <Setter Property="BorderThickness" Value="{StaticResource BorderNone}"></Setter>
+            <Setter Property="IsHitTestVisible" Value="False" />
+            <Style Selector="^:nth-child(1) /template/ Border#HeaderBorder">
+                <Setter Property="CornerRadius" Value="{StaticResource Radius-GridFirst}"></Setter>
+            </Style>
+            <Style Selector="^:nth-last-child(1) /template/ Border#HeaderBorder">
+                <Setter Property="CornerRadius" Value="{StaticResource Radius-GridLast}"></Setter>
+            </Style>
+            <Style Selector="^ /template/ Rectangle#VerticalSeparator">
+                <Setter Property="Width" Value="0"></Setter>
+            </Style>
+            <Style Selector="^:pointerover /template/ Grid#PART_ColumnHeaderRoot">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+        </Style>
 
-    <!-- Scroll Bar -->
-    <Style Selector="DataGrid.app-table ScrollBar">
-        <Setter Property="Width" Value="{StaticResource ScrollBarContainerWidth}"></Setter>
-        <Setter Property="MinWidth" Value="{StaticResource ScrollBarContainerWidth}"></Setter>
-        <Setter Property="Opacity" Value="0.75"></Setter>
-        <Setter Property="Margin" Value="{StaticResource MarginScrollbar}"></Setter>
-    </Style>
-    <Style Selector="DataGrid.app-table ScrollBar /template/ Border#VerticalRoot">
-        <Setter Property="Background" Value="{DynamicResource ScrollBarBackground}"></Setter>
-        <Setter Property="CornerRadius" Value="{StaticResource Radius-2}"></Setter>
-        <Setter Property="ClipToBounds" Value="True"></Setter>
-        <Setter Property="Padding" Value="{StaticResource PaddingScrollBar}"></Setter>
-    </Style>
-    <Style Selector="DataGrid.app-table ScrollBar /template/ Rectangle#TrackRect">
-        <Setter Property="Fill" Value="Transparent"></Setter>
-    </Style>
-    <Style Selector="DataGrid.app-table ScrollBar /template/ RepeatButton">
-        <Setter Property="IsVisible" Value="False"></Setter>
-    </Style>
-    <Style Selector="DataGrid.app-table ScrollBar /template/ Thumb">
-        <Setter Property="Width" Value="{StaticResource ScrollBarThumbWidth}"></Setter>
-        <Setter Property="MinWidth" Value="{StaticResource ScrollBarThumbWidth}"></Setter>
-        <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackground}"></Setter>
-    </Style>
-    <Style Selector="DataGrid.app-table ScrollBar /template/ Thumb > Border">
-        <Setter Property="CornerRadius" Value="{StaticResource Radius-2}"></Setter>
-    </Style>
-    <Style Selector="DataGrid.app-table ScrollBar /template/ Thumb:pressed /template/ Border">
-        <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackgroundPressed}"></Setter>
-    </Style>
-    <Style Selector="DataGrid.app-table ScrollBar /template/ Thumb:pointerover /template/ Border">
-        <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackgroundPointerOver}"></Setter>
-    </Style>
+        <!-- Data Grid: Row -->
+        <Style Selector="^ DataGridRow">
+            <Setter Property="MinHeight" Value="{StaticResource GridRowHeight}" />
+            <Setter Property="Height" Value="{StaticResource GridRowHeight}" />
+            <Style Selector="^:selected /template/ Rectangle#BackgroundRectangle">
+                <Setter Property="Fill" Value="Transparent"></Setter>
+            </Style>
+            <Style Selector="^:pointerover /template/ Rectangle#BackgroundRectangle">
+                <Setter Property="Fill" Value="Transparent" />
+            </Style>
+        </Style>
 
-    <!-- Data Grid: Header-->
-    <Style Selector="DataGrid.app-table DataGridColumnHeader">
-        <Setter Property="MinHeight" Value="{StaticResource GridRowHeight}"></Setter>
-        <Setter Property="FontSize" Value="20"></Setter>
-        <Setter Property="Background" Value="{DynamicResource DataGridHeaderBackground}" />
-        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"></Setter>
-        <Setter Property="FontFamily" Value="{StaticResource FontSecondary}"></Setter>
-        <Setter Property="BorderThickness" Value="{StaticResource BorderNone}"></Setter>
-        <Setter Property="IsHitTestVisible" Value="False" />
-    </Style>
-    <Style Selector="DataGrid.app-table DataGridColumnHeader:nth-child(1) /template/ Border#HeaderBorder">
-        <Setter Property="CornerRadius" Value="{StaticResource Radius-GridFirst}"></Setter>
-    </Style>
-    <Style Selector="DataGrid.app-table DataGridColumnHeader:nth-last-child(1) /template/ Border#HeaderBorder">
-        <Setter Property="CornerRadius" Value="{StaticResource Radius-GridLast}"></Setter>
-    </Style>
-    <Style Selector="DataGrid.app-table DataGridColumnHeader /template/ Rectangle#VerticalSeparator">
-        <Setter Property="Width" Value="0"></Setter>
-    </Style>
-    <Style Selector="DataGrid.app-table DataGridColumnHeader:pointerover /template/ Grid#PART_ColumnHeaderRoot">
-        <Setter Property="Background" Value="Transparent" />
-    </Style>
-
-    <!-- Data Grid: Row -->
-    <Style Selector="DataGrid.app-table DataGridRow">
-        <Setter Property="MinHeight" Value="{StaticResource GridRowHeight}" />
-        <Setter Property="Height" Value="{StaticResource GridRowHeight}" />
-    </Style>
-    <Style Selector="DataGrid.app-table DataGridRow:selected /template/ Rectangle#BackgroundRectangle">
-        <Setter Property="Fill" Value="Transparent"></Setter>
-    </Style>
-    <Style Selector="DataGrid.app-table DataGridRow:pointerover /template/ Rectangle#BackgroundRectangle">
-        <Setter Property="Fill" Value="Transparent" />
-    </Style>
-
-    <!-- Data Grid: Cell -->
-    <Style Selector="DataGrid.app-table DataGridCell">
-        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
-        <Setter Property="BorderThickness" Value="{StaticResource BorderNone}" />
-    </Style>
-    <Style Selector="DataGrid.app-table DataGridCell /template/ Grid#FocusVisual">
-        <Setter Property="Opacity" Value="0"></Setter>
-    </Style>
-    <Style Selector="DataGrid.app-table DataGridCell TextBlock#CellTextBlock">
-        <Setter Property="TextTrimming" Value="WordEllipsis"></Setter>
-    </Style>
-
-    <!-- Data Grid: Cell Icon -->
-    <Style Selector="DataGrid.app-table DataGridCell Image.cell-icon">
-        <Setter Property="Height" Value="{StaticResource DataGridCellIconHeight}"></Setter>
-        <Setter Property="Width" Value="{StaticResource DataGridCellIconWidth}"></Setter>
-    </Style>
-
-    <!-- Data Grid: Cell Actions Group -->
-    <Style Selector="DataGrid.app-table DataGridCell StackPanel.actions-group">
-        <Setter Property="Orientation" Value="Horizontal"></Setter>
-        <Setter Property="Spacing" Value="{StaticResource Spacing-2}"></Setter>
+        <!-- Data Grid: Cell -->
+        <Style Selector="^ DataGridCell">
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+            <Setter Property="BorderThickness" Value="{StaticResource BorderNone}" />
+            <Style Selector="^ /template/ Grid#FocusVisual">
+                <Setter Property="Opacity" Value="0"></Setter>
+            </Style>
+            <Style Selector="^ TextBlock#CellTextBlock">
+                <Setter Property="TextTrimming" Value="WordEllipsis"></Setter>
+            </Style>
+            <!-- Data Grid: Cell Icon -->
+            <Style Selector="^ Image.cell-icon">
+                <Setter Property="Height" Value="{StaticResource DataGridCellIconHeight}"></Setter>
+                <Setter Property="Width" Value="{StaticResource DataGridCellIconWidth}"></Setter>
+            </Style>
+            <!-- Data Grid: Cell Actions Group -->
+            <Style Selector="^ StackPanel.actions-group">
+                <Setter Property="Orientation" Value="Horizontal"></Setter>
+                <Setter Property="Spacing" Value="{StaticResource Spacing-2}"></Setter>
+            </Style>
+        </Style>
     </Style>
 </Styles>
