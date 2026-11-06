@@ -45,21 +45,6 @@ public class AppConfigService : IAppConfigService
 
         ValidateSettingsConfig();
         SetDebugLevel();
-        Configuration.PilotConfigurations = [
-            new PilotConfiguration {Name = "Config 1"},
-            new PilotConfiguration {Name = "Config 1"},
-            new PilotConfiguration {Name = "Config 1"},
-            new PilotConfiguration {Name = "Config 1"},
-            new PilotConfiguration {Name = "Config 1"},
-            new PilotConfiguration {Name = "Config 1"},
-            new PilotConfiguration {Name = "Config 1"},
-            new PilotConfiguration {Name = "Config 1"},
-            new PilotConfiguration {Name = "Config 1"},
-            
-            new PilotConfiguration {Name = "Config 1"},
-            new PilotConfiguration {Name = "Config 1"},
-            new PilotConfiguration {Name = "Config 1"}
-        ];
     }
 
     public void SaveConfig()

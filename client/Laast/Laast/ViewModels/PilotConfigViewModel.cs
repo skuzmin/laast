@@ -11,30 +11,21 @@ namespace Laast.ViewModels;
 public partial class PilotConfigViewModel : ViewModelBase
 {
     private readonly INavigationService _navigationService;
-    private bool IsEditMode { get; }
-    private PilotConfiguration _config;
+    private readonly IPilotService _pilotService;
+    private readonly PilotConfiguration _config;
     public ObservableCollection<PilotAction> Actions { get; }
 
     [ObservableProperty] private string _name;
-
-    public PilotConfigViewModel(INavigationService navigationService)
-        : this(navigationService, new PilotConfiguration(), isEditMode: false)
+    
+    public PilotConfigViewModel(INavigationService navigationService, IPilotService pilotService,
+        PilotConfiguration? pilotConfiguration = null)
     {
-    }
-
-    public PilotConfigViewModel(INavigationService navigationService, PilotConfiguration pilotConfiguration)
-        : this(navigationService, pilotConfiguration, isEditMode: true)
-    {
-    }
-
-    private PilotConfigViewModel(INavigationService navigationService, PilotConfiguration pilotConfiguration,
-        bool isEditMode)
-    {
+        pilotConfiguration ??= new PilotConfiguration();
         Actions = [.. pilotConfiguration.Actions.Select(item => item.Clone())];
-        IsEditMode = isEditMode;
         _name = pilotConfiguration.Name;
         _config = pilotConfiguration;
         _navigationService = navigationService;
+        _pilotService = pilotService;
     }
 
     [RelayCommand]
@@ -47,5 +38,11 @@ public partial class PilotConfigViewModel : ViewModelBase
     private void RemoveAction(PilotAction action) => Actions.Remove(action);
 
     [RelayCommand]
-    private void Save() => _navigationService.TryToNavigate(AppPage.Pilot);
+    private void Save()
+    {
+        _config.Name = Name;
+        _config.Actions = [.. Actions];
+        _pilotService.SaveConfiguration(_config);
+        _navigationService.TryToNavigate(AppPage.Pilot);
+    }
 }

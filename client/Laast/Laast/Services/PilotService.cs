@@ -20,9 +20,19 @@ public class PilotService : IPilotService
         _appConfigService.Configuration.PilotConfigurations.Add(configuration);
     }
 
-    public void UpdateConfiguration(PilotConfiguration configuration)
+    public void SaveConfiguration(PilotConfiguration configuration)
     {
-        throw new NotImplementedException();
+        var index = _appConfigService.Configuration.PilotConfigurations.FindIndex(c => c.Id == configuration.Id);
+        if (index == -1)
+        {
+            _appConfigService.Configuration.PilotConfigurations.Add(configuration);
+        }
+        else
+        {
+            _appConfigService.Configuration.PilotConfigurations[index] = configuration;
+        }
+
+        _appConfigService.SaveConfig();
     }
 
     public void SelectConfiguration(PilotConfiguration configuration)
@@ -38,5 +48,6 @@ public class PilotService : IPilotService
         }
 
         _appConfigService.Configuration.PilotConfigurations.Remove(configuration);
+        _appConfigService.SaveConfig();
     }
 }
