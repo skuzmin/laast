@@ -34,7 +34,9 @@
                 <StackPanel Classes="no-items-group" IsVisible="{Binding !Actions.Count}">
                     <TextBlock Classes="no-items-msg"
                                Text="You don't have any actions yet." />
-                    <Button Classes="btn primary" Command="{Binding AddNewActionCommand}">
+                    <Button Classes="btn primary" 
+                            Command="{Binding AddNewActionCommand}" 
+                            Click="ExpandNewActionItem_OnClick">
                         <StackPanel>
                             <Image Source="/Assets/Icons/add.png" />
                             <TextBlock Text="Add new action item"></TextBlock>
@@ -43,8 +45,8 @@
                 </StackPanel>
                 <!-- Config Actions -->
                 <ScrollViewer VerticalScrollBarVisibility="Auto" IsVisible="{Binding Actions.Count}">
-                    <StackPanel x:Name="ExpandersContainer" Spacing="{StaticResource Spacing-3}">
-                        <ItemsControl ItemsSource="{Binding Actions}">
+                    <StackPanel Spacing="{StaticResource Spacing-3}">
+                        <ItemsControl x:Name="ExpandersContainer" ItemsSource="{Binding Actions}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Spacing="{StaticResource Spacing-2}" />
@@ -105,7 +107,8 @@
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                         <Button Classes="btn primary" HorizontalAlignment="Center"
-                                Command="{Binding AddNewActionCommand}">
+                                Command="{Binding AddNewActionCommand}"
+                                Click="ExpandNewActionItem_OnClick">
                             <StackPanel>
                                 <Image Source="/Assets/Icons/add.png" />
                                 <TextBlock Text="Add new action item"></TextBlock>
