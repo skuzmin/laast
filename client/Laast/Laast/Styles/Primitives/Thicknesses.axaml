@@ -17,5 +17,6 @@
     <Thickness x:Key="PaddingScrollBar">4</Thickness>
     <Thickness x:Key="PaddingTextBox">12, 4</Thickness>
     <!-- Margin -->
+    <Thickness x:Key="MarginNone">0</Thickness>
     <Thickness x:Key="MarginTitleBarIcon">12,0,0,0</Thickness>
 </ResourceDictionary>

@@ -26,6 +26,6 @@ public partial class MainWindow : AppWindow
     private void InitCursor()
     {
         var bmp = new Bitmap(AssetLoader.Open(new Uri("avares://Laast/Assets/Cursors/cursor.png")));
-        RootContainer.Cursor = new Cursor(bmp, new PixelPoint(6, 5));
+        Cursor = new Cursor(bmp, new PixelPoint(6, 5));
     }
 }

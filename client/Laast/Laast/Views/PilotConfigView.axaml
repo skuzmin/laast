@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:Laast.ViewModels"
              xmlns:models="clr-namespace:Laast.Models"
+             xmlns:enum="clr-namespace:Laast.Enums"
              x:Class="Laast.Views.PilotConfigView"
              x:DataType="vm:PilotConfigViewModel">
 
@@ -75,7 +76,23 @@
                                             <!-- ROW: 0 -->
                                             <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Header="Input">
                                                 <StackPanel Spacing="8">
-                                                    <TextBox PlaceholderText="Action" Text="{Binding ActionType}" />
+                                                    <ComboBox
+                                                        PlaceholderText="Action type"
+                                                        SelectedValueBinding="{ReflectionBinding Tag}"
+                                                        SelectedValue="{Binding ActionType}">
+                                                        <ComboBoxItem Tag="{x:Static enum:PilotActionType.Keyboard}">
+                                                            <StackPanel>
+                                                                <Image Source="/Assets/Icons/keyboard.png"/>
+                                                                <TextBlock Text="Keyboard"/>
+                                                            </StackPanel>
+                                                        </ComboBoxItem>
+                                                        <ComboBoxItem Tag="{x:Static enum:PilotActionType.Mouse}">
+                                                            <StackPanel>
+                                                                <Image Source="/Assets/Icons/mouse.png"/>
+                                                                <TextBlock Text="Mouse"/>
+                                                            </StackPanel>
+                                                        </ComboBoxItem>
+                                                    </ComboBox>
                                                     <TextBox PlaceholderText="Key" Text="{Binding Key}" />
                                                 </StackPanel>
                                             </GroupBox>

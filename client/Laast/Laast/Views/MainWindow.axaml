@@ -10,7 +10,7 @@
                     Height="{StaticResource MainWindowHeight}"
                     Classes="laast-app"
                     Topmost="True">
-    <Grid x:Name="RootContainer" RowDefinitions="Auto, *">
+    <Grid RowDefinitions="Auto, *">
         <controls:NavBar Grid.Row="0"></controls:NavBar>
         <Border Classes="page-container" Grid.Row="1">
             <ContentControl Background="Transparent" Content="{Binding Navigation.CurrentPage}" />

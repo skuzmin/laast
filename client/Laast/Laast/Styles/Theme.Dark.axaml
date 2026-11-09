@@ -55,8 +55,8 @@
     
     <!-- TextBox -->
     <SolidColorBrush x:Key="TextBlockBackground" Color="{StaticResource SageGreen}" />
-    <SolidColorBrush x:Key="TextBlockBorderBrush" Color="{StaticResource BronzeColor}" />
-    <SolidColorBrush x:Key="TextBlockPlaceholder" Color="{StaticResource UmberColor}" />
+    <SolidColorBrush x:Key="TextBlockActiveBorderBrush" Color="{StaticResource BronzeColor}" />
+    <SolidColorBrush x:Key="TextBlockPlaceholderForeground" Color="{StaticResource UmberColor}" />
     <SolidColorBrush x:Key="TextSelectionBackground" Color="{StaticResource SeafoamColor}" />
     
     <!-- Expander(Accordion) -->
@@ -65,4 +65,10 @@
     <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="{StaticResource CharcoalTeal}" />
     <SolidColorBrush x:Key="ExpanderHeaderBackgroundPointerOver" Color="{StaticResource SlateTealColor}" />
     <SolidColorBrush x:Key="ExpanderHeaderChevronIconFill" Color="{StaticResource WhiteColor}" />
+    
+    <!-- ComboBox -->
+    <SolidColorBrush x:Key="ComboBoxBackground" Color="{StaticResource SageGreen}" />
+    <SolidColorBrush x:Key="ComboBoxActiveBorderBrush" Color="{StaticResource BronzeColor}" />
+    <SolidColorBrush x:Key="ComboboxPlaceholderForeground" Color="{StaticResource UmberColor}" />
+    <SolidColorBrush x:Key="ComboboxSelectedBackground" Color="{StaticResource SeafoamColor}" />
 </ResourceDictionary>

@@ -1,0 +1,36 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style Selector=".laast-app ComboBox">
+        <Setter Property="Background" Value="{DynamicResource ComboBoxBackground}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="PlaceholderForeground" Value="{DynamicResource ComboboxPlaceholderForeground}"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="{StaticResource Border-2}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Style Selector="^:pointerover /template/ Border#Background, ^:dropdownopen /template/ Border#Background">
+            <Setter Property="Background" Value="{DynamicResource ComboBoxBackground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxActiveBorderBrush}" />
+        </Style>
+        <Style Selector="^ /template/ PathIcon#DropDownGlyph">
+            <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
+        </Style>
+        <Style Selector="^ /template/ Popup Border#PopupBorder">
+            <Setter Property="Background" Value="{DynamicResource ComboBoxBackground}" />
+            <Style Selector="^ ItemsPresenter#PART_ItemsPresenter">
+                <Setter Property="Margin" Value="{StaticResource MarginNone}"/>
+            </Style>
+        </Style>
+        <Style Selector="^ ComboBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ComboboxSelectedBackground}" />
+        </Style>
+        <Style Selector="^ StackPanel">
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="Spacing" Value="{StaticResource Spacing-2}" />
+            <Style Selector="^ TextBlock">
+                <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
+            </Style>
+        </Style>
+    </Style>
+</Styles>

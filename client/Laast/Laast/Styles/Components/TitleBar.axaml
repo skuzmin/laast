@@ -3,6 +3,7 @@
         xmlns:controls="using:Laast.Controls">
     <Style Selector=".laast-app controls|TitleBar">
         <!-- General -->
+        <Setter Property="Cursor" Value="Arrow"/>
         <Style Selector="^ Border.titlebar">
             <Setter Property="Background" Value="{DynamicResource TitleBarBackground}" />
         </Style>

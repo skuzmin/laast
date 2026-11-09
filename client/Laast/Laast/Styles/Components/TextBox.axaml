@@ -16,11 +16,11 @@
             Selector="^:pointerover /template/ Border#PART_BorderElement,
                 ^:focus /template/ Border#PART_BorderElement">
             <Setter Property="Background" Value="{DynamicResource TextBlockBackground}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource TextBlockBorderBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource TextBlockActiveBorderBrush}" />
             <Setter Property="BorderThickness" Value="{StaticResource Border-2}" />
         </Style>
         <Style Selector="^ /template/ TextBlock#PART_Placeholder">
-            <Setter Property="Foreground" Value="{DynamicResource TextBlockPlaceholder}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextBlockPlaceholderForeground}" />
         </Style>
     </Style>
 </Styles>
