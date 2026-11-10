@@ -71,4 +71,5 @@
     <SolidColorBrush x:Key="ComboBoxActiveBorderBrush" Color="{StaticResource BronzeColor}" />
     <SolidColorBrush x:Key="ComboboxPlaceholderForeground" Color="{StaticResource UmberColor}" />
     <SolidColorBrush x:Key="ComboboxSelectedBackground" Color="{StaticResource SeafoamColor}" />
+    <SolidColorBrush x:Key="ComboboxBackgroundPointerOver" Color="{StaticResource DarkGrayColor}" />
 </ResourceDictionary>

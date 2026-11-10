@@ -15,8 +15,7 @@
                             Background="{DynamicResource MainWindowBackground}">
                         <VisualLayerManager>
                             <DockPanel>
-                                <controls:TitleBar x:Name="AppTitleBar"
-                                                   DockPanel.Dock="Top"
+                                <controls:TitleBar DockPanel.Dock="Top"
                                                    Icon="/Assets/app.ico"
                                                    IsMinimizeAvailable="True"
                                                    Title="{TemplateBinding Title}"/>

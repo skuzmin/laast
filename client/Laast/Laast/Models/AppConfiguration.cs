@@ -4,5 +4,5 @@ namespace Laast.Models;
 
 public class AppConfiguration
 {
-    public List<PilotConfiguration> PilotConfigurations { get; set; } = [];
+    public List<PilotConfiguration> PilotConfigurations { get; init; } = [];
 }

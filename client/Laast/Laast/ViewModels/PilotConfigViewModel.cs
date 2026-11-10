@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -14,9 +15,10 @@ public partial class PilotConfigViewModel : ViewModelBase
     private readonly IPilotService _pilotService;
     private readonly PilotConfiguration _config;
     public ObservableCollection<PilotAction> Actions { get; }
+    public IReadOnlyList<ActionTypeOption> ActionTypes { get; }
 
     [ObservableProperty] private string _name;
-    
+
     public PilotConfigViewModel(INavigationService navigationService, IPilotService pilotService,
         PilotConfiguration? pilotConfiguration = null)
     {
@@ -26,6 +28,11 @@ public partial class PilotConfigViewModel : ViewModelBase
         _config = pilotConfiguration;
         _navigationService = navigationService;
         _pilotService = pilotService;
+        ActionTypes =
+        [
+            new ActionTypeOption(PilotActionType.Keyboard, "Keyboard", "keyboard.png"),
+            new ActionTypeOption(PilotActionType.Mouse, "Mouse", "mouse.png"),
+        ];
     }
 
     [RelayCommand]

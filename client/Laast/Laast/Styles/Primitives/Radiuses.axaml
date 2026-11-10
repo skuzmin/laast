@@ -10,4 +10,6 @@
     <CornerRadius x:Key="Radius-GridFirst">6,0,0,0</CornerRadius>
     <CornerRadius x:Key="Radius-GridLast">0,6,0,0</CornerRadius>
     <CornerRadius x:Key="Radius-ExpanderHeaderOpened">4,4,0,0</CornerRadius>
+    <CornerRadius x:Key="Radius-ComboboxPopupFirstItem">4,4,0,0</CornerRadius>
+    <CornerRadius x:Key="Radius-ComboboxPopupLastItem">0,0,4,4</CornerRadius>
 </ResourceDictionary>

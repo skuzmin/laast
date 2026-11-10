@@ -2,7 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:Laast.ViewModels"
              xmlns:models="clr-namespace:Laast.Models"
-             xmlns:enum="clr-namespace:Laast.Enums"
              x:Class="Laast.Views.PilotConfigView"
              x:DataType="vm:PilotConfigViewModel">
 
@@ -75,47 +74,66 @@
                                         <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, *, 12, *, *">
                                             <!-- ROW: 0 -->
                                             <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Header="Input">
-                                                <StackPanel Spacing="8">
+                                                <StackPanel Spacing="{StaticResource Spacing-2}">
                                                     <ComboBox
                                                         PlaceholderText="Action type"
-                                                        SelectedValueBinding="{ReflectionBinding Tag}"
+                                                        ItemsSource="{Binding $parent[ItemsControl].((vm:PilotConfigViewModel)DataContext)?.ActionTypes}"
+                                                        SelectedValueBinding="{ReflectionBinding Id}"
                                                         SelectedValue="{Binding ActionType}">
-                                                        <ComboBoxItem Tag="{x:Static enum:PilotActionType.Keyboard}">
-                                                            <StackPanel>
-                                                                <Image Source="/Assets/Icons/keyboard.png"/>
-                                                                <TextBlock Text="Keyboard"/>
-                                                            </StackPanel>
-                                                        </ComboBoxItem>
-                                                        <ComboBoxItem Tag="{x:Static enum:PilotActionType.Mouse}">
-                                                            <StackPanel>
-                                                                <Image Source="/Assets/Icons/mouse.png"/>
-                                                                <TextBlock Text="Mouse"/>
-                                                            </StackPanel>
-                                                        </ComboBoxItem>
+                                                        <ComboBox.ItemTemplate>
+                                                            <DataTemplate x:DataType="models:ActionTypeOption">
+                                                                <StackPanel>
+                                                                    <Image Source="{Binding IconPath}"/>
+                                                                    <TextBlock Text="{Binding Title}"/>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </ComboBox.ItemTemplate>
                                                     </ComboBox>
                                                     <TextBox PlaceholderText="Key" Text="{Binding Key}" />
                                                 </StackPanel>
                                             </GroupBox>
                                             <GroupBox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"
                                                       Header="Interval">
-                                                <StackPanel Spacing="8">
-                                                    <TextBox PlaceholderText="From (ms)" Text="{Binding IntervalMinMs}" />
-                                                    <TextBox PlaceholderText="To (ms)" Text="{Binding IntervalMaxMs}" />
+                                                <StackPanel Spacing="{StaticResource Spacing-2}">
+                                                    <NumericUpDown Value="{Binding IntervalMinMs}"
+                                                                   PlaceholderText="From (ms)"
+                                                                   FormatString="0"
+                                                                   ParsingNumberStyle="Integer"
+                                                                   Minimum="0"
+                                                                   ShowButtonSpinner="False" />
+                                                    <NumericUpDown Value="{Binding IntervalMaxMs}"
+                                                                   PlaceholderText="To (ms)"
+                                                                   FormatString="0"
+                                                                   ParsingNumberStyle="Integer"
+                                                                   Minimum="0"
+                                                                   ShowButtonSpinner="False" />
                                                 </StackPanel>
                                             </GroupBox>
                                             <!-- ROW:1 -->
                                             <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
                                                       Header="Position">
                                                 <Grid ColumnDefinitions="*, *, Auto, *" ColumnSpacing="8">
-                                                    <TextBox Grid.Column="0" PlaceholderText="X (px)"
-                                                             Text="{Binding PositionX}" />
-                                                    <TextBox Grid.Column="1" PlaceholderText="Y (px)"
-                                                             Text="{Binding PositionY}" />
+                                                    <NumericUpDown Grid.Column="0" Value="{Binding PositionX}"
+                                                                   PlaceholderText="X (px)"
+                                                                   FormatString="0"
+                                                                   ParsingNumberStyle="Integer"
+                                                                   Minimum="0"
+                                                                   ShowButtonSpinner="False" />
+                                                    <NumericUpDown Grid.Column="1" Value="{Binding PositionY}"
+                                                                   PlaceholderText="Y (px)"
+                                                                   FormatString="0"
+                                                                   ParsingNumberStyle="Integer"
+                                                                   Minimum="0"
+                                                                   ShowButtonSpinner="False" />
                                                     <Button Grid.Column="2" Classes="btn primary">
                                                         <Image Source="/Assets/Icons/target.png" />
                                                     </Button>
-                                                    <TextBox Grid.Column="3" PlaceholderText="Dispersion (px)"
-                                                             Text="{Binding DispersionPx}" />
+                                                    <NumericUpDown Grid.Column="3" Value="{Binding DispersionPx}"
+                                                                   PlaceholderText="Dispersion (px)"
+                                                                   FormatString="0"
+                                                                   ParsingNumberStyle="Integer"
+                                                                   Minimum="0"
+                                                                   ShowButtonSpinner="False" />
                                                 </Grid>
                                             </GroupBox>
                                         </Grid>

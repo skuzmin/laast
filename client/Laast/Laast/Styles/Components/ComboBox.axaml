@@ -19,11 +19,22 @@
         <Style Selector="^ /template/ Popup Border#PopupBorder">
             <Setter Property="Background" Value="{DynamicResource ComboBoxBackground}" />
             <Style Selector="^ ItemsPresenter#PART_ItemsPresenter">
-                <Setter Property="Margin" Value="{StaticResource MarginNone}"/>
+                <Setter Property="Margin" Value="{StaticResource MarginNone}" />
             </Style>
         </Style>
-        <Style Selector="^ ComboBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ComboboxSelectedBackground}" />
+        <Style Selector="^ ComboBoxItem">
+            <Style Selector="^:nth-child(1) /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="CornerRadius" Value="{DynamicResource Radius-ComboboxPopupFirstItem}" />
+            </Style>
+            <Style Selector="^:nth-last-child(1) /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="CornerRadius" Value="{DynamicResource Radius-ComboboxPopupLastItem}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource ComboboxBackgroundPointerOver}" />
+            </Style>
+            <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource ComboboxSelectedBackground}" />
+            </Style>
         </Style>
         <Style Selector="^ StackPanel">
             <Setter Property="Orientation" Value="Horizontal" />
