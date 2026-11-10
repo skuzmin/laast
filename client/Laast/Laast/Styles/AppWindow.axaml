@@ -8,7 +8,6 @@
             <Setter Property="CanResize" Value="False"/>
             <Setter Property="WindowDecorations" Value="None" />
             <Setter Property="ExtendClientAreaToDecorationsHint" Value="True"/>
-            <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="-1"/>
             <Setter Property="Template">
                 <ControlTemplate>
                     <Border CornerRadius="{StaticResource Radius-3}" ClipToBounds="True"
