@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:Laast.ViewModels"
              xmlns:models="clr-namespace:Laast.Models"
+             xmlns:enums="clr-namespace:Laast.Enums"
              x:Class="Laast.Views.PilotConfigView"
              x:DataType="vm:PilotConfigViewModel">
 
@@ -34,8 +35,8 @@
                 <StackPanel Classes="no-items-group" IsVisible="{Binding !Actions.Count}">
                     <TextBlock Classes="no-items-msg"
                                Text="You don't have any actions yet." />
-                    <Button Classes="btn primary" 
-                            Command="{Binding AddNewActionCommand}" 
+                    <Button Classes="btn primary"
+                            Command="{Binding AddNewActionCommand}"
                             Click="ExpandNewActionItem_OnClick">
                         <StackPanel>
                             <Image Source="/Assets/Icons/add.png" />
@@ -76,15 +77,16 @@
                                             <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Header="Input">
                                                 <StackPanel Spacing="{StaticResource Spacing-2}">
                                                     <ComboBox
+                                                        x:Name="ActionTypeComboBox"
                                                         PlaceholderText="Action type"
                                                         ItemsSource="{Binding $parent[ItemsControl].((vm:PilotConfigViewModel)DataContext)?.ActionTypes}"
-                                                        SelectedValueBinding="{ReflectionBinding Id}"
+                                                        SelectedValueBinding="{Binding Id}"
                                                         SelectedValue="{Binding ActionType}">
                                                         <ComboBox.ItemTemplate>
                                                             <DataTemplate x:DataType="models:ActionTypeOption">
                                                                 <StackPanel>
-                                                                    <Image Source="{Binding IconPath}"/>
-                                                                    <TextBlock Text="{Binding Title}"/>
+                                                                    <Image Source="{Binding IconPath}" />
+                                                                    <TextBlock Text="{Binding Title}" />
                                                                 </StackPanel>
                                                             </DataTemplate>
                                                         </ComboBox.ItemTemplate>
@@ -112,6 +114,12 @@
                                             <!-- ROW:1 -->
                                             <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
                                                       Header="Position">
+                                                <GroupBox.IsVisible>
+                                                    <MultiBinding Converter="{StaticResource EqualsConverter}">
+                                                        <Binding ElementName="ActionTypeComboBox" Path="SelectedValue" />
+                                                        <Binding Source="{x:Static enums:PilotActionType.Mouse}" />
+                                                    </MultiBinding>
+                                                </GroupBox.IsVisible>
                                                 <Grid ColumnDefinitions="*, *, Auto, *" ColumnSpacing="8">
                                                     <NumericUpDown Grid.Column="0" Value="{Binding PositionX}"
                                                                    PlaceholderText="X (px)"
