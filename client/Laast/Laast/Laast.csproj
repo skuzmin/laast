@@ -10,6 +10,8 @@
         <Description>Lineage II Assistant</Description>
         <Company>seagullnest</Company>
         <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)Generated</CompilerGeneratedFilesOutputPath>
     </PropertyGroup>
 
     <ItemGroup>
@@ -37,4 +39,12 @@
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+        <AdditionalFiles Include="../../../firmware/protocol.h" />
+
+        <ProjectReference
+                Include="../ProtocolGenerator/ProtocolGenerator.csproj"
+                OutputItemType="Analyzer"
+                ReferenceOutputAssembly="false" />
+    </ItemGroup>
 </Project>

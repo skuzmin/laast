@@ -4,3 +4,5 @@ firmwire/.DS_Store
 client/Laast/Laast/obj
 client/Laast/Laast/bin
 client/Laast/.idea
+client/Laast/ProtocolGenerator/bin
+client/Laast/ProtocolGenerator/obj

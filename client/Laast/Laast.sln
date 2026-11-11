@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laast", "Laast\Laast.csproj", "{76D37428-8592-46E7-9393-8ED003089EE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtocolGenerator", "ProtocolGenerator\ProtocolGenerator.csproj", "{6B5258A5-52B5-48D4-80A2-A8BB65AD2ECF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{76D37428-8592-46E7-9393-8ED003089EE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76D37428-8592-46E7-9393-8ED003089EE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76D37428-8592-46E7-9393-8ED003089EE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B5258A5-52B5-48D4-80A2-A8BB65AD2ECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B5258A5-52B5-48D4-80A2-A8BB65AD2ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B5258A5-52B5-48D4-80A2-A8BB65AD2ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B5258A5-52B5-48D4-80A2-A8BB65AD2ECF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

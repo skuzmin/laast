@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.Input;
 using Laast.Enums;
 using Laast.Models;
 using Laast.Services;
+using ProtocolGenerator.Generated;
 
 namespace Laast.ViewModels;
 
@@ -36,7 +37,7 @@ public partial class PilotConfigViewModel : ViewModelBase
         ];
         MouseButtons =
         [
-            "MOUSE LEFT", "MOUSE RIGHT", "MOUSE MIDDLE", "MOUSE FORWARD", "MOUSE BACK"
+            LaastProtocol.MouseButtons.BTN_LEFT, LaastProtocol.MouseButtons.BTN_RIGHT, LaastProtocol.Commands.CMD_KEY, LaastProtocol.KeyboardKeys[7]
         ];
     }
 
