@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style Selector=".laast-app ComboBox">
+        <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
         <Setter Property="Background" Value="{DynamicResource ComboBoxBackground}" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="PlaceholderForeground" Value="{DynamicResource ComboboxPlaceholderForeground}"></Setter>
@@ -9,6 +10,12 @@
         <Setter Property="BorderThickness" Value="{StaticResource Border-2}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
+
+        <Style
+            Selector="^:pressed:focus /template/ TextBlock#PlaceholderTextBlock, 
+                      ^:pressed:focus /template/ ContentControl#ContentPresenter TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
+        </Style>
         <Style Selector="^:pointerover /template/ Border#Background, ^:dropdownopen /template/ Border#Background">
             <Setter Property="Background" Value="{DynamicResource ComboBoxBackground}" />
             <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxActiveBorderBrush}" />
@@ -34,6 +41,9 @@
             </Style>
             <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Background" Value="{DynamicResource ComboboxSelectedBackground}" />
+            </Style>
+            <Style Selector="^ TextBlock">
+                <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
             </Style>
         </Style>
         <Style Selector="^ StackPanel">

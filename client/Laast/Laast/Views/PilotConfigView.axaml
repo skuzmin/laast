@@ -91,7 +91,17 @@
                                                             </DataTemplate>
                                                         </ComboBox.ItemTemplate>
                                                     </ComboBox>
-                                                    <TextBox PlaceholderText="Key" Text="{Binding Key}" />
+                                                    <ComboBox
+                                                        PlaceholderText="Mouse button"
+                                                        IsVisible="{Binding #ActionTypeComboBox.SelectedValue, Converter={x:Static ObjectConverters.Equal},
+                                                        ConverterParameter={x:Static enums:PilotActionType.Mouse}}"
+                                                        ItemsSource="{Binding $parent[ItemsControl].((vm:PilotConfigViewModel)DataContext)?.MouseButtons}"
+                                                        SelectedValue="{Binding Key}">
+                                                    </ComboBox>
+                                                    <TextBox
+                                                        IsVisible="{Binding #ActionTypeComboBox.SelectedValue, Converter={x:Static ObjectConverters.Equal},
+                                                        ConverterParameter={x:Static enums:PilotActionType.Keyboard}}"
+                                                        PlaceholderText="Key" Text="{Binding Key}" />
                                                 </StackPanel>
                                             </GroupBox>
                                             <GroupBox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"
@@ -132,7 +142,8 @@
                                                     <Button Grid.Column="2" Classes="btn primary">
                                                         <Image Source="/Assets/Icons/target.png" />
                                                     </Button>
-                                                    <NumericUpDown Grid.Column="3" Value="{Binding DispersionPx}"
+                                                    <NumericUpDown Grid.Column="3"
+                                                                   Value="{Binding DispersionPx}"
                                                                    PlaceholderText="Dispersion (px)"
                                                                    FormatString="0"
                                                                    ParsingNumberStyle="Integer"

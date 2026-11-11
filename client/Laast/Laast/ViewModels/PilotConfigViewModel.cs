@@ -16,6 +16,7 @@ public partial class PilotConfigViewModel : ViewModelBase
     private readonly PilotConfiguration _config;
     public ObservableCollection<PilotAction> Actions { get; }
     public IReadOnlyList<ActionTypeOption> ActionTypes { get; }
+    public IReadOnlyList<string> MouseButtons { get; }
 
     [ObservableProperty] private string _name;
 
@@ -32,6 +33,10 @@ public partial class PilotConfigViewModel : ViewModelBase
         [
             new ActionTypeOption(PilotActionType.Keyboard, "Keyboard", "keyboard.png"),
             new ActionTypeOption(PilotActionType.Mouse, "Mouse", "mouse.png"),
+        ];
+        MouseButtons =
+        [
+            "MOUSE LEFT", "MOUSE RIGHT", "MOUSE MIDDLE", "MOUSE FORWARD", "MOUSE BACK"
         ];
     }
 
