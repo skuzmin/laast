@@ -6,3 +6,7 @@ client/Laast/Laast/bin
 client/Laast/.idea
 client/Laast/ProtocolGenerator/bin
 client/Laast/ProtocolGenerator/obj
+client/Laast/Laast.Client/bin
+client/Laast/Laast.Client/obj
+client/Laast/Laast.ProtocolGenerator/bin
+client/Laast/Laast.ProtocolGenerator/obj

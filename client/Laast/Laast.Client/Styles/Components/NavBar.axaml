@@ -1,0 +1,99 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Laast.Client.Controls">
+
+    <Style Selector=".laast-app controls|NavBar">
+        <Style Selector="^ Border.container">
+            <Setter Property="Background" Value="{DynamicResource CharcoalTeal}" />
+            <Setter Property="Padding" Value="{StaticResource PaddingNavBar}" />
+        </Style>
+        <Style Selector="^ Button.nav-btn">
+            <Setter Property="Width" Value="{StaticResource NavButtonSize}" />
+            <Setter Property="Height" Value="{StaticResource NavButtonSize}" />
+            <Setter Property="Padding" Value="{StaticResource PaddingNavBarButton}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="{StaticResource BorderNone}" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FocusAdorner" Value="{x:Null}" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel>
+                        <ContentPresenter Name="NavPresenter"
+                                          Background="{TemplateBinding Background}"
+                                          Padding="{TemplateBinding Padding}"
+                                          Content="{TemplateBinding Content}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        <Rectangle Name="NavBorder"
+                                   Fill="Transparent"
+                                   Stroke="{DynamicResource NavbarButton}"
+                                   StrokeThickness="2"
+                                   StrokeDashArray="2.0833,2.0833"
+                                   StrokeDashOffset="1.0417"
+                                   Opacity="0"
+                                   IsHitTestVisible="False" />
+                        <Rectangle Name="NavBorderActive"
+                                   Fill="Transparent"
+                                   RadiusX="2"
+                                   RadiusY="2"
+                                   Stroke="{DynamicResource NavbarButton}"
+                                   StrokeThickness="2"
+                                   Opacity="0"
+                                   IsHitTestVisible="False" />
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+            <Style Selector="^:pressed">
+                <Setter Property="RenderTransform" Value="none" />
+            </Style>
+            <Style Selector="^.active">
+                <Setter Property="IsHitTestVisible" Value="False" />
+                <Setter Property="Focusable" Value="False" />
+            </Style>
+            <!-- NavPresenter -->
+            <Style Selector="^ /template/ ContentPresenter#NavPresenter">
+                <Setter Property="Transitions">
+                    <Transitions>
+                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" />
+                    </Transitions>
+                </Setter>
+            </Style>
+            <Style Selector="^:pressed /template/ ContentPresenter#NavPresenter">
+                <Setter Property="RenderTransform" Value="scale(0.95)" />
+            </Style>
+            <!-- NavBorder -->
+            <Style Selector="^ /template/ Rectangle#NavBorder">
+                <Setter Property="Transitions">
+                    <Transitions>
+                        <DoubleTransition Property="Opacity" Duration="0:0:0.1" Easing="LinearEasing" />
+                    </Transitions>
+                </Setter>
+            </Style>
+            <Style Selector="^:pointerover /template/ Rectangle#NavBorder">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+            <Style Selector="^:focus-visible /template/ Rectangle#NavBorder">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+            <Style Selector="^.active /template/ Rectangle#NavBorder">
+                <Setter Property="Opacity" Value="0" />
+            </Style>
+            <!-- NavBorderActive -->
+            <Style Selector="^ /template/ Rectangle#NavBorderActive">
+                <Setter Property="Transitions">
+                    <Transitions>
+                        <DoubleTransition Property="Opacity" Duration="0:0:0.1" Easing="LinearEasing" />
+                    </Transitions>
+                </Setter>
+            </Style>
+            <Style Selector="^.active /template/ Rectangle#NavBorderActive">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+            <!-- Image -->
+            <Style Selector="^ Image">
+                <Setter Property="Stretch" Value="Uniform" />
+            </Style>
+        </Style>
+    </Style>
+</Styles>

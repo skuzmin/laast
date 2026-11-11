@@ -1,0 +1,19 @@
+<controls:AppWindow xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="using:Laast.Client.ViewModels"
+                    xmlns:controls="using:Laast.Client.Controls"
+                    x:Class="Laast.Client.Views.MainWindow"
+                    x:DataType="vm:MainWindowViewModel"
+                    Title="[LAAST] Lineage II Assistant"
+                    Icon="/Assets/app.ico"
+                    Width="{StaticResource MainWindowWidth}"
+                    Height="{StaticResource MainWindowHeight}"
+                    Classes="laast-app"
+                    Topmost="True">
+    <Grid RowDefinitions="Auto, *">
+        <controls:NavBar Grid.Row="0"></controls:NavBar>
+        <Border Classes="page-container" Grid.Row="1">
+            <ContentControl Background="Transparent" Content="{Binding Navigation.CurrentPage}" />
+        </Border>
+    </Grid>
+</controls:AppWindow>

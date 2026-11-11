@@ -1,0 +1,50 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Laast.Client.Controls">
+    <Style Selector=".laast-app controls|TitleBar">
+        <!-- General -->
+        <Setter Property="Cursor" Value="Arrow"/>
+        <Style Selector="^ Border.titlebar">
+            <Setter Property="Background" Value="{DynamicResource TitleBarBackground}" />
+        </Style>
+
+        <!-- Icon -->
+        <Style Selector="^ Image.title-icon">
+            <Setter Property="Width" Value="{StaticResource TitleBarIconSize}" />
+            <Setter Property="Height" Value="{StaticResource TitleBarIconSize}" />
+            <Setter Property="Margin" Value="{StaticResource MarginTitleBarIcon}" />
+        </Style>
+
+        <!-- Title -->
+        <Style Selector="^ TextBlock.title-text">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        </Style>
+
+        <!-- Buttons -->
+        <Style Selector="^ Button.titlebar-btn">
+            <Setter Property="Height" Value="{StaticResource TitleBarButtonHeight}" />
+            <Setter Property="Width" Value="{StaticResource TitleBarButtonWidth}" />
+            <Setter Property="Padding" Value="{StaticResource PaddingNone}" />
+            <Setter Property="CornerRadius" Value="{StaticResource Radius-None}" />
+            <Setter Property="BorderThickness" Value="{StaticResource BorderNone}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Style Selector="^:pressed">
+                <Setter Property="RenderTransform" Value="none" />
+            </Style>
+            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource TitleBarCaptionButtonBackgroundPointerOver}" />
+            </Style>
+            <Style Selector="^.close:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource TitleBarCloseButtonBackgroundPointerOver}" />
+            </Style>
+            <Style Selector="^ Path">
+                <Setter Property="Stroke" Value="{DynamicResource TitleForeground}" />
+                <Setter Property="StrokeThickness" Value="1" />
+            </Style>
+        </Style>
+    </Style>
+</Styles>
