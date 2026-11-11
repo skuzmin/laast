@@ -4,6 +4,7 @@
 #include "mouse.h"
 #include "keyboard.h"
 #include "protocol.h"
+#include "messages.h"
 
 static bool session = false;
 
