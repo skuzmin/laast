@@ -113,13 +113,9 @@
                                             </GroupBox>
                                             <!-- ROW:1 -->
                                             <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
-                                                      Header="Position">
-                                                <GroupBox.IsVisible>
-                                                    <MultiBinding Converter="{StaticResource EqualsConverter}">
-                                                        <Binding ElementName="ActionTypeComboBox" Path="SelectedValue" />
-                                                        <Binding Source="{x:Static enums:PilotActionType.Mouse}" />
-                                                    </MultiBinding>
-                                                </GroupBox.IsVisible>
+                                                      Header="Position"
+                                                      IsVisible="{Binding #ActionTypeComboBox.SelectedValue, Converter={x:Static ObjectConverters.Equal},
+                                                      ConverterParameter={x:Static enums:PilotActionType.Mouse}}">
                                                 <Grid ColumnDefinitions="*, *, Auto, *" ColumnSpacing="8">
                                                     <NumericUpDown Grid.Column="0" Value="{Binding PositionX}"
                                                                    PlaceholderText="X (px)"
