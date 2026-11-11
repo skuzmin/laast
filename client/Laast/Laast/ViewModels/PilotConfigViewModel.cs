@@ -48,7 +48,7 @@ public partial class PilotConfigViewModel : ViewModelBase
     private void Save()
     {
         _config.Name = Name;
-        _config.Actions = [.. Actions];
+        _config.Actions = [.. Actions.Select(a => a.Clone())];
         _pilotService.SaveConfiguration(_config);
         _navigationService.TryToNavigate(AppPage.Pilot);
     }
