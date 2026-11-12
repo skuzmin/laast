@@ -5,7 +5,7 @@
         <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
         <Setter Property="Background" Value="{DynamicResource ComboBoxBackground}" />
         <Setter Property="FontSize" Value="20" />
-        <Setter Property="PlaceholderForeground" Value="{DynamicResource ComboboxPlaceholderForeground}"></Setter>
+        <Setter Property="PlaceholderForeground" Value="{DynamicResource ComboBoxPlaceholderForeground}"></Setter>
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="{StaticResource Border-2}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -30,17 +30,20 @@
             </Style>
         </Style>
         <Style Selector="^ ComboBoxItem">
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Padding" Value="{StaticResource PaddingComboBox}" />
+            </Style>
             <Style Selector="^:nth-child(1) /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="CornerRadius" Value="{DynamicResource Radius-ComboboxPopupFirstItem}" />
+                <Setter Property="CornerRadius" Value="{DynamicResource Radius-ListPopupFirstItem}" />
             </Style>
             <Style Selector="^:nth-last-child(1) /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="CornerRadius" Value="{DynamicResource Radius-ComboboxPopupLastItem}" />
+                <Setter Property="CornerRadius" Value="{DynamicResource Radius-ListPopupLastItem}" />
             </Style>
             <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource ComboboxBackgroundPointerOver}" />
+                <Setter Property="Background" Value="{DynamicResource ComboBoxBackgroundPointerOver}" />
             </Style>
             <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource ComboboxSelectedBackground}" />
+                <Setter Property="Background" Value="{DynamicResource ComboBoxSelectedBackground}" />
             </Style>
             <Style Selector="^ TextBlock">
                 <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />

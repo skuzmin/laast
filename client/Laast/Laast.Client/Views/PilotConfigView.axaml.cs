@@ -16,7 +16,7 @@ public partial class PilotConfigView : UserControl
         InitializeComponent();
         ExpandersContainer.ContainerPrepared += OnContainerPrepared;
     }
-
+    
     private void OnHeaderButtonPointerPressed(object? sender, PointerPressedEventArgs e)
     {
         e.Handled = true;

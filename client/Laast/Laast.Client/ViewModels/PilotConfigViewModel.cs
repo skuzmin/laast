@@ -17,7 +17,8 @@ public partial class PilotConfigViewModel : ViewModelBase
     private readonly PilotConfiguration _config;
     public ObservableCollection<PilotAction> Actions { get; }
     public IReadOnlyList<ActionTypeOption> ActionTypes { get; }
-    public IReadOnlyList<string> MouseButtons { get; }
+    public IReadOnlyList<Item> MouseButtons { get; }
+    public IReadOnlyList<string> KeyboardKeys => LaastProtocol.KeyboardKeys;
 
     [ObservableProperty] private string _name;
 
@@ -35,9 +36,13 @@ public partial class PilotConfigViewModel : ViewModelBase
             new ActionTypeOption(PilotActionType.Keyboard, "Keyboard", "keyboard.png"),
             new ActionTypeOption(PilotActionType.Mouse, "Mouse", "mouse.png"),
         ];
-        MouseButtons =
+        MouseButtons = 
         [
-            LaastProtocol.MouseButtons.BTN_LEFT, LaastProtocol.MouseButtons.BTN_RIGHT, LaastProtocol.Commands.CMD_KEY, LaastProtocol.KeyboardKeys[7]
+            new Item(LaastProtocol.MouseButtons.BTN_LEFT, "LMB (Left Mouse Button)"),
+            new Item(LaastProtocol.MouseButtons.BTN_RIGHT, "RMB (Right Mouse Button)"),
+            new Item(LaastProtocol.MouseButtons.BTN_MIDDLE, "MMB (Middle Mouse Button)"),
+            new Item(LaastProtocol.MouseButtons.BTN_FORWARD, "M4 (Mouse Forward Button)"),
+            new Item(LaastProtocol.MouseButtons.BTN_BACK, "M5 (Mouse Back Button)"),
         ];
     }
 

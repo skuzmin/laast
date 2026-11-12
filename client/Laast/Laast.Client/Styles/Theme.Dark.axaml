@@ -69,7 +69,11 @@
     <!-- ComboBox -->
     <SolidColorBrush x:Key="ComboBoxBackground" Color="{StaticResource SageGreen}" />
     <SolidColorBrush x:Key="ComboBoxActiveBorderBrush" Color="{StaticResource BronzeColor}" />
-    <SolidColorBrush x:Key="ComboboxPlaceholderForeground" Color="{StaticResource UmberColor}" />
-    <SolidColorBrush x:Key="ComboboxSelectedBackground" Color="{StaticResource SeafoamColor}" />
-    <SolidColorBrush x:Key="ComboboxBackgroundPointerOver" Color="{StaticResource DarkGrayColor}" />
+    <SolidColorBrush x:Key="ComboBoxPlaceholderForeground" Color="{StaticResource UmberColor}" />
+    <SolidColorBrush x:Key="ComboBoxSelectedBackground" Color="{StaticResource SeafoamColor}" />
+    <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="{StaticResource DarkGrayColor}" />
+    
+    <!-- AutoCompleteBox -->
+    <SolidColorBrush x:Key="AutoCompleteBoxBackground" Color="{StaticResource SageGreen}" />
+    <SolidColorBrush x:Key="AutoCompleteBoxBackgroundPointerOver" Color="{StaticResource DarkGrayColor}" />
 </ResourceDictionary>

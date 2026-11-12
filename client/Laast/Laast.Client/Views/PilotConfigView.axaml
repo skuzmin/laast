@@ -96,12 +96,24 @@
                                                         IsVisible="{Binding #ActionTypeComboBox.SelectedValue, Converter={x:Static ObjectConverters.Equal},
                                                         ConverterParameter={x:Static enums:PilotActionType.Mouse}}"
                                                         ItemsSource="{Binding $parent[ItemsControl].((vm:PilotConfigViewModel)DataContext)?.MouseButtons}"
+                                                        SelectedValueBinding="{Binding Id}"
                                                         SelectedValue="{Binding Key}">
+                                                        <ComboBox.ItemTemplate>
+                                                            <DataTemplate x:DataType="models:Item">
+                                                                <StackPanel>
+                                                                    <TextBlock Text="{Binding Value}" />
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </ComboBox.ItemTemplate>
                                                     </ComboBox>
-                                                    <TextBox
+                                                    <AutoCompleteBox
                                                         IsVisible="{Binding #ActionTypeComboBox.SelectedValue, Converter={x:Static ObjectConverters.Equal},
                                                         ConverterParameter={x:Static enums:PilotActionType.Keyboard}}"
-                                                        PlaceholderText="Key" Text="{Binding Key}" />
+                                                        PlaceholderText="Key"
+                                                        SelectedItem="{Binding Key}"
+                                                        FilterMode="Contains"
+                                                        MinimumPrefixLength="0"
+                                                        ItemsSource="{Binding $parent[ItemsControl].((vm:PilotConfigViewModel)DataContext)?.KeyboardKeys}" />
                                                 </StackPanel>
                                             </GroupBox>
                                             <GroupBox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"
