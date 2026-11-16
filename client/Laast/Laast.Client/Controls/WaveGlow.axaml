@@ -1,0 +1,144 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Laast.Client.Controls.WaveGlow"
+             IsHitTestVisible="False" ClipToBounds="True">
+
+  <UserControl.Styles>
+    <!-- particles: shared look -->
+    <Style Selector="Ellipse.p">
+      <Setter Property="Fill" Value="#9BFFFF"/>
+      <Setter Property="HorizontalAlignment" Value="Center"/>
+      <Setter Property="VerticalAlignment" Value="Bottom"/>
+      <Setter Property="Opacity" Value="0"/>
+      <Setter Property="Effect">
+        <DropShadowEffect OffsetX="0" OffsetY="0" BlurRadius="7" Color="#7300E0FF"/>
+      </Setter>
+    </Style>
+
+    <!-- wave -->
+    <Style Selector="Panel#Root Rectangle#Wave">
+      <Style.Animations>
+        <Animation Duration="0:0:4.5" IterationCount="INFINITE" Easing="SineEaseInOut">
+          <KeyFrame Cue="0%">
+            <Setter Property="TranslateTransform.X" Value="-320"/>
+            <Setter Property="Opacity" Value="0.4"/>
+          </KeyFrame>
+          <KeyFrame Cue="45%"><Setter Property="Opacity" Value="1"/></KeyFrame>
+          <KeyFrame Cue="100%">
+            <Setter Property="TranslateTransform.X" Value="1400"/>
+            <Setter Property="Opacity" Value="0.5"/>
+          </KeyFrame>
+        </Animation>
+      </Style.Animations>
+    </Style>
+
+    <!-- glow -->
+    <Style Selector="Panel#Root Rectangle#Glow">
+      <Style.Animations>
+        <Animation Duration="0:0:4" IterationCount="INFINITE" PlaybackDirection="Alternate"
+                   Easing="SineEaseInOut">
+          <KeyFrame Cue="0%">
+            <Setter Property="Opacity" Value="0.2"/>
+            <Setter Property="ScaleTransform.ScaleY" Value="0.6"/>
+          </KeyFrame>
+          <KeyFrame Cue="40%">
+            <Setter Property="Opacity" Value="0.9"/>
+            <Setter Property="ScaleTransform.ScaleY" Value="1.2"/>
+          </KeyFrame>
+          <KeyFrame Cue="100%">
+            <Setter Property="Opacity" Value="0.35"/>
+            <Setter Property="ScaleTransform.ScaleY" Value="0.8"/>
+          </KeyFrame>
+        </Animation>
+      </Style.Animations>
+    </Style>
+
+    <!-- particle variants -->
+    <Style Selector="Panel#Root Ellipse.p1">
+      <Style.Animations>
+        <Animation Duration="0:0:3" IterationCount="INFINITE" Easing="QuadraticEaseIn">
+          <KeyFrame Cue="0%"><Setter Property="Opacity" Value="0"/><Setter Property="TranslateTransform.X" Value="0"/><Setter Property="TranslateTransform.Y" Value="0"/></KeyFrame>
+          <KeyFrame Cue="12%"><Setter Property="Opacity" Value="0.75"/></KeyFrame>
+          <KeyFrame Cue="65%"><Setter Property="Opacity" Value="0.75"/></KeyFrame>
+          <KeyFrame Cue="100%"><Setter Property="Opacity" Value="0"/><Setter Property="TranslateTransform.X" Value="12"/><Setter Property="TranslateTransform.Y" Value="-50"/></KeyFrame>
+        </Animation>
+      </Style.Animations>
+    </Style>
+
+    <Style Selector="Panel#Root Ellipse.p2">
+      <Style.Animations>
+        <Animation Duration="0:0:2.5" Delay="0:0:0.5" IterationCount="INFINITE" Easing="QuadraticEaseIn">
+          <KeyFrame Cue="0%"><Setter Property="Opacity" Value="0"/><Setter Property="TranslateTransform.X" Value="0"/><Setter Property="TranslateTransform.Y" Value="0"/></KeyFrame>
+          <KeyFrame Cue="12%"><Setter Property="Opacity" Value="0.75"/></KeyFrame>
+          <KeyFrame Cue="65%"><Setter Property="Opacity" Value="0.75"/></KeyFrame>
+          <KeyFrame Cue="100%"><Setter Property="Opacity" Value="0"/><Setter Property="TranslateTransform.X" Value="-9"/><Setter Property="TranslateTransform.Y" Value="-40"/></KeyFrame>
+        </Animation>
+      </Style.Animations>
+    </Style>
+
+    <Style Selector="Panel#Root Ellipse.p3">
+      <Style.Animations>
+        <Animation Duration="0:0:3.5" Delay="0:0:1.2" IterationCount="INFINITE" Easing="QuadraticEaseIn">
+          <KeyFrame Cue="0%"><Setter Property="Opacity" Value="0"/><Setter Property="TranslateTransform.X" Value="0"/><Setter Property="TranslateTransform.Y" Value="0"/></KeyFrame>
+          <KeyFrame Cue="12%"><Setter Property="Opacity" Value="0.75"/></KeyFrame>
+          <KeyFrame Cue="65%"><Setter Property="Opacity" Value="0.75"/></KeyFrame>
+          <KeyFrame Cue="100%"><Setter Property="Opacity" Value="0"/><Setter Property="TranslateTransform.X" Value="15"/><Setter Property="TranslateTransform.Y" Value="-60"/></KeyFrame>
+        </Animation>
+      </Style.Animations>
+    </Style>
+
+    <Style Selector="Panel#Root Ellipse.p4">
+      <Style.Animations>
+        <Animation Duration="0:0:2.8" Delay="0:0:0.8" IterationCount="INFINITE" Easing="QuadraticEaseIn">
+          <KeyFrame Cue="0%"><Setter Property="Opacity" Value="0"/><Setter Property="TranslateTransform.X" Value="0"/><Setter Property="TranslateTransform.Y" Value="0"/></KeyFrame>
+          <KeyFrame Cue="12%"><Setter Property="Opacity" Value="0.75"/></KeyFrame>
+          <KeyFrame Cue="65%"><Setter Property="Opacity" Value="0.75"/></KeyFrame>
+          <KeyFrame Cue="100%"><Setter Property="Opacity" Value="0"/><Setter Property="TranslateTransform.X" Value="-12"/><Setter Property="TranslateTransform.Y" Value="-45"/></KeyFrame>
+        </Animation>
+      </Style.Animations>
+    </Style>
+  </UserControl.Styles>
+
+  <Panel Name="Root">
+
+    <!-- row background + top/bottom border -->
+    <Border Background="#8C092F40" BorderBrush="#404BEBFF" BorderThickness="0,1"/>
+
+    <!-- blurred glow -->
+    <Rectangle Name="Glow" Margin="-4,-12" Effect="blur(14)" RenderTransformOrigin="50%,50%">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+          <GradientStop Offset="0"    Color="Transparent"/>
+          <GradientStop Offset="0.35" Color="#3300D2FF"/>
+          <GradientStop Offset="0.65" Color="#4D00F5FF"/>
+          <GradientStop Offset="1"    Color="Transparent"/>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- moving wave band -->
+    <Rectangle Name="Wave" Width="320" HorizontalAlignment="Left" Effect="blur(3)">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+          <GradientStop Offset="0"    Color="Transparent"/>
+          <GradientStop Offset="0.25" Color="#1F00CCFF"/>
+          <GradientStop Offset="0.48" Color="#5C00E1FF"/>
+          <GradientStop Offset="0.55" Color="#4766FFF4"/>
+          <GradientStop Offset="0.85" Color="Transparent"/>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- particles -->
+    <UniformGrid Columns="8">
+      <Ellipse Classes="p p1" Width="3" Height="3"/>
+      <Ellipse Classes="p p2" Width="2" Height="2"/>
+      <Ellipse Classes="p p3" Width="4" Height="4"/>
+      <Ellipse Classes="p p4" Width="1" Height="1"/>
+      <Ellipse Classes="p p1" Width="3" Height="3"/>
+      <Ellipse Classes="p p2" Width="2" Height="2"/>
+      <Ellipse Classes="p p3" Width="4" Height="4"/>
+      <Ellipse Classes="p p4" Width="2" Height="2"/>
+    </UniformGrid>
+  </Panel>
+</UserControl>

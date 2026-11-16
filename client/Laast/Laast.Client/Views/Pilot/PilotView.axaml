@@ -3,6 +3,7 @@
              x:Class="Laast.Client.Views.Pilot.PilotView"
              xmlns:enums="clr-namespace:Laast.Client.Enums"
              xmlns:pilot="clr-namespace:Laast.Client.ViewModels.Pilot"
+             xmlns:controls="clr-namespace:Laast.Client.Controls"
              x:DataType="pilot:PilotViewModel">
 
     <Grid RowDefinitions="Auto, *">
@@ -28,7 +29,10 @@
                            IsVisible="{Binding !Configs.Count}" />
 
                 <!-- Data Grid -->
-                <DataGrid ItemsSource="{Binding Configs}" IsVisible="{Binding Configs.Count}">
+                <DataGrid 
+                    ItemsSource="{Binding Configs}" 
+                    IsVisible="{Binding Configs.Count}"
+                    LoadingRow="ConfigsGrid_OnLoadingRow">
                     <DataGrid.Columns>
                         <DataGridTextColumn Width="5*" Header="Name" Binding="{Binding Name}" />
                         <DataGridTemplateColumn Width="2*" Header="Is Selected">
