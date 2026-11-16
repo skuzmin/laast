@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Laast.Client.Enums;
 using Laast.Client.Services;
+using Laast.Client.ViewModels.Common;
 
 namespace Laast.Client.ViewModels;
 

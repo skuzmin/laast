@@ -1,10 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="using:Laast.Client.ViewModels"
-             xmlns:models="clr-namespace:Laast.Client.Models"
-             x:Class="Laast.Client.Views.PilotView"
+             x:Class="Laast.Client.Views.Pilot.PilotView"
              xmlns:enums="clr-namespace:Laast.Client.Enums"
-             x:DataType="vm:PilotViewModel">
+             xmlns:pilot="clr-namespace:Laast.Client.ViewModels.Pilot"
+             x:DataType="pilot:PilotViewModel">
 
     <Grid RowDefinitions="Auto, *">
         <!-- Title -->
@@ -34,35 +33,26 @@
                         <DataGridTextColumn Width="5*" Header="Name" Binding="{Binding Name}" />
                         <DataGridTemplateColumn Width="2*" Header="Is Selected">
                             <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate DataType="models:PilotConfiguration">
-                                    <Image Classes="cell-icon" Source="/Assets/Icons/done.png">
-                                        <Image.IsVisible>
-                                            <MultiBinding Converter="{StaticResource EqualsConverter}">
-                                                <Binding Path="Id" />
-                                                <Binding Path="$parent[DataGrid].((vm:PilotViewModel)DataContext)?.SelectedPilotConfiguration?.Id" />
-                                            </MultiBinding>
-                                        </Image.IsVisible>
-                                    </Image>
+                                <DataTemplate DataType="pilot:PilotConfigItemViewModel">
+                                    <Image Classes="cell-icon" Source="/Assets/Icons/done.png"
+                                           IsVisible="{Binding IsSelected}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTemplateColumn Width="2*" Header="Actions">
                             <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate DataType="models:PilotConfiguration">
+                                <DataTemplate DataType="pilot:PilotConfigItemViewModel">
                                     <StackPanel Classes="actions-group">
                                         <Button Classes="btn secondary sm"
-                                                Command="{Binding  $parent[DataGrid].((vm:PilotViewModel)DataContext)?.SelectConfigCommand}"
-                                                CommandParameter="{Binding }">
+                                                Command="{Binding  SelectCommand}">
                                             <Image Source="/Assets/Icons/check.png" />
                                         </Button>
                                         <Button Classes="btn secondary sm"
-                                                Command="{Binding  $parent[DataGrid].((vm:PilotViewModel)DataContext)?.EditConfigCommand}"
-                                                CommandParameter="{Binding }">
+                                                Command="{Binding  EditCommand}">
                                             <Image Source="/Assets/Icons/edit.png" />
                                         </Button>
                                         <Button Classes="btn secondary sm"
-                                                Command="{Binding  $parent[DataGrid].((vm:PilotViewModel)DataContext)?.DeleteConfigCommand}"
-                                                CommandParameter="{Binding }">
+                                                Command="{Binding  DeleteCommand}">
                                             <Image Source="/Assets/Icons/delete.png" />
                                         </Button>
                                     </StackPanel>

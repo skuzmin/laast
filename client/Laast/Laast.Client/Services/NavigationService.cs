@@ -5,8 +5,14 @@ using CommunityToolkit.Mvvm.Input;
 using Laast.Client.Enums;
 using Laast.Client.Models;
 using Laast.Client.ViewModels;
+using Laast.Client.ViewModels.Commands;
+using Laast.Client.ViewModels.Common;
+using Laast.Client.ViewModels.Settings;
+using Laast.Client.ViewModels.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using PilotConfigViewModel = Laast.Client.ViewModels.Pilot.PilotConfigViewModel;
+using PilotViewModel = Laast.Client.ViewModels.Pilot.PilotViewModel;
 
 namespace Laast.Client.Services;
 

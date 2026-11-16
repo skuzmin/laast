@@ -1,10 +1,10 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="using:Laast.Client.ViewModels"
              xmlns:models="clr-namespace:Laast.Client.Models"
              xmlns:enums="clr-namespace:Laast.Client.Enums"
-             x:Class="Laast.Client.Views.PilotConfigView"
-             x:DataType="vm:PilotConfigViewModel">
+             xmlns:pilot="clr-namespace:Laast.Client.ViewModels.Pilot"
+             x:Class="Laast.Client.Views.Pilot.PilotConfigView"
+             x:DataType="pilot:PilotConfigViewModel">
 
     <Grid RowDefinitions="Auto, *">
         <Border Grid.Row="0" Classes="title-section">
@@ -65,7 +65,7 @@
                                                 <TextBlock Grid.Column="1" Classes="accordion-title"
                                                            Text="{Binding Description}" VerticalAlignment="Center" />
                                                 <Button Grid.Column="2" Classes="btn secondary sm"
-                                                        Command="{Binding $parent[ItemsControl].((vm:PilotConfigViewModel)DataContext)?.RemoveActionCommand}"
+                                                        Command="{Binding $parent[ItemsControl].((pilot:PilotConfigViewModel)DataContext)?.RemoveActionCommand}"
                                                         CommandParameter="{Binding}"
                                                         PointerPressed="OnHeaderButtonPointerPressed">
                                                     <Image Source="/Assets/Icons/delete.png" />
@@ -79,7 +79,7 @@
                                                     <ComboBox
                                                         x:Name="ActionTypeComboBox"
                                                         PlaceholderText="Action type"
-                                                        ItemsSource="{Binding $parent[ItemsControl].((vm:PilotConfigViewModel)DataContext)?.ActionTypes}"
+                                                        ItemsSource="{Binding $parent[ItemsControl].((pilot:PilotConfigViewModel)DataContext)?.ActionTypes}"
                                                         SelectedValueBinding="{Binding Id}"
                                                         SelectedValue="{Binding ActionType}">
                                                         <ComboBox.ItemTemplate>
@@ -95,7 +95,7 @@
                                                         PlaceholderText="Mouse button"
                                                         IsVisible="{Binding #ActionTypeComboBox.SelectedValue, Converter={x:Static ObjectConverters.Equal},
                                                         ConverterParameter={x:Static enums:PilotActionType.Mouse}}"
-                                                        ItemsSource="{Binding $parent[ItemsControl].((vm:PilotConfigViewModel)DataContext)?.MouseButtons}"
+                                                        ItemsSource="{Binding $parent[ItemsControl].((pilot:PilotConfigViewModel)DataContext)?.MouseButtons}"
                                                         SelectedValueBinding="{Binding Id}"
                                                         SelectedValue="{Binding Key}">
                                                         <ComboBox.ItemTemplate>
@@ -113,7 +113,7 @@
                                                         SelectedItem="{Binding Key}"
                                                         FilterMode="Contains"
                                                         MinimumPrefixLength="0"
-                                                        ItemsSource="{Binding $parent[ItemsControl].((vm:PilotConfigViewModel)DataContext)?.KeyboardKeys}" />
+                                                        ItemsSource="{Binding $parent[ItemsControl].((pilot:PilotConfigViewModel)DataContext)?.KeyboardKeys}" />
                                                 </StackPanel>
                                             </GroupBox>
                                             <GroupBox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"

@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace Laast.Client.Views;
+namespace Laast.Client.Views.Windows;
 
 public partial class WindowsView : UserControl
 {

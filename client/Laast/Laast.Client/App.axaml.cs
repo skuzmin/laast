@@ -4,9 +4,14 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Laast.Client.Services;
 using Laast.Client.ViewModels;
+using Laast.Client.ViewModels.Commands;
+using Laast.Client.ViewModels.Settings;
+using Laast.Client.ViewModels.Windows;
 using Laast.Client.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using PilotConfigViewModel = Laast.Client.ViewModels.Pilot.PilotConfigViewModel;
+using PilotViewModel = Laast.Client.ViewModels.Pilot.PilotViewModel;
 
 namespace Laast.Client;
 

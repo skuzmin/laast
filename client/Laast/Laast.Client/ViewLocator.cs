@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Laast.Client.ViewModels;
+using Laast.Client.ViewModels.Common;
 
 namespace Laast.Client;
 

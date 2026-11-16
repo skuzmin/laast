@@ -41,7 +41,35 @@
 
     <ItemGroup>
         <AdditionalFiles Include="../../../firmware/protocol.h" />
+        <AdditionalFiles Include="Views\Commands\CommandsView.axaml" />
+        <AdditionalFiles Include="Views\Pilot\PilotConfigView.axaml" />
+        <AdditionalFiles Include="Views\Pilot\PilotView.axaml" />
+        <AdditionalFiles Include="Views\Settings\SettingsView.axaml" />
+        <AdditionalFiles Include="Views\Windows\WindowsView.axaml" />
 
         <ProjectReference Include="..\Laast.ProtocolGenerator\Laast.ProtocolGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\Commands\CommandsView.axaml.cs">
+        <DependentUpon>CommandsView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pilot\PilotConfigView.axaml.cs">
+        <DependentUpon>PilotConfigView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pilot\PilotView.axaml.cs">
+        <DependentUpon>PilotView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Settings\SettingsView.axaml.cs">
+        <DependentUpon>SettingsView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Windows\WindowsView.axaml.cs">
+        <DependentUpon>WindowsView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 </Project>

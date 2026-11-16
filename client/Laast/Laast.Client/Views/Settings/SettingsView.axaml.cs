@@ -1,8 +1,6 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 
-namespace Laast.Client.Views;
+namespace Laast.Client.Views.Settings;
 
 public partial class SettingsView : UserControl
 {

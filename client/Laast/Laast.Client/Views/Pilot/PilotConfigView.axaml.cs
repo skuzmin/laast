@@ -5,7 +5,7 @@ using Avalonia.Interactivity;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
 
-namespace Laast.Client.Views;
+namespace Laast.Client.Views.Pilot;
 
 public partial class PilotConfigView : UserControl
 {
@@ -24,7 +24,7 @@ public partial class PilotConfigView : UserControl
 
     private void ToggleAll_OnClick(object? sender, RoutedEventArgs e)
     {
-        var expanders = ExpandersContainer.GetVisualDescendants().OfType<Expander>().ToList();
+        var expanders = VisualExtensions.GetVisualDescendants(ExpandersContainer).OfType<Expander>().ToList();
         if (expanders.Count == 0)
         {
             return;

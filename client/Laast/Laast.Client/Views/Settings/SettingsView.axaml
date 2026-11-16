@@ -1,12 +1,13 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:Laast.Client.ViewModels"
-             x:Class="Laast.Client.Views.WindowsView"
-             x:DataType="vm:WindowsViewModel">
+             xmlns:settings="clr-namespace:Laast.Client.ViewModels.Settings"
+             x:Class="Laast.Client.Views.Settings.SettingsView"
+             x:DataType="settings:SettingsViewModel">
 
     <Grid RowDefinitions="Auto, *">
         <Border Grid.Row="0" Classes="title-section">
-            <TextBlock Classes="page-title">Windows</TextBlock>
+            <TextBlock Classes="page-title">Settings</TextBlock>
         </Border>
         <Border Grid.Row="1" Classes="page-section"></Border>
     </Grid>

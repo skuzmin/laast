@@ -6,9 +6,10 @@ using CommunityToolkit.Mvvm.Input;
 using Laast.Client.Enums;
 using Laast.Client.Models;
 using Laast.Client.Services;
+using Laast.Client.ViewModels.Common;
 using Laast.ProtocolGenerator.Generated;
 
-namespace Laast.Client.ViewModels;
+namespace Laast.Client.ViewModels.Pilot;
 
 public partial class PilotConfigViewModel : ViewModelBase
 {

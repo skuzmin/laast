@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace Laast.Client.Views;
+namespace Laast.Client.Views.Commands;
 
 public partial class CommandsView : UserControl
 {
