@@ -17,11 +17,11 @@
     <SolidColorBrush x:Key="TitleBarCaptionButtonBackgroundPointerOver" Color="{StaticResource DarkGrayColor}" />
     <SolidColorBrush x:Key="TitleBarCloseButtonBackgroundPointerOver" Color="{StaticResource DarkRedColor}" />
     <SolidColorBrush x:Key="TitleBarConfirmationBackground" Color="{StaticResource BlackColor}" />
-    
+
     <!-- Navbar -->
     <SolidColorBrush x:Key="NavbarBackground" Color="{StaticResource CharcoalTeal}" />
     <SolidColorBrush x:Key="NavbarButton" Color="{StaticResource SageGreen}" />
-    
+
     <!-- Buttons -->
     <!-- Disabled (shared) -->
     <SolidColorBrush x:Key="ButtonDisabledBackground" Color="{StaticResource CharcoalColor}" />
@@ -44,7 +44,7 @@
     <SolidColorBrush x:Key="ButtonDangerBackgroundPointerOver" Color="{StaticResource RedColor}" />
     <SolidColorBrush x:Key="ButtonDangerForeground" Color="{StaticResource WhiteColor}" />
     <SolidColorBrush x:Key="ButtonDangerBorderBrush" Color="{StaticResource RoseColor}" />
-    
+
     <!-- DataGrid -->
     <SolidColorBrush x:Key="DataGridHeaderBackground" Color="{StaticResource CharcoalColor}" />
     <SolidColorBrush x:Key="DataGridBorderBrush" Color="{StaticResource SageGreen}" />
@@ -52,28 +52,47 @@
     <SolidColorBrush x:Key="ScrollBarThumbBackground" Color="{StaticResource BronzeColor}" />
     <SolidColorBrush x:Key="ScrollBarThumbBackgroundPointerOver" Color="{StaticResource BronzeLightColor}" />
     <SolidColorBrush x:Key="ScrollBarThumbBackgroundPressed" Color="{StaticResource BronzeLightColor}" />
-    
+
     <!-- TextBox -->
     <SolidColorBrush x:Key="TextBlockBackground" Color="{StaticResource SageGreen}" />
     <SolidColorBrush x:Key="TextBlockActiveBorderBrush" Color="{StaticResource BronzeColor}" />
     <SolidColorBrush x:Key="TextBlockPlaceholderForeground" Color="{StaticResource UmberColor}" />
     <SolidColorBrush x:Key="TextSelectionBackground" Color="{StaticResource SeafoamColor}" />
-    
+
     <!-- Expander(Accordion) -->
     <SolidColorBrush x:Key="ExpanderClosedBorderBrush" Color="{StaticResource SlateTealColor}" />
     <SolidColorBrush x:Key="ExpanderOpenedBorderBrush" Color="{StaticResource SlateTealLightColor}" />
     <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="{StaticResource CharcoalTeal}" />
     <SolidColorBrush x:Key="ExpanderHeaderBackgroundPointerOver" Color="{StaticResource SlateTealColor}" />
     <SolidColorBrush x:Key="ExpanderHeaderChevronIconFill" Color="{StaticResource WhiteColor}" />
-    
+
     <!-- ComboBox -->
     <SolidColorBrush x:Key="ComboBoxBackground" Color="{StaticResource SageGreen}" />
     <SolidColorBrush x:Key="ComboBoxActiveBorderBrush" Color="{StaticResource BronzeColor}" />
     <SolidColorBrush x:Key="ComboBoxPlaceholderForeground" Color="{StaticResource UmberColor}" />
     <SolidColorBrush x:Key="ComboBoxSelectedBackground" Color="{StaticResource SeafoamColor}" />
     <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="{StaticResource DarkGrayColor}" />
-    
+
     <!-- AutoCompleteBox -->
     <SolidColorBrush x:Key="AutoCompleteBoxBackground" Color="{StaticResource SageGreen}" />
     <SolidColorBrush x:Key="AutoCompleteBoxBackgroundPointerOver" Color="{StaticResource DarkGrayColor}" />
+
+    <!-- WaveGlow -->
+    <SolidColorBrush x:Key="WaveGlowBackground" Color="{StaticResource DarkCrimson}" />
+    <SolidColorBrush x:Key="WaveGlowBorderBrush" Color="{StaticResource MediumSlateCyan}" />
+    <SolidColorBrush x:Key="WaveGlowParticleBackground" Color="{StaticResource IceCyan}" />
+    <SolidColorBrush x:Key="WaveGlowParticleShadow" Color="{StaticResource CyanGlow}" />
+    <LinearGradientBrush x:Key="WaveGlowGlowBackground" StartPoint="0%,50%" EndPoint="100%,50%">
+        <GradientStop Offset="0" Color="Transparent" />
+        <GradientStop Offset="0.35" Color="{StaticResource VividCyan}" />
+        <GradientStop Offset="0.65" Color="{StaticResource Turquoise}" />
+        <GradientStop Offset="1" Color="Transparent" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="WaveGlowWaveBackground" StartPoint="0%,50%" EndPoint="100%,50%">
+        <GradientStop Offset="0" Color="Transparent" />
+        <GradientStop Offset="0.25" Color="{StaticResource CyanSoft}" />
+        <GradientStop Offset="0.48" Color="{StaticResource CyanBright}" />
+        <GradientStop Offset="0.55" Color="{StaticResource AquaHighlight}" />
+        <GradientStop Offset="0.85" Color="Transparent" />
+    </LinearGradientBrush>
 </ResourceDictionary>

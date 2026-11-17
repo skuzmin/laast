@@ -1,5 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- General -->
     <Color x:Key="BlackColor">#000</Color>
     <Color x:Key="WhiteColor">#fff</Color>
     <Color x:Key="CharcoalColor">#323333</Color>
@@ -18,4 +19,15 @@
     <Color x:Key="UmberColor">#211d17</Color>
     <Color x:Key="UmberLightColor">#2c261e</Color>
     <Color x:Key="BlackTransparentColor">#E6202020</Color>
+    <!-- Extra -->
+    <!-- Extra: WaveGlow -->
+    <Color x:Key="DarkCrimson">#E6202020</Color>
+    <Color x:Key="MediumSlateCyan">#404BEBFF</Color>
+    <Color x:Key="VividCyan">#3300D2FF</Color>
+    <Color x:Key="Turquoise">#4D00F5FF</Color>
+    <Color x:Key="CyanSoft">#1F00CCFF</Color>
+    <Color x:Key="CyanBright">#5C00E1FF</Color>
+    <Color x:Key="AquaHighlight">#4766FFF4</Color>
+    <Color x:Key="IceCyan">#9BFFFF</Color>
+    <Color x:Key="CyanGlow">#7300E0FF</Color>
 </ResourceDictionary>

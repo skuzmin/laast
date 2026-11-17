@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-        <AssemblyTitle>Laast</AssemblyTitle>
+        <AssemblyTitle>Lineage II Assistant</AssemblyTitle>
         <Product>Laast</Product>
         <Description>Lineage II Assistant</Description>
         <Company>seagullnest</Company>
