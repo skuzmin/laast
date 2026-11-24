@@ -49,7 +49,7 @@ public partial class PilotViewModel : ViewModelBase
     {
         var dialogConfig = new ConfirmationDialogConfig()
         {
-            Title = "Delete pilot config",
+            Title = "Delete Pilot Configuration",
             Message = $"Are you sure want to delete [ {config.Model.Name} ] ?",
             ConfirmButtonText = "Delete",
             CancelButtonText = "Cancel"

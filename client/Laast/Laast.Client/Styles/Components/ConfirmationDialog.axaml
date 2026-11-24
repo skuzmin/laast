@@ -1,7 +1,11 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:Laast.Client.Controls">
-
+    
+    <Style Selector="controls|AppWindow.dialog /template/ controls|TitleBar">
+        <Setter Property="IsMinimizeAvailable" Value="False" />
+    </Style>
+    
     <Style Selector="controls|AppWindow.dialog /template/ Border#PART_OutlineBorder">
         <Setter Property="BorderBrush" Value="{DynamicResource ConfirmationDialogBorderBrush}" />
         <Setter Property="BorderThickness" Value="{StaticResource Border-1}" />
