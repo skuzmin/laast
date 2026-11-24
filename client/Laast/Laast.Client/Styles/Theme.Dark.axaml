@@ -95,4 +95,7 @@
         <GradientStop Offset="0.55" Color="{StaticResource AquaHighlight}" />
         <GradientStop Offset="0.85" Color="Transparent" />
     </LinearGradientBrush>
+    
+    <!-- Confirmation Dialog -->
+    <SolidColorBrush x:Key="ConfirmationDialogBorderBrush" Color="{StaticResource WhiteColor}" />
 </ResourceDictionary>

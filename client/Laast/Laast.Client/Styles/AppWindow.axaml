@@ -10,7 +10,9 @@
             <Setter Property="ExtendClientAreaToDecorationsHint" Value="True"/>
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Border CornerRadius="{StaticResource Radius-3}" ClipToBounds="True"
+                    <Panel>
+                    <Border CornerRadius="{StaticResource Radius-3}" 
+                            ClipToBounds="True"
                             Background="{DynamicResource MainWindowBackground}">
                         <VisualLayerManager>
                             <DockPanel>
@@ -22,6 +24,8 @@
                             </DockPanel>
                         </VisualLayerManager>
                     </Border>
+                        <Border x:Name="PART_OutlineBorder" IsVisible="False" />
+                    </Panel>
                 </ControlTemplate>
             </Setter>
         </ControlTheme>

@@ -1,0 +1,29 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:Laast.Client.Controls">
+
+    <Style Selector="controls|AppWindow.dialog /template/ Border#PART_OutlineBorder">
+        <Setter Property="BorderBrush" Value="{DynamicResource ConfirmationDialogBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{StaticResource Border-1}" />
+        <Setter Property="IsVisible" Value="True" />
+        <Setter Property="CornerRadius" Value="{StaticResource Radius-3}" />
+    </Style>
+
+    <Style Selector=".laast-app Border.confirmation-dialog">
+        <Setter Property="Padding" Value="{StaticResource PaddingConfirmationDialog}" />
+        <Style Selector="^ StackPanel">
+            <Setter Property="Spacing" Value="{StaticResource Spacing-3}" />
+        </Style>
+        <Style Selector="^ TextBlock.message">
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="^ TextBlock.sub-message">
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="{StaticResource FontSecondary}" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+    </Style>
+</Styles>

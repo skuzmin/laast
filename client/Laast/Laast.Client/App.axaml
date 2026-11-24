@@ -32,6 +32,7 @@
         <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
         <StyleInclude Source="avares://Laast.Client/Styles/Components/AutoCompleteBox.axaml" />
         <StyleInclude Source="avares://Laast.Client/Styles/Components/NavBar.axaml" />
+        <StyleInclude Source="avares://Laast.Client/Styles/Components/ConfirmationDialog.axaml" />
         <StyleInclude Source="avares://Laast.Client/Styles/Components/TitleBar.axaml" />
         <StyleInclude Source="avares://Laast.Client/Styles/Components/Button.axaml" />
         <StyleInclude Source="avares://Laast.Client/Styles/Components/ComboBox.axaml" />
