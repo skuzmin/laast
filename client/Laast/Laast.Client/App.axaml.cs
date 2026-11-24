@@ -44,6 +44,7 @@ public partial class App : Application
         services.AddSingleton<ILogger, AppLogger>();
         services.AddSingleton<IPilotService, PilotService>();
         services.AddSingleton<IAppConfigService, AppConfigService>();
+        services.AddSingleton<IConfirmationDialogService, ConfirmationDialogService>();
         // ViewModels
         services.AddSingleton<MainWindowViewModel>();
         services.AddTransient<PilotViewModel>();

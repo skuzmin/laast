@@ -42,6 +42,7 @@
     <ItemGroup>
         <AdditionalFiles Include="../../../firmware/protocol.h" />
         <AdditionalFiles Include="Views\Commands\CommandsView.axaml" />
+        <AdditionalFiles Include="Views\Dialogs\ConfirmationDialog.axaml" />
         <AdditionalFiles Include="Views\Pilot\PilotConfigView.axaml" />
         <AdditionalFiles Include="Views\Pilot\PilotView.axaml" />
         <AdditionalFiles Include="Views\Settings\SettingsView.axaml" />

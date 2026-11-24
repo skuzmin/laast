@@ -14,18 +14,11 @@ public partial class MainWindow : AppWindow
     public MainWindow()
     {
         InitializeComponent();
-        InitCursor();
     }
 
     public MainWindow(MainWindowViewModel vm, ILogger logger) : this()
     {
         DataContext = vm;
         logger.LogInformation("======= App Start =======");
-    }
-
-    private void InitCursor()
-    {
-        var bmp = new Bitmap(AssetLoader.Open(new Uri("avares://Laast.Client/Assets/Cursors/cursor.png")));
-        Cursor = new Cursor(bmp, new PixelPoint(6, 5));
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Laast.Client.Enums;
 using Laast.Client.Models;
@@ -11,16 +12,21 @@ namespace Laast.Client.ViewModels.Pilot;
 public partial class PilotViewModel : ViewModelBase
 {
     private readonly IPilotService _pilotService;
+    private readonly IConfirmationDialogService _confirmationDialogService;
     private readonly PilotConfigItemActions _itemActions;
     public INavigationService NavigationService { get; }
     public ObservableCollection<PilotConfigItemViewModel> Configs { get; set; }
 
     [ObservableProperty] private PilotConfiguration? _selectedPilotConfiguration;
 
-    public PilotViewModel(INavigationService navigationService, IPilotService pilotService)
+    public PilotViewModel(
+        INavigationService navigationService,
+        IPilotService pilotService,
+        IConfirmationDialogService confirmationDialogService)
     {
         NavigationService = navigationService;
         _pilotService = pilotService;
+        _confirmationDialogService = confirmationDialogService;
         _itemActions = new PilotConfigItemActions(SelectConfig, EditConfig, DeleteConfig);
         Configs = [.. pilotService.Configurations.Select(CreateItem)];
     }
@@ -39,10 +45,21 @@ public partial class PilotViewModel : ViewModelBase
         NavigationService.TryToNavigate(AppPage.PilotConfig, config.Model);
     }
 
-    private void DeleteConfig(PilotConfigItemViewModel config)
+    private async Task DeleteConfig(PilotConfigItemViewModel config)
     {
-        _pilotService.DeleteConfiguration(config.Model);
-        Configs.Remove(config);
+        var dialogConfig = new ConfirmationDialogConfig()
+        {
+            Title = "Delete pilot config",
+            Message = $"Are you sure want to delete [ {config.Model.Name} ] ?",
+            ConfirmButtonText = "Delete",
+            CancelButtonText = "Cancel"
+        };
+
+        if (await _confirmationDialogService.ConfirmAsync(dialogConfig))
+        {
+            _pilotService.DeleteConfiguration(config.Model);
+            Configs.Remove(config);
+        }
     }
 
     private PilotConfigItemViewModel CreateItem(PilotConfiguration config)

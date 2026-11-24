@@ -1,6 +1,5 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="using:Laast.Client.ViewModels"
              xmlns:commands="clr-namespace:Laast.Client.ViewModels.Commands"
              x:Class="Laast.Client.Views.Commands.CommandsView"
              x:DataType="commands:CommandsViewModel">
