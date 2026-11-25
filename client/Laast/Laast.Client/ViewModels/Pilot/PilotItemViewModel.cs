@@ -4,15 +4,15 @@ using Laast.Client.Models;
 
 namespace Laast.Client.ViewModels.Pilot;
 
-public partial class PilotConfigItemViewModel : ObservableObject
+public partial class PilotItemViewModel : ObservableObject
 {
     public PilotConfiguration Model { get; }
     public string Name => Model.Name;
-    private readonly PilotConfigItemActions _actions;
+    private readonly PilotItemActions _actions;
 
     [ObservableProperty] private bool _isSelected;
 
-    public PilotConfigItemViewModel(PilotConfiguration model, PilotConfigItemActions actions, bool isSelected)
+    public PilotItemViewModel(PilotConfiguration model, PilotItemActions actions, bool isSelected)
     {
         Model = model;
         _actions = actions;

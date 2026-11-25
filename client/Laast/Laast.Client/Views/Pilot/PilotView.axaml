@@ -37,7 +37,7 @@
                         <DataGridTextColumn Width="5*" Header="Name" Binding="{Binding Name}" />
                         <DataGridTemplateColumn Width="2*" Header="Is Selected">
                             <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate DataType="pilot:PilotConfigItemViewModel">
+                                <DataTemplate DataType="pilot:PilotItemViewModel">
                                     <Image Classes="cell-icon" Source="/Assets/Icons/done.png"
                                            IsVisible="{Binding IsSelected}" />
                                 </DataTemplate>
@@ -45,7 +45,7 @@
                         </DataGridTemplateColumn>
                         <DataGridTemplateColumn Width="2*" Header="Actions">
                             <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate DataType="pilot:PilotConfigItemViewModel">
+                                <DataTemplate DataType="pilot:PilotItemViewModel">
                                     <StackPanel Classes="actions-group">
                                         <Button Classes="btn secondary sm"
                                                 Command="{Binding  SelectCommand}">

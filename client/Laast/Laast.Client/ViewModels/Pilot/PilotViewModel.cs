@@ -13,9 +13,9 @@ public partial class PilotViewModel : ViewModelBase
 {
     private readonly IPilotService _pilotService;
     private readonly IConfirmationDialogService _confirmationDialogService;
-    private readonly PilotConfigItemActions _itemActions;
+    private readonly PilotItemActions _itemActions;
     public INavigationService NavigationService { get; }
-    public ObservableCollection<PilotConfigItemViewModel> Configs { get; set; }
+    public ObservableCollection<PilotItemViewModel> Configs { get; set; }
 
     [ObservableProperty] private PilotConfiguration? _selectedPilotConfiguration;
 
@@ -27,11 +27,11 @@ public partial class PilotViewModel : ViewModelBase
         NavigationService = navigationService;
         _pilotService = pilotService;
         _confirmationDialogService = confirmationDialogService;
-        _itemActions = new PilotConfigItemActions(SelectConfig, EditConfig, DeleteConfig);
+        _itemActions = new PilotItemActions(SelectConfig, EditConfig, DeleteConfig);
         Configs = [.. pilotService.Configurations.Select(CreateItem)];
     }
 
-    private void SelectConfig(PilotConfigItemViewModel config)
+    private void SelectConfig(PilotItemViewModel config)
     {
         _pilotService.SelectConfiguration(config.Model);
         foreach (var configItem in Configs)
@@ -40,12 +40,12 @@ public partial class PilotViewModel : ViewModelBase
         }
     }
 
-    private void EditConfig(PilotConfigItemViewModel config)
+    private void EditConfig(PilotItemViewModel config)
     {
         NavigationService.TryToNavigate(AppPage.PilotConfig, config.Model);
     }
 
-    private async Task DeleteConfig(PilotConfigItemViewModel config)
+    private async Task DeleteConfig(PilotItemViewModel config)
     {
         var dialogConfig = new ConfirmationDialogConfig()
         {
@@ -62,9 +62,9 @@ public partial class PilotViewModel : ViewModelBase
         }
     }
 
-    private PilotConfigItemViewModel CreateItem(PilotConfiguration config)
+    private PilotItemViewModel CreateItem(PilotConfiguration config)
     {
-        return new PilotConfigItemViewModel(
+        return new PilotItemViewModel(
             config,
             _itemActions,
             isSelected: config.Id == _pilotService.SelectedConfiguration?.Id
