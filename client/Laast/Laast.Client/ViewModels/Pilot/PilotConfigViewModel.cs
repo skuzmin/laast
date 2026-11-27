@@ -90,7 +90,7 @@ public partial class PilotConfigViewModel : ViewModelBase
         {
             Title = "Delete Pilot Action",
             Message = "Are you sure want to delete action ?",
-            SubMessage = $"Action name: {action.Description}",
+            SubMessage = action.Description,
             ConfirmButtonText = "Delete",
             CancelButtonText = "Cancel"
         };
