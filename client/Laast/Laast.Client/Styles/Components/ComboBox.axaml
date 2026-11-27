@@ -16,6 +16,9 @@
                       ^:pressed:focus /template/ ContentControl#ContentPresenter TextBlock">
             <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
         </Style>
+        <Style Selector="^:focus-visible /template/ Border#HighlightBackground">
+            <Setter Property="Background" Value="{DynamicResource ComboBoxSelectedBackground}" />
+        </Style>
         <Style Selector="^:pointerover /template/ Border#Background, ^:dropdownopen /template/ Border#Background">
             <Setter Property="Background" Value="{DynamicResource ComboBoxBackground}" />
             <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxActiveBorderBrush}" />

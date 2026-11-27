@@ -15,11 +15,6 @@ public class PilotService : IPilotService
         _appConfigService = appConfigService;
     }
 
-    public void CreateConfiguration(PilotConfiguration configuration)
-    {
-        _appConfigService.Configuration.PilotConfigurations.Add(configuration);
-    }
-
     public void SaveConfiguration(PilotConfiguration configuration)
     {
         var index = _appConfigService.Configuration.PilotConfigurations.FindIndex(c => c.Id == configuration.Id);

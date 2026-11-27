@@ -1,13 +1,12 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Laast.Client.Enums;
 using Laast.Client.Models;
 using Laast.Client.Services;
 using Laast.Client.ViewModels.Common;
-using Laast.ProtocolGenerator.Generated;
 
 namespace Laast.Client.ViewModels.Pilot;
 
@@ -15,53 +14,91 @@ public partial class PilotConfigViewModel : ViewModelBase
 {
     private readonly INavigationService _navigationService;
     private readonly IPilotService _pilotService;
+    private readonly IConfirmationDialogService _confirmationDialogService;
     private readonly PilotConfiguration _config;
-    public ObservableCollection<PilotAction> Actions { get; }
-    public IReadOnlyList<ActionTypeOption> ActionTypes { get; }
-    public IReadOnlyList<Item> MouseButtons { get; }
-    public IReadOnlyList<string> KeyboardKeys => LaastProtocol.KeyboardKeys;
-
+    public ObservableCollection<PilotConfigItemViewModel> Actions { get; }
+    private readonly PilotConfigItemContext _itemContext;
+    private bool _isBulkUpdate;
     [ObservableProperty] private string _name;
+    [ObservableProperty] private bool _isListExpanded;
 
-    public PilotConfigViewModel(INavigationService navigationService, IPilotService pilotService,
+    public PilotConfigViewModel(
+        INavigationService navigationService,
+        IConfirmationDialogService confirmationDialogService,
+        IPilotService pilotService,
         PilotConfiguration? pilotConfiguration = null)
     {
         pilotConfiguration ??= new PilotConfiguration();
-        Actions = [.. pilotConfiguration.Actions.Select(item => item.Clone())];
         _name = pilotConfiguration.Name;
         _config = pilotConfiguration;
         _navigationService = navigationService;
         _pilotService = pilotService;
-        ActionTypes =
-        [
-            new ActionTypeOption(PilotActionType.Keyboard, "Keyboard", "keyboard.png"),
-            new ActionTypeOption(PilotActionType.Mouse, "Mouse", "mouse.png"),
-        ];
-        MouseButtons = 
-        [
-            new Item(LaastProtocol.MouseButtons.BTN_LEFT, "LMB (Left Mouse Button)"),
-            new Item(LaastProtocol.MouseButtons.BTN_RIGHT, "RMB (Right Mouse Button)"),
-            new Item(LaastProtocol.MouseButtons.BTN_MIDDLE, "MMB (Middle Mouse Button)"),
-            new Item(LaastProtocol.MouseButtons.BTN_FORWARD, "M4 (Mouse Forward Button)"),
-            new Item(LaastProtocol.MouseButtons.BTN_BACK, "M5 (Mouse Back Button)"),
-        ];
+        _confirmationDialogService = confirmationDialogService;
+        _itemContext = new PilotConfigItemContext(OnItemExpandedChanged, RemoveAction);
+        _isBulkUpdate = false;
+        Actions = [.. pilotConfiguration.Actions.Select(item => new PilotConfigItemViewModel(item, _itemContext))];
+        OnItemExpandedChanged();
     }
 
     [RelayCommand]
     private void Back() => _navigationService.TryToNavigate(AppPage.Pilot);
 
     [RelayCommand]
-    private void AddNewAction() => Actions.Add(new PilotAction());
+    private void AddNewAction()
+    {
+        var newAction = PilotConfigItemViewModel.CreateEmpty(_itemContext);
+        newAction.IsExpanded = true;
+        Actions.Add(newAction);
+        OnItemExpandedChanged();
+    }
 
     [RelayCommand]
-    private void RemoveAction(PilotAction action) => Actions.Remove(action);
+    private void ToggleExpandCollapseAll()
+    {
+        _isBulkUpdate = true;
+        foreach (var action in Actions)
+        {
+            action.IsExpanded = !IsListExpanded;
+        }
+
+        _isBulkUpdate = false;
+        OnItemExpandedChanged();
+    }
 
     [RelayCommand]
     private void Save()
     {
         _config.Name = Name;
-        _config.Actions = [.. Actions.Select(a => a.Clone())];
+        _config.Actions = [.. Actions.Select(a => a.GetSaveObj())];
         _pilotService.SaveConfiguration(_config);
         _navigationService.TryToNavigate(AppPage.Pilot);
+    }
+
+    private void OnItemExpandedChanged()
+    {
+        if (_isBulkUpdate)
+        {
+            return;
+        }
+
+        IsListExpanded = Actions.All(item => item.IsExpanded);
+    }
+
+    private async Task RemoveAction(PilotConfigItemViewModel action)
+    {
+        var dialogConfig = new ConfirmationDialogConfig()
+        {
+            Title = "Delete Pilot Action",
+            Message = "Are you sure want to delete action ?",
+            SubMessage = $"Action name: {action.Description}",
+            ConfirmButtonText = "Delete",
+            CancelButtonText = "Cancel"
+        };
+
+        if (await _confirmationDialogService.ConfirmAsync(dialogConfig))
+        {
+            Actions.Remove(action);
+            OnItemExpandedChanged();
+        }
     }
 }

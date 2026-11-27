@@ -3,7 +3,6 @@
              x:Class="Laast.Client.Views.Pilot.PilotView"
              xmlns:enums="clr-namespace:Laast.Client.Enums"
              xmlns:pilot="clr-namespace:Laast.Client.ViewModels.Pilot"
-             xmlns:controls="clr-namespace:Laast.Client.Controls"
              x:DataType="pilot:PilotViewModel">
 
     <Grid RowDefinitions="Auto, *">

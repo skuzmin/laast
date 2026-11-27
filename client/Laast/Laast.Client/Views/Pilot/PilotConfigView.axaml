@@ -8,18 +8,24 @@
 
     <Grid RowDefinitions="Auto, *">
         <Border Grid.Row="0" Classes="title-section">
-            <Grid ColumnDefinitions="Auto, 8, 2*, *, Auto, 8, Auto">
+            <Grid ColumnDefinitions="Auto, 8, 400, *, Auto, 8, Auto">
                 <Button Grid.Column="0" Classes="btn secondary back"
                         Command="{Binding BackCommand}">
                     <Image Source="/Assets/Icons/back.png" />
                 </Button>
                 <TextBox Grid.Column="2" PlaceholderText="Configuration name" Text="{Binding Name}"></TextBox>
                 <Button Grid.Column="4" Classes="btn primary" IsEnabled="{Binding Actions.Count}"
-                        Click="ToggleAll_OnClick">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Assets/Icons/expand-collapse.png" />
-                        <TextBlock Text="Expand/Collapse All"></TextBlock>
-                    </StackPanel>
+                        Command="{Binding ToggleExpandCollapseAllCommand}">
+                    <Panel>
+                        <StackPanel Orientation="Horizontal" IsVisible="{Binding IsListExpanded}">
+                            <Image Source="/Assets/Icons/collapse_all.png" />
+                            <TextBlock Text="Collapse All"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" IsVisible="{Binding !IsListExpanded}">
+                            <Image Source="/Assets/Icons/expand_all.png" />
+                            <TextBlock Text="Expand All"></TextBlock>
+                        </StackPanel>
+                    </Panel>
                 </Button>
                 <Button Grid.Column="6" Classes="btn primary" Command="{Binding SaveCommand}">
                     <StackPanel Orientation="Horizontal">
@@ -36,8 +42,7 @@
                     <TextBlock Classes="no-items-msg"
                                Text="You don't have any actions yet." />
                     <Button Classes="btn primary"
-                            Command="{Binding AddNewActionCommand}"
-                            Click="ExpandNewActionItem_OnClick">
+                            Command="{Binding AddNewActionCommand}">
                         <StackPanel>
                             <Image Source="/Assets/Icons/add.png" />
                             <TextBlock Text="Add new action item"></TextBlock>
@@ -54,8 +59,9 @@
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
-                                <DataTemplate x:DataType="models:PilotAction">
-                                    <Expander HorizontalAlignment="Stretch">
+                                <DataTemplate x:DataType="pilot:PilotConfigItemViewModel">
+                                    <Expander HorizontalAlignment="Stretch"
+                                              IsExpanded="{Binding IsExpanded, Mode=TwoWay}">
                                         <Expander.Header>
                                             <Grid ColumnDefinitions="Auto *,Auto">
                                                 <Panel Grid.Column="0" Classes="chevron">
@@ -65,7 +71,7 @@
                                                 <TextBlock Grid.Column="1" Classes="accordion-title"
                                                            Text="{Binding Description}" VerticalAlignment="Center" />
                                                 <Button Grid.Column="2" Classes="btn secondary sm"
-                                                        Command="{Binding $parent[ItemsControl].((pilot:PilotConfigViewModel)DataContext)?.RemoveActionCommand}"
+                                                        Command="{Binding RemoveActionCommand}"
                                                         CommandParameter="{Binding}"
                                                         PointerPressed="OnHeaderButtonPointerPressed">
                                                     <Image Source="/Assets/Icons/delete.png" />
@@ -79,9 +85,9 @@
                                                     <ComboBox
                                                         x:Name="ActionTypeComboBox"
                                                         PlaceholderText="Action type"
-                                                        ItemsSource="{Binding $parent[ItemsControl].((pilot:PilotConfigViewModel)DataContext)?.ActionTypes}"
+                                                        ItemsSource="{Binding ActionTypes}"
                                                         SelectedValueBinding="{Binding Id}"
-                                                        SelectedValue="{Binding ActionType}">
+                                                        SelectedValue="{Binding ActionType.Value}">
                                                         <ComboBox.ItemTemplate>
                                                             <DataTemplate x:DataType="models:ActionTypeOption">
                                                                 <StackPanel>
@@ -95,9 +101,9 @@
                                                         PlaceholderText="Mouse button"
                                                         IsVisible="{Binding #ActionTypeComboBox.SelectedValue, Converter={x:Static ObjectConverters.Equal},
                                                         ConverterParameter={x:Static enums:PilotActionType.Mouse}}"
-                                                        ItemsSource="{Binding $parent[ItemsControl].((pilot:PilotConfigViewModel)DataContext)?.MouseButtons}"
+                                                        ItemsSource="{Binding MouseButtons}"
                                                         SelectedValueBinding="{Binding Id}"
-                                                        SelectedValue="{Binding Key}">
+                                                        SelectedValue="{Binding Key.Value}">
                                                         <ComboBox.ItemTemplate>
                                                             <DataTemplate x:DataType="models:Item">
                                                                 <StackPanel>
@@ -110,22 +116,22 @@
                                                         IsVisible="{Binding #ActionTypeComboBox.SelectedValue, Converter={x:Static ObjectConverters.Equal},
                                                         ConverterParameter={x:Static enums:PilotActionType.Keyboard}}"
                                                         PlaceholderText="Key"
-                                                        SelectedItem="{Binding Key}"
+                                                        SelectedItem="{Binding Key.Value}"
                                                         FilterMode="Contains"
                                                         MinimumPrefixLength="0"
-                                                        ItemsSource="{Binding $parent[ItemsControl].((pilot:PilotConfigViewModel)DataContext)?.KeyboardKeys}" />
+                                                        ItemsSource="{Binding KeyboardKeys}" />
                                                 </StackPanel>
                                             </GroupBox>
                                             <GroupBox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"
                                                       Header="Interval">
                                                 <StackPanel Spacing="{StaticResource Spacing-2}">
-                                                    <NumericUpDown Value="{Binding IntervalMinMs}"
+                                                    <NumericUpDown Value="{Binding IntervalMinMs.Value}"
                                                                    PlaceholderText="From (ms)"
                                                                    FormatString="0"
                                                                    ParsingNumberStyle="Integer"
                                                                    Minimum="0"
                                                                    ShowButtonSpinner="False" />
-                                                    <NumericUpDown Value="{Binding IntervalMaxMs}"
+                                                    <NumericUpDown Value="{Binding IntervalMaxMs.Value}"
                                                                    PlaceholderText="To (ms)"
                                                                    FormatString="0"
                                                                    ParsingNumberStyle="Integer"
@@ -139,13 +145,13 @@
                                                       IsVisible="{Binding #ActionTypeComboBox.SelectedValue, Converter={x:Static ObjectConverters.Equal},
                                                       ConverterParameter={x:Static enums:PilotActionType.Mouse}}">
                                                 <Grid ColumnDefinitions="*, *, Auto, *" ColumnSpacing="8">
-                                                    <NumericUpDown Grid.Column="0" Value="{Binding PositionX}"
+                                                    <NumericUpDown Grid.Column="0" Value="{Binding PositionX.Value}"
                                                                    PlaceholderText="X (px)"
                                                                    FormatString="0"
                                                                    ParsingNumberStyle="Integer"
                                                                    Minimum="0"
                                                                    ShowButtonSpinner="False" />
-                                                    <NumericUpDown Grid.Column="1" Value="{Binding PositionY}"
+                                                    <NumericUpDown Grid.Column="1" Value="{Binding PositionY.Value}"
                                                                    PlaceholderText="Y (px)"
                                                                    FormatString="0"
                                                                    ParsingNumberStyle="Integer"
@@ -155,7 +161,7 @@
                                                         <Image Source="/Assets/Icons/target.png" />
                                                     </Button>
                                                     <NumericUpDown Grid.Column="3"
-                                                                   Value="{Binding DispersionPx}"
+                                                                   Value="{Binding DispersionPx.Value}"
                                                                    PlaceholderText="Dispersion (px)"
                                                                    FormatString="0"
                                                                    ParsingNumberStyle="Integer"
@@ -169,8 +175,7 @@
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                         <Button Classes="btn primary" HorizontalAlignment="Center"
-                                Command="{Binding AddNewActionCommand}"
-                                Click="ExpandNewActionItem_OnClick">
+                                Command="{Binding AddNewActionCommand}">
                             <StackPanel>
                                 <Image Source="/Assets/Icons/add.png" />
                                 <TextBlock Text="Add new action item"></TextBlock>
